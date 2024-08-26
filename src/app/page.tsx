@@ -53,8 +53,8 @@ export default function HeroHeader() {
             {heroHeader.subheader1}
           </h2>
         </div>
-        <div className="flex gap-2 items-center justify-center">
-          <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
+          <div className="flex gap-2 items-center justify-center">
             <Input
               value={url}
               onChange={handleInputChange}
@@ -68,8 +68,8 @@ export default function HeroHeader() {
             >
               Scrape 🔥
             </Button>
-          </form>
-        </div>
+          </div>
+        </form>
         <Button
           onClick={handleDownload}
           className={`text-white gap-2 flex ${cn(
@@ -77,7 +77,7 @@ export default function HeroHeader() {
           )}`}
         >
           <Download />
-          <p>Download your data</p>
+          <p className="text-white">Download your data</p>
         </Button>
       </div>
     </section>
