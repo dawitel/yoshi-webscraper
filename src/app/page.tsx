@@ -4,11 +4,21 @@ import { ChooseDataFormat } from "@/components/dropdown";
 import { buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { heroHeader } from "@/config/content";
-import { cn } from "@/lib/utils";
+import { cn, convertJsonToCsv, downloadCsv } from "@/lib/utils";
 import { Download } from "lucide-react";
 import Link from "next/link";
 
 export default function HeroHeader() {
+    const jsonData = [
+      { name: "John Doe", age: 30, email: "john@example.com" },
+      { name: "Jane Smith", age: 25, email: "jane@example.com" },
+    ];
+   const handleDownload = () => {
+     const csvData = convertJsonToCsv(jsonData);
+     if (csvData) {
+       downloadCsv(csvData, "data.csv");
+     }
+   };
   return (
     <section className="container flex flex-col gap-4 pb-12 pt-4 text-center lg:items-center lg:gap-8 lg:py-20">
       <div className="flex flex-1 flex-col items-center gap-4 text-center lg:gap-8">
@@ -34,10 +44,14 @@ export default function HeroHeader() {
         <Link
           href=""
           target="_blank"
-          className={`w-[10rem] gap-2 bg-blue-700 ${cn(buttonVariants({ size: "lg" }))}`}
+          className={`w-[10rem] gap-2 bg-blue-700 ${cn(
+            buttonVariants({ size: "lg", variant: "secondary" })
+          )}`}
         >
-          <Download />
-          <p>Download your data</p>
+          <button onClick={handleDownload}>
+            <Download />
+            <p>Download your data</p>
+          </button>
         </Link>
       </div>
     </section>
