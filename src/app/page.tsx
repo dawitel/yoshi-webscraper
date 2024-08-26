@@ -5,6 +5,7 @@ import { buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { heroHeader } from "@/config/content";
 import { cn } from "@/lib/utils";
+import { Download } from "lucide-react";
 import Link from "next/link";
 
 export default function HeroHeader() {
@@ -20,7 +21,7 @@ export default function HeroHeader() {
           </h2>
         </div>
         <div className="flex gap-2 items-center justify-center">
-          <Input placeholder="Enter a url..."/>
+          <Input className="border-solid" placeholder="Enter a url..." />
           <ChooseDataFormat />
           <Link
             href=""
@@ -30,6 +31,14 @@ export default function HeroHeader() {
             Scrape 🔥
           </Link>
         </div>
+        <Link
+          href=""
+          target="_blank"
+          className={`w-[10rem] gap-2 bg-blue-700 ${cn(buttonVariants({ size: "lg" }))}`}
+        >
+          <Download />
+          <p>Download your data</p>
+        </Link>
       </div>
     </section>
   );
