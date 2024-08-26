@@ -1,5 +1,6 @@
 "use client";
 
+import { ChooseDataFormat } from "@/components/dropdown";
 import { buttonVariants } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { heroHeader } from "@/config/content";
@@ -20,6 +21,7 @@ export default function HeroHeader() {
         </div>
         <div className="flex gap-2 items-center justify-center">
           <Input placeholder="Enter a url..."/>
+          <ChooseDataFormat />
           <Link
             href=""
             target="_blank"
