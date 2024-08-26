@@ -1,0 +1,1 @@
+# Web Scraper with Puppeteer and Next.js API Routes
