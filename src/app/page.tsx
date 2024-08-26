@@ -7,8 +7,28 @@ import { heroHeader } from "@/config/content";
 import { cn, convertJsonToCsv, downloadCsv } from "@/lib/utils";
 import { Download } from "lucide-react";
 import Link from "next/link";
+import { useState } from "react";
 
 export default function HeroHeader() {
+  const [url, setUrl] = useState("");
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setUrl(event.target.value);
+  };
+
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+    try {
+      const response = await fetch("/api/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ url }),
+      });
+    } catch (error) {
+      console.error("An error occurred:", error);
+    }
+  };
   const jsonData = [
     { name: "John Doe", age: 30, email: "john@example.com" },
     { name: "Jane Smith", age: 25, email: "jane@example.com" },
@@ -29,20 +49,26 @@ export default function HeroHeader() {
           <h1 className="text-2xl font-semibold lg:text-4xl">
             {heroHeader.subheader}
           </h1>
-          <h2 className="text-sm font-light text-muted-foreground lg:text-3xl">
+          <h2 className="text-xs font-light text-muted-foreground lg:text-3xl">
             {heroHeader.subheader1}
           </h2>
         </div>
         <div className="flex gap-2 items-center justify-center">
-          <Input className="border-solid" placeholder="Enter a url..." />
-          <ChooseDataFormat />
-          <Link
-            href=""
-            target="_blank"
-            className={`w-[10rem] ${cn(buttonVariants({ size: "lg" }))}`}
-          >
-            Scrape 🔥
-          </Link>
+          <form onSubmit={handleSubmit}>
+            <Input
+              value={url}
+              onChange={handleInputChange}
+              className="border-2 border-solid border-black"
+              placeholder="Enter a url..."
+            />
+            <ChooseDataFormat />
+            <Button
+              type="submit"
+              className={`w-[10rem] ${cn(buttonVariants({ size: "lg" }))}`}
+            >
+              Scrape 🔥
+            </Button>
+          </form>
         </div>
         <Button
           onClick={handleDownload}
