@@ -27,10 +27,10 @@ export default function HeroHeader() {
             {heroHeader.header}
           </h1>
           <h1 className="text-2xl font-semibold lg:text-4xl">
-            {heroHeader.subheader1}
-          </h1>
-          <h2 className="text-lg font-light text-muted-foreground lg:text-3xl">
             {heroHeader.subheader}
+          </h1>
+          <h2 className="text-sm font-light text-muted-foreground lg:text-3xl">
+            {heroHeader.subheader1}
           </h2>
         </div>
         <div className="flex gap-2 items-center justify-center">
@@ -46,7 +46,7 @@ export default function HeroHeader() {
         </div>
         <Button
           onClick={handleDownload}
-          className={`w-[10rem] gap-2 flex items-center justify-center bg-blue-700 ${cn(
+          className={`text-white gap-2 flex ${cn(
             buttonVariants({ size: "lg", variant: "primary" })
           )}`}
         >
