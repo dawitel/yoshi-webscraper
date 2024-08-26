@@ -21,7 +21,7 @@ export default function HeroHeader() {
         <div className="flex gap-2 items-center justify-center">
           <Input placeholder="Enter a url..."/>
           <Link
-            href="https://github.com/redpangilinan/next-shadcn-landing"
+            href=""
             target="_blank"
             className={`w-[10rem] ${cn(buttonVariants({ size: "lg" }))}`}
           >
