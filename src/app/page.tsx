@@ -49,7 +49,7 @@ export default function HeroHeader() {
           <h1 className="text-2xl font-semibold lg:text-4xl">
             {heroHeader.subheader}
           </h1>
-          <h2 className="text-xs font-light text-muted-foreground lg:text-3xl">
+          <h2 className="text-xs font-light text-muted-foreground lg:text-sm">
             {heroHeader.subheader1}
           </h2>
         </div>
