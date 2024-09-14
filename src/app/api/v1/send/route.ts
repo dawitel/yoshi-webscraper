@@ -1,48 +1,56 @@
-import { EmailTemplate } from "@/components/email-template";
-import { Resend } from "resend";
-import * as React from "react";
-import { NextResponse } from "next/server";
-import Papa from "papaparse";
+// import { NextResponse } from "next/server";
+// import Papa from "papaparse";
+// import logger from "@/lib/logger";
+// // import { Emailer } from "@/lib/emailer";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// /**
+//  * Handles an HTTP POST request to send an email with a CSV attachment.
+//  * It processes the request, converts the JSON data into CSV, and sends it as an email attachment.
+//  *
+//  * @param {Request} req - The incoming request object containing data for the email.
+//  * @returns {Promise<NextResponse>} A Promise that resolves to an HTTP response object
+//  * indicating the success or failure of the email sending process.
+//  */
+// export async function POST(req: Request): Promise<NextResponse> {
+//   logger.info("Received email send request...");
 
-export async function POST(req: Request) {
-  try {
-    const { finalData } = await req.json();
-    const jsonData =
-      typeof finalData === "string" ? JSON.parse(finalData) : finalData;
+//   try {
+//     // Extract and parse the incoming JSON data from the request body
+//     const { finalData } = await req.json();
 
-    if (!jsonData) {
-      return NextResponse.json(
-        { message: "Missing required fields" },
-        { status: 400 }
-      );
-    }
+//     // Parse the finalData string into JSON if necessary
+//     const jsonData =
+//       typeof finalData === "string" ? JSON.parse(finalData) : finalData;
 
-    const csvData = Papa.unparse(jsonData);
-    console.log("✅CSV data: ", csvData);
+//     // Validate that the required data is present
+//     if (!jsonData) {
+//       return NextResponse.json(
+//         { message: "Missing required fields" },
+//         { status: 400 }
+//       );
+//     }
 
-    // Send email with CSV attachment
-    const { data, error } = await resend.emails.send({
-      from: "Acme <onboarding@resend.dev>",
-      to: ["tranceyos2419@gmail.com"],
-      subject: "Hi Yoshi✋! This is the Scraped data from your last upload",
-      react: EmailTemplate({ firstName: "Yoshi" }) as React.ReactElement,
-      attachments: [
-        {
-          filename: "final-data.csv",
-          content: Buffer.from(csvData).toString("base64"),
-          contentType: "text/csv",
-        },
-      ],
-    });
+//     // Convert the JSON data to CSV format using PapaParse
+//     const csvData = Papa.unparse(jsonData);
+//     console.log("CSV data: ", csvData);
 
-    if (error) {
-      return NextResponse.json({ error }, { status: 500 });
-    }
+//     logger.info("Sending the email to the user...");
 
-    return NextResponse.json({ data });
-  } catch (error) {
-    return NextResponse.json({ error }, { status: 500 });
-  }
-}
+//     // Send the email using the Resend API, with the CSV attached
+//     const args = {
+//       Data: csvData,
+//       ErrorTo: "",
+//     };
+//     const { data, error } = await Emailer(args);
+//     // Check if there was an error during the email sending process
+//     if (error) {
+//       return NextResponse.json({ error }, { status: 500 });
+//     }
+//     logger.info("Sent the email to the user.");
+//     return NextResponse.json({ data });
+//   } catch (error) {
+//     // Handle any errors that occur during the process
+//     logger.error("Error occurred while trying to send the email...", error);
+//     return NextResponse.json({ error }, { status: 500 });
+//   }
+// }
