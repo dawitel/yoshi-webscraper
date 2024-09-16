@@ -1,3 +1,7 @@
+### Fix
+
+- Rank is not correct
+
 ### Modification
 
 - Could you move v2/send-email to v1/send?
