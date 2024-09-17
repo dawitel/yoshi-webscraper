@@ -1,17 +1,13 @@
 import puppeteer from "puppeteer-extra";
 import StealthPlugin from "puppeteer-extra-plugin-stealth";
-import {executablePath} from "puppeteer"
-// import fs from "fs";
+import { executablePath } from "puppeteer";
 import { NextResponse } from "next/server";
-// import Papa from "papaparse";
 import axios from "axios";
 import { scraper } from "@/lib/scraper";
 import logger from "@/lib/logger";
 import { getRandomProxy } from "@/lib/helpers";
 import { Parser, saveData } from "@/lib/parser";
 import { EmailerV2 } from "@/lib/emailer-v2";
-// import { Emailer } from "@/lib/emailer";
-// import { EmailResponse } from "@/types/response";
 
 // Enable stealth mode to avoid detection
 puppeteer.use(StealthPlugin());
@@ -24,7 +20,7 @@ const proxies: string[] = [
   `http://${token2}:render=false&super=true&geoCode=${geoCode}@proxy.scrape.do:8080`,
 ];
 const proxyServer = getRandomProxy(proxies);
-let errArgs: EmailerProps = {}
+let errArgs: EmailerProps = {};
 /**
  * @description
  * @param req
@@ -70,11 +66,11 @@ export async function POST(req: Request) {
       const identity = item["Identity"];
 
       if (!ebayUrl) continue;
-
+      let retries = 4;
       const data = await scraper(
         ebayUrl,
         storeName,
-        identity,
+        retries,
         identity,
         browser
       );
@@ -94,8 +90,7 @@ export async function POST(req: Request) {
       const url = "http://localhost:3000/api/v2/send-email";
       const response = await axios.post(
         url,
-        // { finalData: scrapedData },
-        {data: scrapedData, to: email },
+        { data: scrapedData, to: email },
         {
           headers: {
             "Content-Type": "application/json",

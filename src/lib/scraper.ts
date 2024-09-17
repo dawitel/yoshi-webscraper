@@ -15,7 +15,7 @@ import logger from "./logger";
 export const scraper = async (
   ebayUrl: string,
   storeName: string,
-  retries = 4,
+  retries: number,
   Identity: string,
   browser: Browser
 ): Promise<CSVData> => {
@@ -40,7 +40,9 @@ export const scraper = async (
     const rank = await page.evaluate((storeName: string) => {
       // Construct an array from the unordered list containing the listings, excluding unwanted `li` elements
       const listings = Array.from(
-        document.querySelectorAll("ul.srp-results.srp-list.clearfix > li")
+        document.querySelectorAll(
+          "div.srp-river.srp-layout-inner div.srp-river-main.clearfix div.srp-river-results.clearfix ul.srp-results.srp-list.clearfix > li"
+        )
       ).filter((el) => {
         // Ignore `li` elements with these irrelevant classes
         const classList = el.classList;
@@ -56,9 +58,10 @@ export const scraper = async (
             ))
         );
       });
+        
 
       let foundRank = 0;
-      listings.some((el, index) => {
+      listings.forEach((el, index) => {
         // Find the span element that contains the store name
         const sellerInfoSpan = el.querySelector(
           "span.s-item__seller-info-text"
@@ -80,7 +83,7 @@ export const scraper = async (
     }, storeName);
 
     logger.info(
-      `Found the rank of ${storeName} for the product ${Identity} at rank=${rank}`
+      `Found the rank of "${storeName}" for the product "${Identity}" at rank=${rank}`
     );
 
     // random movement to simulate human behaviour
