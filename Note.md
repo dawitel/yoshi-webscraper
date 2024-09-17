@@ -1,16 +1,19 @@
+### Fix
+
+- Rank is not correct
+
 ### Modification
 
-- Could you get the inputs about email from a form such as an email address?
-- Could you remove :👋Hi Yoshi! from the page?
-- Could you move the notification below the form
-- Could you add an error notification for when a button got clicked without uploading a CSV file that doesn’t contain all the required columns
-- Could you add an error notification with the number of specific rows for when there are rows don't contain a url that starts from “https://www.ebay.com/sch/i.html”
-- Using a free email provider to send an e-mail to any email address
+- Could you move v2/send-email to v1/send?
 
 ### Questions
 
-- What is route.ts doing?
-- Where is the scrapping logic?
-- Could you demonstrate how the app currently works?
-- do we need "send" route? Could it be done after scrapping logic?
-- do we need "scraping" route?
+- Do we need emailer.ts?
+- Why do we have SCRAPE_DOT_DO_API_TOKEN_2 and SCRAPE_DOT_DO_API_TOKEN?
+- do we need to change "localhost:3000" when we deploy this app?
+- why is it not using "use client" in alert.tsx, button.tsx, and in card.tsx?
+- Are we clearing saved data (CSV)
+- Why is it passing identity twice to scraper()?
+- Isn't it better to make Rate limiting random?
+- Do we need to save the data locally to send it via e-mail?
+- How can I set up nodemailer and how does it work?

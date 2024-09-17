@@ -38,9 +38,9 @@ yarn-error.log*
 next-env.d.ts
 
 
-logs
 final-data
 uploads
 
 final_data
-logs
+
+
