@@ -38,48 +38,45 @@ export const scraper = async (
 
     // Extract the rank of the store from the page
     const rank = await page.evaluate((storeName: string) => {
-      // Construct an array from the unordered list containing the listings, excluding unwanted `li` elements
-      const listings = Array.from(
-        document.querySelectorAll(
-          "div.srp-river.srp-layout-inner div.srp-river-main.clearfix div.srp-river-results.clearfix ul.srp-results.srp-list.clearfix > li"
-        )
-      ).filter((el) => {
-        // Ignore `li` elements with these irrelevant classes
-        const classList = el.classList;
-        return !(
-          classList.contains(
-            "srp-river-answer srp-river-answer--BASIC_PAGINATION_V2 srp-river-answer--hide-pagination"
-          ) &&
-          (classList.contains(
-            "srp-river-answer srp-river-answer--NAVIGATION_ANSWER_COLLAPSIBLE_CAROUSEL"
-          ) ||
-            classList.contains(
-              "srp-river-answer srp-river-answer--REWRITE_START"
-            ))
-        );
-      });
-        
+      const listings = document.querySelectorAll(
+        "ul.srp-results.srp-list.clearfix > li.s-item.s-item__pl-on-bottom"
+      );
 
-      let foundRank = 0;
-      listings.forEach((el, index) => {
-        // Find the span element that contains the store name
-        const sellerInfoSpan = el.querySelector(
-          "span.s-item__seller-info-text"
-        );
+      let rank = 0;
+      let found = false;
 
-        if (sellerInfoSpan && sellerInfoSpan.textContent) {
-          const text = sellerInfoSpan.textContent.trim(); // Trim for clean comparison
-          const extractedStoreName = text.split(" ")[0]; // Extract the store name
+      // Loop through all the listings to find the store's rank
+      listings.forEach((listing, index) => {
+        const irrelevantClasses = [
+          "srp-river-answer srp-river-answer--NAVIGATION_ANSWER_COLLAPSIBLE_CAROUSEL",
+          "srp-river-answer srp-river-answer--REWRITE_START",
+        ];
 
-          if (extractedStoreName.includes(storeName)) {
-            foundRank = index + 1; // Rank starts from 1
-            return true; // Exit loop when store is found
-          }
+        // Check for irrelevant listings and ignore them
+        if (
+          !irrelevantClasses.some((className) =>
+            listing.classList.contains(className)
+          )
+        ) {
+          // Find seller info within the relevant 'li' elements
+           const sellerInfo = listing.querySelector(
+             "span.s-item__seller-info-text"
+           );
+
+           if (sellerInfo) {
+             const sellerText = sellerInfo.textContent?.trim() || "";
+
+             // Check if storeName is part of the sellerText
+             if (sellerText.includes(storeName)) {
+               rank = index + 1;
+               found = true;
+             }
+           }
         }
-        return false;
       });
 
-      return foundRank;
+      // If store is not found, return 0
+      return found ? rank : 0;
     }, storeName);
 
     logger.info(
@@ -94,15 +91,18 @@ export const scraper = async (
       const priceElement = document.querySelector(
         "span.x-textrange__label.width-1.currency-label span"
       );
-      return priceElement ? priceElement.textContent?.trim().charAt(0) : "$";
+      return priceElement?.textContent?.trim().charAt(0);
     });
 
     // Only call getCurrencyCode if currency is not undefined
     let currencyCode: string | undefined;
-    if (currency) {
+    if (currency && currency != undefined) {
       currencyCode = getCurrencyCode(currency);
-    } else {
-      logger.error("Currency symbol not found");
+    } else if (currency === undefined) {
+      logger.error("Currency symbol not found for url: ", ebayUrl, ", resorting to fallback value 'USD'");
+      currencyCode = "USD"
+    } else{
+      logger.error("Currency symbol not found for url: ", ebayUrl);
     }
     logger.info(
       `Found the currnecy code of the product "${Identity}" to be CURRENCY= "${currency}",converted to => CURRENCY_CODE= "${currencyCode}"`
