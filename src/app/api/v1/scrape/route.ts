@@ -55,7 +55,7 @@ export async function POST(req: Request) {
       args: [
         "--no-sandbox",
         "--disable-setuid-sandbox ",
-        `--proxy-server=${proxyServer}`,
+        // `--proxy-server=${proxies[1]}`,
       ], // Necessary for production environments
     });
 
@@ -87,7 +87,7 @@ export async function POST(req: Request) {
     // Send the scraped data via email
     try {
       logger.info("Sending the scraped data to the api/v1/send endpoint...");
-      const url = "http://localhost:3000/api/v2/send-email";
+      const url = "http://localhost:3000/api/v1/send-email";
       const response = await axios.post(
         url,
         { data: scrapedData, to: email },
