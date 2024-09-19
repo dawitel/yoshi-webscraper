@@ -63,3 +63,32 @@
 2024-09-18T02:59:47.466Z error: Error occurred while sending the email Can't send mail - all recipients were rejected: 554 5.7.1 Demo domains can only be used to send emails to account owners. You can only send testing emails to your own email address.
 2024-09-18T02:59:47.472Z error: Error occurred while sending the scraped data: Request failed with status code 500
 2024-09-18T02:59:47.477Z error: Error sending data to scrape API: AxiosError: Request failed with status code 500
+2024-09-18T06:54:42.350Z error: Currency symbol not found for url: 
+2024-09-18T06:54:53.335Z error: Currency symbol not found for url: 
+2024-09-18T06:55:04.183Z error: Currency symbol not found for url: 
+2024-09-18T06:55:15.670Z error: Currency symbol not found for url: 
+2024-09-18T06:55:27.078Z error: Currency symbol not found for url: 
+2024-09-18T06:55:38.095Z error: Currency symbol not found for url: 
+2024-09-18T06:55:49.742Z error: Currency symbol not found for url: 
+2024-09-18T06:56:00.822Z error: Currency symbol not found for url: 
+2024-09-18T06:56:11.618Z error: Currency symbol not found for url: 
+2024-09-18T06:56:22.511Z error: Currency symbol not found for url: 
+2024-09-18T06:56:33.426Z error: Currency symbol not found for url: 
+2024-09-18T06:56:44.573Z error: Currency symbol not found for url: 
+2024-09-18T06:56:56.741Z error: Error occurred while sending the email Missing credentials for "PLAIN"
+2024-09-18T06:56:56.750Z error: Error occurred while sending the scraped data: Request failed with status code 500
+2024-09-18T06:56:56.753Z error: Error sending data to scrape API: AxiosError: Request failed with status code 500
+2024-09-18T06:59:56.132Z error: Currency symbol not found for url: 
+2024-09-18T07:00:07.124Z error: Currency symbol not found for url: 
+2024-09-18T07:00:18.317Z error: Currency symbol not found for url: 
+2024-09-18T07:00:29.127Z error: Currency symbol not found for url: 
+2024-09-18T07:00:39.938Z error: Currency symbol not found for url: 
+2024-09-18T07:01:02.689Z error: Currency symbol not found for url: 
+2024-09-18T07:01:13.696Z error: Currency symbol not found for url: 
+2024-09-18T07:01:24.512Z error: Currency symbol not found for url: 
+2024-09-18T07:01:35.416Z error: Currency symbol not found for url: 
+2024-09-18T07:01:46.330Z error: Currency symbol not found for url: 
+2024-09-18T07:01:57.269Z error: Currency symbol not found for url: 
+2024-09-18T07:02:09.388Z error: Error occurred while sending the email Missing credentials for "PLAIN"
+2024-09-18T07:02:09.396Z error: Error occurred while sending the scraped data: Request failed with status code 500
+2024-09-18T07:02:09.399Z error: Error sending data to scrape API: AxiosError: Request failed with status code 500

@@ -1,4 +1,5 @@
 # eBay Rank Checker
+
 [demo documentation](./docs//v1/steps.md)
 Scrapping the rank of each item of a specific store
 
@@ -53,12 +54,21 @@ npm run tsx [filename]
 
 # External tools
 
-### Proxy solutions
+### Proxy
 
-- [scraperapi](https://www.scraperapi.com/)
-- [scrape.do](https://scrape.do/)
-- [crawlbase](https://crawlbase.com/)
-- [brightdata](https://brightdata.com/pricing/web-scraper)
+- [Scrape.do](https://scrape.do/)
+
+### Email
+
+- [Mailtrap.io](https://mailtrap.io/)
+
+### Domain
+
+- [Namecheap](https://www.namecheap.com/)
+
+### Hosting
+
+- [Render](https://render.com/)
 
 # Reference
 

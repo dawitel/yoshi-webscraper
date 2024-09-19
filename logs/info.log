@@ -730,3 +730,172 @@
 2024-09-18T02:59:47.466Z error: Error occurred while sending the email Can't send mail - all recipients were rejected: 554 5.7.1 Demo domains can only be used to send emails to account owners. You can only send testing emails to your own email address.
 2024-09-18T02:59:47.472Z error: Error occurred while sending the scraped data: Request failed with status code 500
 2024-09-18T02:59:47.477Z error: Error sending data to scrape API: AxiosError: Request failed with status code 500
+2024-09-18T06:54:39.521Z info: Received upload request...
+2024-09-18T06:54:39.521Z info: Request validated, proceeding with file processing...
+2024-09-18T06:54:39.522Z info: Saved CSV file to /Users/yoshinorifujii/Project/Programming/Main/eBayRankChecker/uploads/Examples for I_O - eBay Rank Checker - Small Dataset.csv
+2024-09-18T06:54:39.522Z info: Sending file path, email, and store name to api/v1/scrape...
+2024-09-18T06:54:40.146Z info: Recieved a sraping request...
+2024-09-18T06:54:40.150Z info: Scraping using the proxy server: http://e89d16bcd07a4fd9b0c4e09f3e57e4f97bdad6a40fa:render=false&super=true&geoCode=us@proxy.scrape.do:8080
+2024-09-18T06:54:41.054Z info: Recieved a scraping request, proceeding...
+2024-09-18T06:54:41.148Z info: Scraping ebay URL: https://www.ebay.com/sch/i.html?_from=R40&_nkw=Mouse+Pad+Yuki+Aim+radar&_sacat=0&LH_TitleDesc=0&_udlo=20&_sop=15&LH_ItemCondition=4&rt=nc&LH_BIN=1
+2024-09-18T06:54:42.305Z info: Found the rank of "love-of-japan" for the product "yuki aim" at rank=0
+2024-09-18T06:54:42.350Z error: Currency symbol not found for url: 
+2024-09-18T06:54:42.350Z info: Found the currnecy code of the product "yuki aim" to be CURRENCY= "undefined",converted to => CURRENCY_CODE= "USD"
+2024-09-18T06:54:42.384Z info: Finished scraping URL= https://www.ebay.com/sch/i.html?_from=R40&_nkw=Mouse+Pad+Yuki+Aim+radar&_sacat=0&LH_TitleDesc=0&_udlo=20&_sop=15&LH_ItemCondition=4&rt=nc&LH_BIN=1 found rank=0, CURRENCY_CODE=USD
+2024-09-18T06:54:52.386Z info: Recieved a scraping request, proceeding...
+2024-09-18T06:54:52.421Z info: Scraping ebay URL: https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=boss+sg-1+-parts+-junk&_sacat=0&_udlo=100&LH_AvailTo=1&rt=nc&_odkw=boss+sg-1&LH_BIN=1&_sop=15&_saact=1&LH_ItemCondition=4
+2024-09-18T06:54:53.333Z info: Found the rank of "love-of-japan" for the product "BOSS SG-1 - unit only" at rank=0
+2024-09-18T06:54:53.335Z error: Currency symbol not found for url: 
+2024-09-18T06:54:53.335Z info: Found the currnecy code of the product "BOSS SG-1 - unit only" to be CURRENCY= "undefined",converted to => CURRENCY_CODE= "USD"
+2024-09-18T06:54:53.375Z info: Finished scraping URL= https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=boss+sg-1+-parts+-junk&_sacat=0&_udlo=100&LH_AvailTo=1&rt=nc&_odkw=boss+sg-1&LH_BIN=1&_sop=15&_saact=1&LH_ItemCondition=4 found rank=0, CURRENCY_CODE=USD
+2024-09-18T06:55:03.376Z info: Recieved a scraping request, proceeding...
+2024-09-18T06:55:03.408Z info: Scraping ebay URL: https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=Roger+Mayer+VOODOO-1+-VOODOO-BASS&_sacat=0&LH_TitleDesc=0&_udlo=100&rt=nc&_odkw=Roger+Mayer+VOODOO-1&_osacat=0&_sop=15
+2024-09-18T06:55:04.181Z info: Found the rank of "love-of-japan" for the product "VOODOO-1 Roger Mayer" at rank=0
+2024-09-18T06:55:04.183Z error: Currency symbol not found for url: 
+2024-09-18T06:55:04.183Z info: Found the currnecy code of the product "VOODOO-1 Roger Mayer" to be CURRENCY= "undefined",converted to => CURRENCY_CODE= "USD"
+2024-09-18T06:55:04.230Z info: Finished scraping URL= https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=Roger+Mayer+VOODOO-1+-VOODOO-BASS&_sacat=0&LH_TitleDesc=0&_udlo=100&rt=nc&_odkw=Roger+Mayer+VOODOO-1&_osacat=0&_sop=15 found rank=0, CURRENCY_CODE=USD
+2024-09-18T06:55:14.232Z info: Recieved a scraping request, proceeding...
+2024-09-18T06:55:14.273Z info: Scraping ebay URL: https://www.ebay.com/sch/i.html?_from=R40&_nkw=XDP-100R&_sacat=0&LH_TitleDesc=0&_udlo=100&_sop=15&LH_BIN=1&rt=nc&LH_ItemCondition=4
+2024-09-18T06:55:15.667Z info: Found the rank of "love-of-japan" for the product "XDP-100R" at rank=0
+2024-09-18T06:55:15.670Z error: Currency symbol not found for url: 
+2024-09-18T06:55:15.670Z info: Found the currnecy code of the product "XDP-100R" to be CURRENCY= "undefined",converted to => CURRENCY_CODE= "USD"
+2024-09-18T06:55:15.686Z info: Finished scraping URL= https://www.ebay.com/sch/i.html?_from=R40&_nkw=XDP-100R&_sacat=0&LH_TitleDesc=0&_udlo=100&_sop=15&LH_BIN=1&rt=nc&LH_ItemCondition=4 found rank=0, CURRENCY_CODE=USD
+2024-09-18T06:55:25.686Z info: Recieved a scraping request, proceeding...
+2024-09-18T06:55:25.722Z info: Scraping ebay URL: https://www.ebay.com/sch/i.html?_from=R40&_nkw=GV-D200&_sacat=0&_sop=15&_udlo=300&rt=nc
+2024-09-18T06:55:27.045Z info: Found the rank of "love-of-japan" for the product "GV-D200" at rank=0
+2024-09-18T06:55:27.078Z error: Currency symbol not found for url: 
+2024-09-18T06:55:27.078Z info: Found the currnecy code of the product "GV-D200" to be CURRENCY= "undefined",converted to => CURRENCY_CODE= "USD"
+2024-09-18T06:55:27.097Z info: Finished scraping URL= https://www.ebay.com/sch/i.html?_from=R40&_nkw=GV-D200&_sacat=0&_sop=15&_udlo=300&rt=nc found rank=0, CURRENCY_CODE=USD
+2024-09-18T06:55:37.098Z info: Recieved a scraping request, proceeding...
+2024-09-18T06:55:37.157Z info: Scraping ebay URL: https://www.ebay.com/sch/i.html?_nkw=Yamaha+QY700&_udlo=200&_saact=1&LH_AvailTo=1&_sop=15&_oac=1
+2024-09-18T06:55:38.088Z info: Found the rank of "love-of-japan" for the product "Yamaha QY700" at rank=0
+2024-09-18T06:55:38.095Z error: Currency symbol not found for url: 
+2024-09-18T06:55:38.095Z info: Found the currnecy code of the product "Yamaha QY700" to be CURRENCY= "undefined",converted to => CURRENCY_CODE= "USD"
+2024-09-18T06:55:38.133Z info: Finished scraping URL= https://www.ebay.com/sch/i.html?_nkw=Yamaha+QY700&_udlo=200&_saact=1&LH_AvailTo=1&_sop=15&_oac=1 found rank=0, CURRENCY_CODE=USD
+2024-09-18T06:55:48.135Z info: Recieved a scraping request, proceeding...
+2024-09-18T06:55:48.168Z info: Scraping ebay URL: https://www.ebay.com/sch/i.html?_nkw=NW-A106%20&_udlo=100&_saact=1&LH_AvailTo=1&_sop=15&_oac=1&rt=nc
+2024-09-18T06:55:49.696Z info: Found the rank of "love-of-japan" for the product "NW-A106" at rank=0
+2024-09-18T06:55:49.742Z error: Currency symbol not found for url: 
+2024-09-18T06:55:49.742Z info: Found the currnecy code of the product "NW-A106" to be CURRENCY= "undefined",converted to => CURRENCY_CODE= "USD"
+2024-09-18T06:55:49.756Z info: Finished scraping URL= https://www.ebay.com/sch/i.html?_nkw=NW-A106%20&_udlo=100&_saact=1&LH_AvailTo=1&_sop=15&_oac=1&rt=nc found rank=0, CURRENCY_CODE=USD
+2024-09-18T06:55:59.757Z info: Recieved a scraping request, proceeding...
+2024-09-18T06:55:59.792Z info: Scraping ebay URL: https://www.ebay.com/sch/i.html?_from=R40&_nkw=marantz+RX101&LH_TitleDesc=0&_sop=15&_oac=1
+2024-09-18T06:56:00.821Z info: Found the rank of "love-of-japan" for the product "Marantz RX101" at rank=0
+2024-09-18T06:56:00.822Z error: Currency symbol not found for url: 
+2024-09-18T06:56:00.822Z info: Found the currnecy code of the product "Marantz RX101" to be CURRENCY= "undefined",converted to => CURRENCY_CODE= "USD"
+2024-09-18T06:56:00.839Z info: Finished scraping URL= https://www.ebay.com/sch/i.html?_from=R40&_nkw=marantz+RX101&LH_TitleDesc=0&_sop=15&_oac=1 found rank=0, CURRENCY_CODE=USD
+2024-09-18T06:56:10.840Z info: Recieved a scraping request, proceeding...
+2024-09-18T06:56:10.877Z info: Scraping ebay URL: https://www.ebay.com/sch/i.html?_from=R40&_nkw=htc+vive+pro+-base+-junk+-parts&_sacat=0&_udlo=200&LH_AvailTo=1&_sop=15&_saact=1&LH_ItemCondition=4&rt=nc&LH_BIN=1
+2024-09-18T06:56:11.617Z info: Found the rank of "love-of-japan" for the product "HTC VIVE PRO" at rank=0
+2024-09-18T06:56:11.618Z error: Currency symbol not found for url: 
+2024-09-18T06:56:11.618Z info: Found the currnecy code of the product "HTC VIVE PRO" to be CURRENCY= "undefined",converted to => CURRENCY_CODE= "USD"
+2024-09-18T06:56:11.640Z info: Finished scraping URL= https://www.ebay.com/sch/i.html?_from=R40&_nkw=htc+vive+pro+-base+-junk+-parts&_sacat=0&_udlo=200&LH_AvailTo=1&_sop=15&_saact=1&LH_ItemCondition=4&rt=nc&LH_BIN=1 found rank=0, CURRENCY_CODE=USD
+2024-09-18T06:56:21.642Z info: Recieved a scraping request, proceeding...
+2024-09-18T06:56:21.677Z info: Scraping ebay URL: https://www.ebay.com/sch/i.html?_from=R40&_nkw=PSP%203000%20One%20Piece%20Romance%20Dawn%20-parts%20-junk&_sacat=0&_udlo=100&LH_AvailTo=1&_sop=15&_saact=1&_oac=1&LH_ItemCondition=4&LH_BIN=1&rt=nc
+2024-09-18T06:56:22.509Z info: Found the rank of "love-of-japan" for the product "PSP 3000 One Piece Romance Dawn - w/box" at rank=0
+2024-09-18T06:56:22.511Z error: Currency symbol not found for url: 
+2024-09-18T06:56:22.512Z info: Found the currnecy code of the product "PSP 3000 One Piece Romance Dawn - w/box" to be CURRENCY= "undefined",converted to => CURRENCY_CODE= "USD"
+2024-09-18T06:56:22.556Z info: Finished scraping URL= https://www.ebay.com/sch/i.html?_from=R40&_nkw=PSP%203000%20One%20Piece%20Romance%20Dawn%20-parts%20-junk&_sacat=0&_udlo=100&LH_AvailTo=1&_sop=15&_saact=1&_oac=1&LH_ItemCondition=4&LH_BIN=1&rt=nc found rank=0, CURRENCY_CODE=USD
+2024-09-18T06:56:32.557Z info: Recieved a scraping request, proceeding...
+2024-09-18T06:56:32.589Z info: Scraping ebay URL: https://www.ebay.com/sch/i.html?_from=R40&_nkw=Astell+%26+Kern+UW100+-parts&_sacat=0&_udlo=20&_sop=15&_oac=1&LH_BIN=1&rt=nc&LH_ItemCondition=4
+2024-09-18T06:56:33.424Z info: Found the rank of "love-of-japan" for the product "Astell & Kern UW100" at rank=0
+2024-09-18T06:56:33.426Z error: Currency symbol not found for url: 
+2024-09-18T06:56:33.426Z info: Found the currnecy code of the product "Astell & Kern UW100" to be CURRENCY= "undefined",converted to => CURRENCY_CODE= "USD"
+2024-09-18T06:56:33.478Z info: Finished scraping URL= https://www.ebay.com/sch/i.html?_from=R40&_nkw=Astell+%26+Kern+UW100+-parts&_sacat=0&_udlo=20&_sop=15&_oac=1&LH_BIN=1&rt=nc&LH_ItemCondition=4 found rank=0, CURRENCY_CODE=USD
+2024-09-18T06:56:43.479Z info: Recieved a scraping request, proceeding...
+2024-09-18T06:56:43.514Z info: Scraping ebay URL: https://www.ebay.com/sch/i.html?_nkw=R3HH21%20&_udlo=20&_saact=1&LH_AvailTo=1&_sop=15
+2024-09-18T06:56:44.572Z info: Found the rank of "love-of-japan" for the product "R3HH21 - new" at rank=0
+2024-09-18T06:56:44.573Z error: Currency symbol not found for url: 
+2024-09-18T06:56:44.573Z info: Found the currnecy code of the product "R3HH21 - new" to be CURRENCY= "undefined",converted to => CURRENCY_CODE= "USD"
+2024-09-18T06:56:44.592Z info: Finished scraping URL= https://www.ebay.com/sch/i.html?_nkw=R3HH21%20&_udlo=20&_saact=1&LH_AvailTo=1&_sop=15 found rank=0, CURRENCY_CODE=USD
+2024-09-18T06:56:54.657Z info: Scraped data has been perssited locally
+2024-09-18T06:56:54.657Z info: Sending the scraped data to the api/v1/send endpoint...
+2024-09-18T06:56:54.857Z info: Preparing CSV from the provided data...
+2024-09-18T06:56:54.858Z info: CSV file written to /var/folders/5n/46dv01297p3b11rvfq3ccn7h0000gn/T/data-1726642614857.csv
+2024-09-18T06:56:56.741Z error: Error occurred while sending the email Missing credentials for "PLAIN"
+2024-09-18T06:56:56.750Z error: Error occurred while sending the scraped data: Request failed with status code 500
+2024-09-18T06:56:56.753Z error: Error sending data to scrape API: AxiosError: Request failed with status code 500
+2024-09-18T06:59:52.085Z info: Received upload request...
+2024-09-18T06:59:52.086Z info: Request validated, proceeding with file processing...
+2024-09-18T06:59:52.086Z info: Saved CSV file to /Users/yoshinorifujii/Project/Programming/Main/eBayRankChecker/uploads/Examples for I_O - eBay Rank Checker - Small Dataset.csv
+2024-09-18T06:59:52.087Z info: Sending file path, email, and store name to api/v1/scrape...
+2024-09-18T06:59:52.711Z info: Recieved a sraping request...
+2024-09-18T06:59:52.714Z info: Scraping using the proxy server: http://e89d16bcd07a4fd9b0c4e09f3e57e4f97bdad6a40fa:render=false&super=true&geoCode=us@proxy.scrape.do:8080
+2024-09-18T06:59:53.232Z info: Recieved a scraping request, proceeding...
+2024-09-18T06:59:53.411Z info: Scraping ebay URL: https://www.ebay.com/sch/i.html?_from=R40&_nkw=Mouse+Pad+Yuki+Aim+radar&_sacat=0&LH_TitleDesc=0&_udlo=20&_sop=15&LH_ItemCondition=4&rt=nc&LH_BIN=1
+2024-09-18T06:59:56.098Z info: Found the rank of "love-of-japan" for the product "yuki aim" at rank=0
+2024-09-18T06:59:56.132Z error: Currency symbol not found for url: 
+2024-09-18T06:59:56.132Z info: Found the currnecy code of the product "yuki aim" to be CURRENCY= "undefined",converted to => CURRENCY_CODE= "USD"
+2024-09-18T06:59:56.157Z info: Finished scraping URL= https://www.ebay.com/sch/i.html?_from=R40&_nkw=Mouse+Pad+Yuki+Aim+radar&_sacat=0&LH_TitleDesc=0&_udlo=20&_sop=15&LH_ItemCondition=4&rt=nc&LH_BIN=1 found rank=0, CURRENCY_CODE=USD
+2024-09-18T07:00:06.159Z info: Recieved a scraping request, proceeding...
+2024-09-18T07:00:06.194Z info: Scraping ebay URL: https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=boss+sg-1+-parts+-junk&_sacat=0&_udlo=100&LH_AvailTo=1&rt=nc&_odkw=boss+sg-1&LH_BIN=1&_sop=15&_saact=1&LH_ItemCondition=4
+2024-09-18T07:00:07.120Z info: Found the rank of "love-of-japan" for the product "BOSS SG-1 - unit only" at rank=0
+2024-09-18T07:00:07.124Z error: Currency symbol not found for url: 
+2024-09-18T07:00:07.124Z info: Found the currnecy code of the product "BOSS SG-1 - unit only" to be CURRENCY= "undefined",converted to => CURRENCY_CODE= "USD"
+2024-09-18T07:00:07.171Z info: Finished scraping URL= https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=boss+sg-1+-parts+-junk&_sacat=0&_udlo=100&LH_AvailTo=1&rt=nc&_odkw=boss+sg-1&LH_BIN=1&_sop=15&_saact=1&LH_ItemCondition=4 found rank=0, CURRENCY_CODE=USD
+2024-09-18T07:00:17.173Z info: Recieved a scraping request, proceeding...
+2024-09-18T07:00:17.208Z info: Scraping ebay URL: https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=Roger+Mayer+VOODOO-1+-VOODOO-BASS&_sacat=0&LH_TitleDesc=0&_udlo=100&rt=nc&_odkw=Roger+Mayer+VOODOO-1&_osacat=0&_sop=15
+2024-09-18T07:00:18.282Z info: Found the rank of "love-of-japan" for the product "VOODOO-1 Roger Mayer" at rank=0
+2024-09-18T07:00:18.317Z error: Currency symbol not found for url: 
+2024-09-18T07:00:18.317Z info: Found the currnecy code of the product "VOODOO-1 Roger Mayer" to be CURRENCY= "undefined",converted to => CURRENCY_CODE= "USD"
+2024-09-18T07:00:18.341Z info: Finished scraping URL= https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=Roger+Mayer+VOODOO-1+-VOODOO-BASS&_sacat=0&LH_TitleDesc=0&_udlo=100&rt=nc&_odkw=Roger+Mayer+VOODOO-1&_osacat=0&_sop=15 found rank=0, CURRENCY_CODE=USD
+2024-09-18T07:00:28.342Z info: Recieved a scraping request, proceeding...
+2024-09-18T07:00:28.372Z info: Scraping ebay URL: https://www.ebay.com/sch/i.html?_from=R40&_nkw=XDP-100R&_sacat=0&LH_TitleDesc=0&_udlo=100&_sop=15&LH_BIN=1&rt=nc&LH_ItemCondition=4
+2024-09-18T07:00:29.125Z info: Found the rank of "love-of-japan" for the product "XDP-100R" at rank=0
+2024-09-18T07:00:29.127Z error: Currency symbol not found for url: 
+2024-09-18T07:00:29.127Z info: Found the currnecy code of the product "XDP-100R" to be CURRENCY= "undefined",converted to => CURRENCY_CODE= "USD"
+2024-09-18T07:00:29.168Z info: Finished scraping URL= https://www.ebay.com/sch/i.html?_from=R40&_nkw=XDP-100R&_sacat=0&LH_TitleDesc=0&_udlo=100&_sop=15&LH_BIN=1&rt=nc&LH_ItemCondition=4 found rank=0, CURRENCY_CODE=USD
+2024-09-18T07:00:39.170Z info: Recieved a scraping request, proceeding...
+2024-09-18T07:00:39.209Z info: Scraping ebay URL: https://www.ebay.com/sch/i.html?_from=R40&_nkw=GV-D200&_sacat=0&_sop=15&_udlo=300&rt=nc
+2024-09-18T07:00:39.936Z info: Found the rank of "love-of-japan" for the product "GV-D200" at rank=0
+2024-09-18T07:00:39.938Z error: Currency symbol not found for url: 
+2024-09-18T07:00:39.938Z info: Found the currnecy code of the product "GV-D200" to be CURRENCY= "undefined",converted to => CURRENCY_CODE= "USD"
+2024-09-18T07:00:39.959Z info: Finished scraping URL= https://www.ebay.com/sch/i.html?_from=R40&_nkw=GV-D200&_sacat=0&_sop=15&_udlo=300&rt=nc found rank=0, CURRENCY_CODE=USD
+2024-09-18T07:00:49.961Z info: Recieved a scraping request, proceeding...
+2024-09-18T07:00:50.000Z info: Scraping ebay URL: https://www.ebay.com/sch/i.html?_nkw=Yamaha+QY700&_udlo=200&_saact=1&LH_AvailTo=1&_sop=15&_oac=1
+2024-09-18T07:00:51.887Z info: Found the rank of "love-of-japan" for the product "Yamaha QY700" at rank=3
+2024-09-18T07:00:51.892Z info: Found the currnecy code of the product "Yamaha QY700" to be CURRENCY= "$",converted to => CURRENCY_CODE= "USD"
+2024-09-18T07:00:51.914Z info: Finished scraping URL= https://www.ebay.com/sch/i.html?_nkw=Yamaha+QY700&_udlo=200&_saact=1&LH_AvailTo=1&_sop=15&_oac=1 found rank=3, CURRENCY_CODE=USD
+2024-09-18T07:01:01.916Z info: Recieved a scraping request, proceeding...
+2024-09-18T07:01:01.948Z info: Scraping ebay URL: https://www.ebay.com/sch/i.html?_nkw=NW-A106%20&_udlo=100&_saact=1&LH_AvailTo=1&_sop=15&_oac=1&rt=nc
+2024-09-18T07:01:02.687Z info: Found the rank of "love-of-japan" for the product "NW-A106" at rank=0
+2024-09-18T07:01:02.689Z error: Currency symbol not found for url: 
+2024-09-18T07:01:02.689Z info: Found the currnecy code of the product "NW-A106" to be CURRENCY= "undefined",converted to => CURRENCY_CODE= "USD"
+2024-09-18T07:01:02.710Z info: Finished scraping URL= https://www.ebay.com/sch/i.html?_nkw=NW-A106%20&_udlo=100&_saact=1&LH_AvailTo=1&_sop=15&_oac=1&rt=nc found rank=0, CURRENCY_CODE=USD
+2024-09-18T07:01:12.712Z info: Recieved a scraping request, proceeding...
+2024-09-18T07:01:12.739Z info: Scraping ebay URL: https://www.ebay.com/sch/i.html?_from=R40&_nkw=marantz+RX101&LH_TitleDesc=0&_sop=15&_oac=1
+2024-09-18T07:01:13.693Z info: Found the rank of "love-of-japan" for the product "Marantz RX101" at rank=0
+2024-09-18T07:01:13.696Z error: Currency symbol not found for url: 
+2024-09-18T07:01:13.696Z info: Found the currnecy code of the product "Marantz RX101" to be CURRENCY= "undefined",converted to => CURRENCY_CODE= "USD"
+2024-09-18T07:01:13.739Z info: Finished scraping URL= https://www.ebay.com/sch/i.html?_from=R40&_nkw=marantz+RX101&LH_TitleDesc=0&_sop=15&_oac=1 found rank=0, CURRENCY_CODE=USD
+2024-09-18T07:01:23.740Z info: Recieved a scraping request, proceeding...
+2024-09-18T07:01:23.773Z info: Scraping ebay URL: https://www.ebay.com/sch/i.html?_from=R40&_nkw=htc+vive+pro+-base+-junk+-parts&_sacat=0&_udlo=200&LH_AvailTo=1&_sop=15&_saact=1&LH_ItemCondition=4&rt=nc&LH_BIN=1
+2024-09-18T07:01:24.486Z info: Found the rank of "love-of-japan" for the product "HTC VIVE PRO" at rank=0
+2024-09-18T07:01:24.512Z error: Currency symbol not found for url: 
+2024-09-18T07:01:24.512Z info: Found the currnecy code of the product "HTC VIVE PRO" to be CURRENCY= "undefined",converted to => CURRENCY_CODE= "USD"
+2024-09-18T07:01:24.528Z info: Finished scraping URL= https://www.ebay.com/sch/i.html?_from=R40&_nkw=htc+vive+pro+-base+-junk+-parts&_sacat=0&_udlo=200&LH_AvailTo=1&_sop=15&_saact=1&LH_ItemCondition=4&rt=nc&LH_BIN=1 found rank=0, CURRENCY_CODE=USD
+2024-09-18T07:01:34.529Z info: Recieved a scraping request, proceeding...
+2024-09-18T07:01:34.559Z info: Scraping ebay URL: https://www.ebay.com/sch/i.html?_from=R40&_nkw=PSP%203000%20One%20Piece%20Romance%20Dawn%20-parts%20-junk&_sacat=0&_udlo=100&LH_AvailTo=1&_sop=15&_saact=1&_oac=1&LH_ItemCondition=4&LH_BIN=1&rt=nc
+2024-09-18T07:01:35.387Z info: Found the rank of "love-of-japan" for the product "PSP 3000 One Piece Romance Dawn - w/box" at rank=0
+2024-09-18T07:01:35.416Z error: Currency symbol not found for url: 
+2024-09-18T07:01:35.416Z info: Found the currnecy code of the product "PSP 3000 One Piece Romance Dawn - w/box" to be CURRENCY= "undefined",converted to => CURRENCY_CODE= "USD"
+2024-09-18T07:01:35.429Z info: Finished scraping URL= https://www.ebay.com/sch/i.html?_from=R40&_nkw=PSP%203000%20One%20Piece%20Romance%20Dawn%20-parts%20-junk&_sacat=0&_udlo=100&LH_AvailTo=1&_sop=15&_saact=1&_oac=1&LH_ItemCondition=4&LH_BIN=1&rt=nc found rank=0, CURRENCY_CODE=USD
+2024-09-18T07:01:45.431Z info: Recieved a scraping request, proceeding...
+2024-09-18T07:01:45.468Z info: Scraping ebay URL: https://www.ebay.com/sch/i.html?_from=R40&_nkw=Astell+%26+Kern+UW100+-parts&_sacat=0&_udlo=20&_sop=15&_oac=1&LH_BIN=1&rt=nc&LH_ItemCondition=4
+2024-09-18T07:01:46.328Z info: Found the rank of "love-of-japan" for the product "Astell & Kern UW100" at rank=0
+2024-09-18T07:01:46.330Z error: Currency symbol not found for url: 
+2024-09-18T07:01:46.330Z info: Found the currnecy code of the product "Astell & Kern UW100" to be CURRENCY= "undefined",converted to => CURRENCY_CODE= "USD"
+2024-09-18T07:01:46.375Z info: Finished scraping URL= https://www.ebay.com/sch/i.html?_from=R40&_nkw=Astell+%26+Kern+UW100+-parts&_sacat=0&_udlo=20&_sop=15&_oac=1&LH_BIN=1&rt=nc&LH_ItemCondition=4 found rank=0, CURRENCY_CODE=USD
+2024-09-18T07:01:56.377Z info: Recieved a scraping request, proceeding...
+2024-09-18T07:01:56.417Z info: Scraping ebay URL: https://www.ebay.com/sch/i.html?_nkw=R3HH21%20&_udlo=20&_saact=1&LH_AvailTo=1&_sop=15
+2024-09-18T07:01:57.267Z info: Found the rank of "love-of-japan" for the product "R3HH21 - new" at rank=0
+2024-09-18T07:01:57.269Z error: Currency symbol not found for url: 
+2024-09-18T07:01:57.269Z info: Found the currnecy code of the product "R3HH21 - new" to be CURRENCY= "undefined",converted to => CURRENCY_CODE= "USD"
+2024-09-18T07:01:57.311Z info: Finished scraping URL= https://www.ebay.com/sch/i.html?_nkw=R3HH21%20&_udlo=20&_saact=1&LH_AvailTo=1&_sop=15 found rank=0, CURRENCY_CODE=USD
+2024-09-18T07:02:07.377Z info: Scraped data has been perssited locally
+2024-09-18T07:02:07.377Z info: Sending the scraped data to the api/v1/send endpoint...
+2024-09-18T07:02:07.546Z info: Preparing CSV from the provided data...
+2024-09-18T07:02:07.547Z info: CSV file written to /var/folders/5n/46dv01297p3b11rvfq3ccn7h0000gn/T/data-1726642927546.csv
+2024-09-18T07:02:09.388Z error: Error occurred while sending the email Missing credentials for "PLAIN"
+2024-09-18T07:02:09.396Z error: Error occurred while sending the scraped data: Request failed with status code 500
+2024-09-18T07:02:09.399Z error: Error sending data to scrape API: AxiosError: Request failed with status code 500
