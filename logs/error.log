@@ -92,3 +92,28 @@
 2024-09-18T07:02:09.388Z error: Error occurred while sending the email Missing credentials for "PLAIN"
 2024-09-18T07:02:09.396Z error: Error occurred while sending the scraped data: Request failed with status code 500
 2024-09-18T07:02:09.399Z error: Error sending data to scrape API: AxiosError: Request failed with status code 500
+2024-09-20T13:14:23.263Z error: ⭕Currency symbol not found for url: "https://www.ebay.com/sch/i.html?_from=R40&_nkw=Mouse+Pad+Yuki+Aim+radar&_sacat=0&LH_TitleDesc=0&_udlo=20&_sop=15&LH_ItemCondition=4&rt=nc&LH_BIN=1", resorting to fallback value 'USD'
+2024-09-20T13:14:33.584Z error: ⭕Currency symbol not found for url: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=boss+sg-1+-parts+-junk&_sacat=0&_udlo=100&LH_AvailTo=1&rt=nc&_odkw=boss+sg-1&LH_BIN=1&_sop=15&_saact=1&LH_ItemCondition=4", resorting to fallback value 'USD'
+2024-09-20T13:14:39.041Z error: ⭕Currency symbol not found for url: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=Roger+Mayer+VOODOO-1+-VOODOO-BASS&_sacat=0&LH_TitleDesc=0&_udlo=100&rt=nc&_odkw=Roger+Mayer+VOODOO-1&_osacat=0&_sop=15", resorting to fallback value 'USD'
+2024-09-20T13:14:44.790Z error: ⭕Currency symbol not found for url: "https://www.ebay.com/sch/i.html?_from=R40&_nkw=XDP-100R&_sacat=0&LH_TitleDesc=0&_udlo=100&_sop=15&LH_BIN=1&rt=nc&LH_ItemCondition=4", resorting to fallback value 'USD'
+2024-09-20T13:14:54.043Z error: ⭕Currency symbol not found for url: "https://www.ebay.com/sch/i.html?_from=R40&_nkw=GV-D200&_sacat=0&_sop=15&_udlo=300&rt=nc", resorting to fallback value 'USD'
+2024-09-20T13:15:03.935Z error: ⭕Currency symbol not found for url: "https://www.ebay.com/sch/i.html?_nkw=Yamaha+QY700&_udlo=200&_saact=1&LH_AvailTo=1&_sop=15&_oac=1", resorting to fallback value 'USD'
+2024-09-20T13:15:18.815Z error: Error occurred while sending the email Invalid login: 535 5.7.8 Authentication failed
+2024-09-20T13:15:18.822Z error: Error occurred while sending the scraped data: Request failed with status code 500
+2024-09-20T13:15:18.826Z error: Error sending data to scrape API: AxiosError: Request failed with status code 500
+2024-09-20T13:20:11.522Z error: Currency symbol not found for url: "https://www.ebay.com/sch/i.html?_from=R40&_nkw=Mouse+Pad+Yuki+Aim+radar&_sacat=0&LH_TitleDesc=0&_udlo=20&_sop=15&LH_ItemCondition=4&rt=nc&LH_BIN=1", resorting to fallback value 'USD'
+2024-09-20T13:20:17.041Z error: Currency symbol not found for url: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=boss+sg-1+-parts+-junk&_sacat=0&_udlo=100&LH_AvailTo=1&rt=nc&_odkw=boss+sg-1&LH_BIN=1&_sop=15&_saact=1&LH_ItemCondition=4", resorting to fallback value 'USD'
+2024-09-20T13:20:24.443Z error: Currency symbol not found for url: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=Roger+Mayer+VOODOO-1+-VOODOO-BASS&_sacat=0&LH_TitleDesc=0&_udlo=100&rt=nc&_odkw=Roger+Mayer+VOODOO-1&_osacat=0&_sop=15", resorting to fallback value 'USD'
+2024-09-20T13:20:32.331Z error: Currency symbol not found for url: "https://www.ebay.com/sch/i.html?_from=R40&_nkw=XDP-100R&_sacat=0&LH_TitleDesc=0&_udlo=100&_sop=15&LH_BIN=1&rt=nc&LH_ItemCondition=4", resorting to fallback value 'USD'
+2024-09-20T13:20:44.636Z error: Currency symbol not found for url: "https://www.ebay.com/sch/i.html?_nkw=Yamaha+QY700&_udlo=200&_saact=1&LH_AvailTo=1&_sop=15&_oac=1", resorting to fallback value 'USD'
+2024-09-20T13:21:25.677Z error: Error occurred while sending the email Invalid login: 535 5.7.8 Authentication failed
+2024-09-20T13:21:25.682Z error: Error occurred while sending the scraped data: Request failed with status code 500
+2024-09-20T13:21:25.685Z error: Error sending data to scrape API: AxiosError: Request failed with status code 500
+2024-09-20T13:24:15.991Z error: Currency symbol not found for url: "https://www.ebay.com/sch/i.html?_from=R40&_nkw=Mouse+Pad+Yuki+Aim+radar&_sacat=0&LH_TitleDesc=0&_udlo=20&_sop=15&LH_ItemCondition=4&rt=nc&LH_BIN=1", resorting to fallback value 'USD'
+2024-09-20T13:24:45.496Z error: Currency symbol not found for url: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=Roger+Mayer+VOODOO-1+-VOODOO-BASS&_sacat=0&LH_TitleDesc=0&_udlo=100&rt=nc&_odkw=Roger+Mayer+VOODOO-1&_osacat=0&_sop=15", resorting to fallback value 'USD'
+2024-09-20T13:25:07.128Z error: Currency symbol not found for url: "https://www.ebay.com/sch/i.html?_from=R40&_nkw=GV-D200&_sacat=0&_sop=15&_udlo=300&rt=nc", resorting to fallback value 'USD'
+2024-09-20T13:43:41.271Z error: Currency symbol not found for url: "https://www.ebay.com/sch/i.html?_from=R40&_nkw=Mouse+Pad+Yuki+Aim+radar&_sacat=0&LH_TitleDesc=0&_udlo=20&_sop=15&LH_ItemCondition=4&rt=nc&LH_BIN=1", resorting to fallback value 'USD'
+2024-09-20T13:43:51.267Z error: Currency symbol not found for url: "https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=boss+sg-1+-parts+-junk&_sacat=0&_udlo=100&LH_AvailTo=1&rt=nc&_odkw=boss+sg-1&LH_BIN=1&_sop=15&_saact=1&LH_ItemCondition=4", resorting to fallback value 'USD'
+2024-09-20T13:44:08.713Z error: Currency symbol not found for url: "https://www.ebay.com/sch/i.html?_from=R40&_nkw=XDP-100R&_sacat=0&LH_TitleDesc=0&_udlo=100&_sop=15&LH_BIN=1&rt=nc&LH_ItemCondition=4", resorting to fallback value 'USD'
+2024-09-20T13:44:19.408Z error: Currency symbol not found for url: "https://www.ebay.com/sch/i.html?_from=R40&_nkw=GV-D200&_sacat=0&_sop=15&_udlo=300&rt=nc", resorting to fallback value 'USD'
+2024-09-20T13:44:25.204Z error: Currency symbol not found for url: "https://www.ebay.com/sch/i.html?_nkw=Yamaha+QY700&_udlo=200&_saact=1&LH_AvailTo=1&_sop=15&_oac=1", resorting to fallback value 'USD'

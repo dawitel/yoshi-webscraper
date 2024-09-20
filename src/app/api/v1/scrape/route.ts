@@ -5,7 +5,6 @@ import { NextResponse } from "next/server";
 import axios from "axios";
 import { scraper } from "@/lib/scraper";
 import logger from "@/lib/logger";
-import { getRandomProxy } from "@/lib/helpers";
 import { Parser, saveData } from "@/lib/parser";
 import { EmailerV2 } from "@/lib/emailer-v2";
 
@@ -13,13 +12,8 @@ import { EmailerV2 } from "@/lib/emailer-v2";
 puppeteer.use(StealthPlugin());
 
 const token = process.env.SCRAPE_DOT_DO_API_TOKEN;
-const token2 = process.env.SCRAPE_DOT_DO_API_TOKEN_2;
 const geoCode = "us";
-const proxies: string[] = [
-  `http://${token}:render=false&super=true&geoCode=${geoCode}@proxy.scrape.do:8080`,
-  `http://${token2}:render=false&super=true&geoCode=${geoCode}@proxy.scrape.do:8080`,
-];
-const proxyServer = getRandomProxy(proxies);
+const proxyServer =  `http://${token}:render=false&super=true&geoCode=${geoCode}@proxy.scrape.do:8080`
 let errArgs: EmailerProps = {};
 /**
  * @description
@@ -43,6 +37,7 @@ export async function POST(req: Request) {
       Data: null,
       ErrorTo: email,
     };
+
     const parsedData = Parser(filePath);
 
     console.log("Parsed data: ", parsedData);
@@ -50,12 +45,12 @@ export async function POST(req: Request) {
 
     // Launch Puppeteer with stealth plugin to avoid detection
     const browser = await puppeteer.launch({
-      executablePath: executablePath(),
+      // executablePath: executablePath(),
       headless: true, // Headless mode for production
       args: [
         "--no-sandbox",
         "--disable-setuid-sandbox ",
-        // `--proxy-server=${proxies[1]}`,
+        `--proxy-server=${proxyServer}`,
       ], // Necessary for production environments
     });
 
@@ -76,8 +71,13 @@ export async function POST(req: Request) {
       );
       scrapedData.push(data);
 
-      // Rate limiting: 10 seconds delay between requests to avoid detection
-      await new Promise((resolve) => setTimeout(resolve, 10000));
+      // Rate limiting: with more random delay between 5 to 15 seconds
+      const randomFactor = Math.random(); // a random number between 0 and 1
+      const randomDelay = Math.floor(
+        Math.random() * (15000 - 5000) + 5000 * randomFactor
+      ); // random delay with an extra randomness multiplier
+
+      await new Promise((resolve) => setTimeout(resolve, randomDelay));
     }
 
     await browser.close();

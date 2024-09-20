@@ -46,7 +46,9 @@ export const scraper = async (
       let found = false;
 
       // Loop through all the listings to find the store's rank
-      listings.forEach((listing, index) => {
+      for (let index = 0; index < listings.length; index++) {
+        const listing = listings[index];
+
         const irrelevantClasses = [
           "srp-river-answer srp-river-answer--NAVIGATION_ANSWER_COLLAPSIBLE_CAROUSEL",
           "srp-river-answer srp-river-answer--REWRITE_START",
@@ -59,21 +61,22 @@ export const scraper = async (
           )
         ) {
           // Find seller info within the relevant 'li' elements
-           const sellerInfo = listing.querySelector(
-             "span.s-item__seller-info-text"
-           );
+          const sellerInfo = listing.querySelector(
+            "span.s-item__seller-info-text"
+          );
 
-           if (sellerInfo) {
-             const sellerText = sellerInfo.textContent?.trim() || "";
+          if (sellerInfo) {
+            const sellerText = sellerInfo.textContent?.trim() || "";
 
-             // Check if storeName is part of the sellerText
-             if (sellerText.includes(storeName)) {
-               rank = index + 1;
-               found = true;
-             }
-           }
+            // Check if storeName is part of the sellerText
+            if (sellerText.includes(storeName)) {
+              rank = index + 1;
+              found = true;
+              break; // Stop looping once we find the first occurrence of the store
+            }
+          }
         }
-      });
+      }
 
       // If store is not found, return 0
       return found ? rank : 0;
@@ -85,9 +88,9 @@ export const scraper = async (
 
     // random movement to simulate human behaviour
     await page.mouse.down();
-
+    let currency;
     // Extract the currency symbol
-    const currency = await page.evaluate(() => {
+    currency = await page.evaluate(() => {
       const priceElement = document.querySelector(
         "span.x-textrange__label.width-1.currency-label span"
       );
@@ -99,10 +102,13 @@ export const scraper = async (
     if (currency && currency != undefined) {
       currencyCode = getCurrencyCode(currency);
     } else if (currency === undefined) {
-      logger.error("Currency symbol not found for url: ", ebayUrl, ", resorting to fallback value 'USD'");
-      currencyCode = "USD"
-    } else{
-      logger.error("Currency symbol not found for url: ", ebayUrl);
+      logger.error(
+        `Currency symbol not found for url: "${ebayUrl}", resorting to fallback value 'USD'`
+      );
+      currency = "$";
+      currencyCode = "USD";
+    } else {
+      logger.error(`Currency symbol not found for url: ${ebayUrl}`);
     }
     logger.info(
       `Found the currnecy code of the product "${Identity}" to be CURRENCY= "${currency}",converted to => CURRENCY_CODE= "${currencyCode}"`
@@ -114,8 +120,9 @@ export const scraper = async (
     await page.close();
 
     logger.info(
-      `Finished scraping URL= ${ebayUrl} found rank=${rank}, CURRENCY_CODE=${currencyCode}`
+      `✅ Finished scraping EBAY_URL= "${ebayUrl}" found rank=${rank}, CURRENCY_CODE="${currencyCode}"`
     );
+
     return {
       Identity,
       eBayURL: ebayUrl,
