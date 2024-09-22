@@ -4,8 +4,11 @@ import { Readable } from "stream";
 import Papa from "papaparse";
 import { tmpdir } from "os";
 import path from "path";
-import Logger  from "@/lib/logger"; // Assume you're using a logging utility
-import { emailTemplate, errorEmailTemplate } from "@/components/email-templates";
+import Logger from "@/lib/logger"; // Assume you're using a logging utility
+import {
+  emailTemplate,
+  errorEmailTemplate,
+} from "@/components/email-templates";
 
 // Nodemailer transporter configuration
 const transporter = nodemailer.createTransport({
@@ -72,7 +75,8 @@ export const EmailerV2 = async <T>({
 
       stream.pipe(fileStream);
 
-      await new Promise((resolve, reject) => {
+      // Await the stream's completion before proceeding
+      await new Promise<void>((resolve, reject) => {
         fileStream.on("finish", resolve);
         fileStream.on("error", reject);
       });
@@ -101,12 +105,13 @@ export const EmailerV2 = async <T>({
 
       Logger.info("Email with CSV sent successfully");
 
+      // Delete the temporary file after sending the email
       await fsPromises.unlink(filePath);
       Logger.info(`Temporary CSV file ${filePath} deleted`);
 
       response = {
         data: "Email sent successfully" as unknown as T,
-        error: { message: "", name: "" },
+        error: null,
       };
     }
 
@@ -134,14 +139,14 @@ export const EmailerV2 = async <T>({
     }
 
     return response;
-  } catch (error) {
+  } catch (error: any) {
     Logger.error("Error occurred while sending the email", error);
 
     return {
       data: null,
       error: {
-        message: (error as any).message || "An error occurred",
-        name: (error as any).name || "EmailerError",
+        message: error.message || "An unknown error occurred",
+        name: error.name || "EmailerError",
       },
     };
   }

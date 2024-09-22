@@ -11,8 +11,7 @@ import logger from "./logger";
  * @param Identity string
  * @param browser Browser => a pupetteer browser instance
  * @returns data
- */
-export const scraper = async (
+ */ export const scraper = async (
   ebayUrl: string,
   storeName: string,
   retries: number,
@@ -36,44 +35,45 @@ export const scraper = async (
       timeout: 100000,
     }); // 100-second timeout
 
-    // Extract the rank of the store from the page
     const rank = await page.evaluate((storeName: string) => {
-      const listings = document.querySelectorAll(
-        "ul.srp-results.srp-list.clearfix > li.s-item.s-item__pl-on-bottom"
+      const allListings = document.querySelectorAll(
+        "ul.srp-results.srp-list.clearfix > li"
       );
+
+      // Filter relevant listings based on the specified classes and attributes
+      const relevantListings = Array.from(allListings).filter((listing) => {
+        const classList = listing.classList;
+        const hasRelevantClass =
+          classList.contains("s-item__before-answer") ||
+          classList.contains("s-item__pl-on-bottom");
+        const hasItemId = listing.id.startsWith("item");
+
+        return hasRelevantClass && hasItemId;
+      });
 
       let rank = 0;
       let found = false;
 
-      // Loop through all the listings to find the store's rank
-      for (let index = 0; index < listings.length; index++) {
-        const listing = listings[index];
+      // Now loop over the relevant listings and check for the store's rank
+      for (let index = 0; index < relevantListings.length; index++) {
+        const listing = relevantListings[index];
 
-        const irrelevantClasses = [
-          "srp-river-answer srp-river-answer--NAVIGATION_ANSWER_COLLAPSIBLE_CAROUSEL",
-          "srp-river-answer srp-river-answer--REWRITE_START",
-        ];
+        // Find seller info within the relevant 'li' elements
+        const sellerInfo = listing.querySelector(
+          "span.s-item__seller-info-text"
+        );
 
-        // Check for irrelevant listings and ignore them
-        if (
-          !irrelevantClasses.some((className) =>
-            listing.classList.contains(className)
-          )
-        ) {
-          // Find seller info within the relevant 'li' elements
-          const sellerInfo = listing.querySelector(
-            "span.s-item__seller-info-text"
-          );
+        if (sellerInfo) {
+          const sellerText = sellerInfo.textContent?.trim() || "";
 
-          if (sellerInfo) {
-            const sellerText = sellerInfo.textContent?.trim() || "";
+          // Extract the store name by splitting the text
+          const storeNameMatch = sellerText.split(" (")[0]; // This will get the part before " ("
 
-            // Check if storeName is part of the sellerText
-            if (sellerText.includes(storeName)) {
-              rank = index + 1;
-              found = true;
-              break; // Stop looping once we find the first occurrence of the store
-            }
+          // Check if storeName is part of the sellerText
+          if (storeNameMatch.includes(storeName)) {
+            rank = index + 1; // Rank is based on relevant listings only
+            found = true;
+            break; // Break the loop as we found the store
           }
         }
       }
@@ -101,6 +101,9 @@ export const scraper = async (
     let currencyCode: string | undefined;
     if (currency && currency != undefined) {
       currencyCode = getCurrencyCode(currency);
+      logger.info(
+        `Found the currnecy code of the product "${Identity}" to be CURRENCY= "${currency}", converted to => CURRENCY_CODE= "${currencyCode}"`
+      );
     } else if (currency === undefined) {
       logger.error(
         `Currency symbol not found for url: "${ebayUrl}", resorting to fallback value 'USD'`
@@ -110,9 +113,6 @@ export const scraper = async (
     } else {
       logger.error(`Currency symbol not found for url: ${ebayUrl}`);
     }
-    logger.info(
-      `Found the currnecy code of the product "${Identity}" to be CURRENCY= "${currency}",converted to => CURRENCY_CODE= "${currencyCode}"`
-    );
 
     // random movement to simulate human behaviour
     await page.mouse.move(200, 200);

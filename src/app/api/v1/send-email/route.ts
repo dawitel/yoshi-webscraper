@@ -1,41 +1,63 @@
 import { NextResponse } from "next/server";
 import { EmailerV2 } from "@/lib/emailer-v2"; // Adjust this path to where your Emailer function is located
 
+// Utility function for validating input
+const validateRequestBody = (body: any) => {
+  const { data, to } = body;
+  if (!data ) {
+    return { error: "Missing required fields: 'data'" };
+  }
+
+  if (!to) {
+    return { error: "Missing required fields: 'to'" };
+  }
+  return null;
+};
+
 // Define the POST request handler for the /api/send-email route
 export async function POST(req: Request) {
   try {
-    // Parse the request body to get the data and to email
-    const { data, to} = await req.json();
-
-    // Validate required fields
-    if (!data || !to) {
+    // Ensure request has a body before parsing
+    if (!req.body) {
       return NextResponse.json(
-        { error: "Missing required fields: 'data' or 'to'" },
+        { error: "Request body is missing" },
         { status: 400 }
       );
     }
 
-    // Call the Emailer function with the parsed data
-    const response = await EmailerV2({
+    // Parse the request body
+    const body = await req.json();
+
+    // Validate the parsed body
+    const validationError = validateRequestBody(body);
+    if (validationError) {
+      return NextResponse.json(validationError, { status: 400 });
+    }
+
+    const { data, to } = body;
+
+    // Call the Emailer function
+    const emailResponse = await EmailerV2({
       Data: data,
       To: to,
-      Subject:  "Here's your requested data",
-      FirstName:  "",
+      Subject: "Here's your requested data",
+      FirstName: "", // Optional, can be personalized later
     });
 
-    // Return the response from the Emailer function
-    if (response.error?.message !== "") {
+    // Handle any error from the Emailer function
+    if (emailResponse.error?.message) {
       return NextResponse.json(
-        { error: response.error?.message },
+        { error: emailResponse.error.message },
         { status: 500 }
       );
     }
 
-    return NextResponse.json({ message: response.data }, { status: 200 });
-  } catch (error) {
-    // Handle any errors and return an appropriate error message
+    // Return success response
+    return NextResponse.json({ message: emailResponse.data }, { status: 200 });
+  } catch (error: any) {
+    // Catch and handle any other unexpected errors
     return NextResponse.json(
-      { error: (error as any).message || "An internal error occurred" },
+      { error: error.message || "An internal error occurred" },
       { status: 500 }
     );
   }
