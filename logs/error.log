@@ -92,3 +92,15 @@
 2024-09-18T07:02:09.388Z error: Error occurred while sending the email Missing credentials for "PLAIN"
 2024-09-18T07:02:09.396Z error: Error occurred while sending the scraped data: Request failed with status code 500
 2024-09-18T07:02:09.399Z error: Error sending data to scrape API: AxiosError: Request failed with status code 500
+2024-09-19T00:40:06.884Z error: Currency symbol not found for url: 
+2024-09-19T00:40:17.831Z error: Currency symbol not found for url: 
+2024-09-19T00:40:28.842Z error: Currency symbol not found for url: 
+2024-09-19T00:40:39.966Z error: Currency symbol not found for url: 
+2024-09-19T00:40:50.979Z error: Currency symbol not found for url: 
+2024-09-19T00:41:02.142Z error: Currency symbol not found for url: 
+2024-09-19T00:41:13.685Z error: Currency symbol not found for url: 
+2024-09-19T00:41:24.723Z error: Currency symbol not found for url: 
+2024-09-19T00:41:35.543Z error: Currency symbol not found for url: 
+2024-09-19T00:41:46.640Z error: Currency symbol not found for url: 
+2024-09-19T00:41:57.559Z error: Currency symbol not found for url: 
+2024-09-19T00:42:08.608Z error: Currency symbol not found for url: 
