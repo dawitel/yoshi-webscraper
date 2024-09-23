@@ -3,28 +3,24 @@ import { useToast } from "@/hooks/use-toast";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { ToastAction } from "@radix-ui/react-toast";
-import { UploadIcon } from "@radix-ui/react-icons";
-import { LogIn } from "lucide-react";
+import { LogIn, Eye, EyeOff } from "lucide-react";
 
 interface LoginProps {
-  onChange: ( email: string, password: string) => void;
+  onChange: (email: string, password: string) => void;
   btnText: string;
   isLoading: boolean;
 }
 
-const Login: React.FC<LoginProps> = ({
-  onChange,
-  btnText,
-  isLoading,
-}) => {
+const Login: React.FC<LoginProps> = ({ onChange, btnText, isLoading }) => {
   const { toast } = useToast();
 
   const [email, setEmail] = useState<string>("");
-  const [password, setpassword] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [showPassword, setShowPassword] = useState<boolean>(false); // State to toggle password visibility
 
   // Validation error states
   const [emailError, setEmailError] = useState<string | null>(null);
-  const [passwordError, setpasswordError] = useState<string | null>(null);
+  const [passwordError, setPasswordError] = useState<string | null>(null);
 
   const handleUploadClick = () => {
     let isValid = true;
@@ -40,14 +36,14 @@ const Login: React.FC<LoginProps> = ({
     }
 
     if (!password) {
-      setpasswordError("password is required");
+      setPasswordError("Password is required");
       isValid = false;
     } else {
-      setpasswordError(null);
+      setPasswordError(null);
     }
 
     if (isValid && email && password) {
-      onChange( email, password);
+      onChange(email, password);
     } else {
       toast({
         variant: "destructive",
@@ -66,7 +62,6 @@ const Login: React.FC<LoginProps> = ({
   return (
     <div className="bg-blue-100 dark:bg-gray-600 rounded-xl">
       <div className="flex p-6 flex-col items-center justify-center gap-4">
-
         <div className="w-full">
           <Input
             type="email"
@@ -75,21 +70,37 @@ const Login: React.FC<LoginProps> = ({
             onChange={(e) => setEmail(e.target.value)}
             className="bg-white py-2 px-10 h-9.5 text-slate-900 dark:placeholder:text-black placeholder:text-x"
             placeholder="Enter your email"
-            list=""
           />
-          {emailError && <p className="text-red-500 text-xs flex ml-1 mt-1">{emailError}</p>}
+          {emailError && (
+            <p className="text-red-500 text-xs flex ml-1 mt-1">{emailError}</p>
+          )}
         </div>
 
-        <div className="w-full">
+        <div className="w-full relative">
           <Input
-            type="password"
+            type={showPassword ? "text" : "password"} // Toggle between password and text
             required
             value={password}
-            onChange={(e) => setpassword(e.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
             className="bg-white py-2 px-10 h-9.5 text-slate-900 placeholder:text-sm dark:placeholder:text-black"
             placeholder="Enter your password"
           />
-          {passwordError && <p className="text-red-500 text-xs flex ml-1 mt-1">{passwordError}</p>}
+          <button
+            type="button"
+            className="absolute right-3 top-2.5"
+            onClick={() => setShowPassword(!showPassword)} // Toggle visibility
+          >
+            {showPassword ? (
+              <EyeOff className="w-5 h-5 dark:text-black" />
+            ) : (
+              <Eye className="w-5 h-5 dark:text-black" />
+            )}
+          </button>
+          {passwordError && (
+            <p className="text-red-500 text-xs flex ml-1 mt-1">
+              {passwordError}
+            </p>
+          )}
         </div>
 
         <Button
@@ -98,7 +109,7 @@ const Login: React.FC<LoginProps> = ({
           disabled={isLoading}
         >
           <div className="flex gap-x-4 items-center justify-center">
-            <LogIn className="w-5 h-5"/>
+            <LogIn className="w-5 h-5" />
             <p>{btnText}</p>
           </div>
         </Button>
