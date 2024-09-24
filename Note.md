@@ -8,7 +8,8 @@
 
 - Could you move v2/send-email to v1/send? - solved
 - Could you delete the oldest data in final_data once we get more than 10 dataset in the folder
-- Isn't it better to make Rate limiting random? - solved
+- Isn't it better to make Rate limiting random?
+- Could you add a tuggle button that allows me to see my password button on the sign in page?
 
 ## Questions
 
@@ -21,3 +22,5 @@
 - Isn't it better to make Rate limiting random? yes it is.
 - Do we need to save the data locally to send it via e-mail? we are not saving the data locally for a long period of time it was just temporary. after we send it we will delete it imediately.
 - How can I set up nodemailer and how does it work?
+
+- Is this deleting logs
