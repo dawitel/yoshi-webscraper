@@ -3,6 +3,8 @@ import { getCurrencyCode } from "@/lib/helpers";
 import UserAgent from "user-agents";
 import logger from "./logger";
 
+const token = process.env.SCRAPE_DOT_DO_API_TOKEN;
+const geoCode = "us";
 /**
  *
  * @param ebayUrl string
@@ -30,7 +32,9 @@ import logger from "./logger";
     });
 
     logger.info(`Scraping ebay URL: ${ebayUrl}`);
-    await page.goto(ebayUrl, {
+    let encodedUrl = encodeURIComponent(ebayUrl);
+    let url = `https://api.scrape.do?token=${token}&url=${encodedUrl}&geoCode=${geoCode}`;
+    await page.goto(url, {
       waitUntil: "domcontentloaded",
       timeout: 100000,
     }); // 100-second timeout

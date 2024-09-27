@@ -45,7 +45,7 @@ export const EmailerV2 = async <T>({
   Data,
   ErrorTo,
   Subject = "Here is your requested data", // Default subject
-  From = process.env.SENDER_EMAIL || "mailtrap@demomailtrap.com", // Default sender
+  From = process.env.SENDER_EMAIL , // Default sender
   To, // Default recipient
   FirstName = "Yoshi", // Default first name for email template
   AttachmentsName = "final-data.csv", // Default name for attachments

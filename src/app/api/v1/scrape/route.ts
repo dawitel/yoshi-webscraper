@@ -11,9 +11,10 @@ import { EmailerV2 } from "@/lib/emailer-v2";
 // Enable stealth mode to avoid detection
 puppeteer.use(StealthPlugin());
 
-const token = process.env.SCRAPE_DOT_DO_API_TOKEN;
-const geoCode = "us";
-const proxyServer =  `http://${token}:render=false&super=true&geoCode=${geoCode}@proxy.scrape.do:8080`
+// const token = process.env.SCRAPE_DOT_DO_API_TOKEN;
+// const geoCode = "us";
+
+// const proxyServer = `https://api.scrape.do?token=${token}&url=${targetUrl}&geoCode=${geoCode}`;
 let errArgs: EmailerProps = {};
 /**
  * @description
@@ -41,7 +42,7 @@ export async function POST(req: Request) {
     const parsedData = Parser(filePath);
 
     console.log("Parsed data: ", parsedData);
-    logger.info(`Scraping using the proxy server: ${proxyServer}`);
+    // logger.info(`Scraping using the proxy server: ${proxyServer}`);
 
     // Launch Puppeteer with stealth plugin to avoid detection
     const browser = await puppeteer.launch({
@@ -50,7 +51,7 @@ export async function POST(req: Request) {
       args: [
         "--no-sandbox",
         "--disable-setuid-sandbox ",
-        `--proxy-server=${proxyServer}`,
+        // `--proxy-server=${proxyServer}`,
       ], // Necessary for production environments
     });
 
