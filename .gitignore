@@ -43,6 +43,5 @@ uploads
 
 final_data
 
-
-
 logs
+*.log
