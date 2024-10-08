@@ -1,15 +1,15 @@
-interface CSVData {
+export interface CSVData {
   Identity: string;
   eBayURL: string;
   Currency: string | undefined;
   Rank: number;
 }
 
-interface getcurrencyCodeParams {
+export interface getcurrencyCodeParams {
   currencySymbol: string | undefined
 }
 
-interface EmailerProps {
+export interface EmailerProps {
   Data?: any,
   ErrorTo?: string
 }

@@ -167,3 +167,209 @@
 2024-09-27T03:19:02.604Z error: Error occurred while sending the scraped data: Request failed with status code 500
 2024-09-27T03:19:02.607Z error: Error sending data to scrape API: AxiosError: Request failed with status code 500
 2024-09-27T03:35:21.816Z error: Currency symbol not found for url: "https://www.ebay.com/sch/i.html?_from=R40&_nkw=Mouse+Pad+Yuki+Aim+radar&_sacat=0&LH_TitleDesc=0&_udlo=20&_sop=15&LH_ItemCondition=4&rt=nc&LH_BIN=1", resorting to fallback value 'USD'
+2024-10-03T03:36:58.768Z error: Error sending data to scrape API: AxiosError: Request failed with status code 404
+2024-10-03T03:40:51.471Z error: Error scraping URL https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=Roger+Mayer+VOODOO-1+-VOODOO-BASS&_sacat=0&LH_TitleDesc=0&_udlo=100&rt=nc&_odkw=Roger+Mayer+VOODOO-1&_osacat=0&_sop=15: net::ERR_CONNECTION_TIMED_OUT at https://api.scrape.do?token=e89d16bcd07a4fd9b0c4e09f3e57e4f97bdad6a40fa&url=https%3A%2F%2Fwww.ebay.com%2Fsch%2Fi.html%3F_from%3DR40%26_trksid%3Dp2334524.m570.l1313%26_nkw%3DRoger%2BMayer%2BVOODOO-1%2B-VOODOO-BASS%26_sacat%3D0%26LH_TitleDesc%3D0%26_udlo%3D100%26rt%3Dnc%26_odkw%3DRoger%2BMayer%2BVOODOO-1%26_osacat%3D0%26_sop%3D15&geoCode=us
+2024-10-03T03:41:05.243Z error: Error scraping URL https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=Roger+Mayer+VOODOO-1+-VOODOO-BASS&_sacat=0&LH_TitleDesc=0&_udlo=100&rt=nc&_odkw=Roger+Mayer+VOODOO-1&_osacat=0&_sop=15: net::ERR_NETWORK_CHANGED at https://api.scrape.do?token=e89d16bcd07a4fd9b0c4e09f3e57e4f97bdad6a40fa&url=https%3A%2F%2Fwww.ebay.com%2Fsch%2Fi.html%3F_from%3DR40%26_trksid%3Dp2334524.m570.l1313%26_nkw%3DRoger%2BMayer%2BVOODOO-1%2B-VOODOO-BASS%26_sacat%3D0%26LH_TitleDesc%3D0%26_udlo%3D100%26rt%3Dnc%26_odkw%3DRoger%2BMayer%2BVOODOO-1%26_osacat%3D0%26_sop%3D15&geoCode=us
+2024-10-03T03:41:40.313Z error: Error scraping URL https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=Roger+Mayer+VOODOO-1+-VOODOO-BASS&_sacat=0&LH_TitleDesc=0&_udlo=100&rt=nc&_odkw=Roger+Mayer+VOODOO-1&_osacat=0&_sop=15: net::ERR_CONNECTION_TIMED_OUT at https://api.scrape.do?token=e89d16bcd07a4fd9b0c4e09f3e57e4f97bdad6a40fa&url=https%3A%2F%2Fwww.ebay.com%2Fsch%2Fi.html%3F_from%3DR40%26_trksid%3Dp2334524.m570.l1313%26_nkw%3DRoger%2BMayer%2BVOODOO-1%2B-VOODOO-BASS%26_sacat%3D0%26LH_TitleDesc%3D0%26_udlo%3D100%26rt%3Dnc%26_odkw%3DRoger%2BMayer%2BVOODOO-1%26_osacat%3D0%26_sop%3D15&geoCode=us
+2024-10-03T03:42:01.505Z error: Error scraping URL https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=Roger+Mayer+VOODOO-1+-VOODOO-BASS&_sacat=0&LH_TitleDesc=0&_udlo=100&rt=nc&_odkw=Roger+Mayer+VOODOO-1&_osacat=0&_sop=15: net::ERR_CONNECTION_TIMED_OUT at https://api.scrape.do?token=e89d16bcd07a4fd9b0c4e09f3e57e4f97bdad6a40fa&url=https%3A%2F%2Fwww.ebay.com%2Fsch%2Fi.html%3F_from%3DR40%26_trksid%3Dp2334524.m570.l1313%26_nkw%3DRoger%2BMayer%2BVOODOO-1%2B-VOODOO-BASS%26_sacat%3D0%26LH_TitleDesc%3D0%26_udlo%3D100%26rt%3Dnc%26_odkw%3DRoger%2BMayer%2BVOODOO-1%26_osacat%3D0%26_sop%3D15&geoCode=us
+2024-10-03T03:42:03.460Z error: Error scraping URL https://www.ebay.com/sch/i.html?_from=R40&_trksid=p2334524.m570.l1313&_nkw=Roger+Mayer+VOODOO-1+-VOODOO-BASS&_sacat=0&LH_TitleDesc=0&_udlo=100&rt=nc&_odkw=Roger+Mayer+VOODOO-1&_osacat=0&_sop=15: net::ERR_CONNECTION_RESET at https://api.scrape.do?token=e89d16bcd07a4fd9b0c4e09f3e57e4f97bdad6a40fa&url=https%3A%2F%2Fwww.ebay.com%2Fsch%2Fi.html%3F_from%3DR40%26_trksid%3Dp2334524.m570.l1313%26_nkw%3DRoger%2BMayer%2BVOODOO-1%2B-VOODOO-BASS%26_sacat%3D0%26LH_TitleDesc%3D0%26_udlo%3D100%26rt%3Dnc%26_odkw%3DRoger%2BMayer%2BVOODOO-1%26_osacat%3D0%26_sop%3D15&geoCode=us
+2024-10-03T03:42:45.332Z error: Error scraping URL https://www.ebay.com/sch/i.html?_from=R40&_nkw=XDP-100R&_sacat=0&LH_TitleDesc=0&_udlo=100&_sop=15&LH_BIN=1&rt=nc&LH_ItemCondition=4: net::ERR_TIMED_OUT at https://api.scrape.do?token=e89d16bcd07a4fd9b0c4e09f3e57e4f97bdad6a40fa&url=https%3A%2F%2Fwww.ebay.com%2Fsch%2Fi.html%3F_from%3DR40%26_nkw%3DXDP-100R%26_sacat%3D0%26LH_TitleDesc%3D0%26_udlo%3D100%26_sop%3D15%26LH_BIN%3D1%26rt%3Dnc%26LH_ItemCondition%3D4&geoCode=us
+2024-10-03T03:43:13.717Z error: Error scraping URL https://www.ebay.com/sch/i.html?_from=R40&_nkw=XDP-100R&_sacat=0&LH_TitleDesc=0&_udlo=100&_sop=15&LH_BIN=1&rt=nc&LH_ItemCondition=4: net::ERR_CONNECTION_RESET at https://api.scrape.do?token=e89d16bcd07a4fd9b0c4e09f3e57e4f97bdad6a40fa&url=https%3A%2F%2Fwww.ebay.com%2Fsch%2Fi.html%3F_from%3DR40%26_nkw%3DXDP-100R%26_sacat%3D0%26LH_TitleDesc%3D0%26_udlo%3D100%26_sop%3D15%26LH_BIN%3D1%26rt%3Dnc%26LH_ItemCondition%3D4&geoCode=us
+2024-10-03T03:43:34.854Z error: Error scraping URL https://www.ebay.com/sch/i.html?_from=R40&_nkw=XDP-100R&_sacat=0&LH_TitleDesc=0&_udlo=100&_sop=15&LH_BIN=1&rt=nc&LH_ItemCondition=4: net::ERR_CONNECTION_TIMED_OUT at https://api.scrape.do?token=e89d16bcd07a4fd9b0c4e09f3e57e4f97bdad6a40fa&url=https%3A%2F%2Fwww.ebay.com%2Fsch%2Fi.html%3F_from%3DR40%26_nkw%3DXDP-100R%26_sacat%3D0%26LH_TitleDesc%3D0%26_udlo%3D100%26_sop%3D15%26LH_BIN%3D1%26rt%3Dnc%26LH_ItemCondition%3D4&geoCode=us
+2024-10-03T03:43:49.327Z error: Error scraping URL https://www.ebay.com/sch/i.html?_from=R40&_nkw=XDP-100R&_sacat=0&LH_TitleDesc=0&_udlo=100&_sop=15&LH_BIN=1&rt=nc&LH_ItemCondition=4: net::ERR_CONNECTION_RESET at https://api.scrape.do?token=e89d16bcd07a4fd9b0c4e09f3e57e4f97bdad6a40fa&url=https%3A%2F%2Fwww.ebay.com%2Fsch%2Fi.html%3F_from%3DR40%26_nkw%3DXDP-100R%26_sacat%3D0%26LH_TitleDesc%3D0%26_udlo%3D100%26_sop%3D15%26LH_BIN%3D1%26rt%3Dnc%26LH_ItemCondition%3D4&geoCode=us
+2024-10-03T03:44:10.451Z error: Error scraping URL https://www.ebay.com/sch/i.html?_from=R40&_nkw=XDP-100R&_sacat=0&LH_TitleDesc=0&_udlo=100&_sop=15&LH_BIN=1&rt=nc&LH_ItemCondition=4: net::ERR_CONNECTION_TIMED_OUT at https://api.scrape.do?token=e89d16bcd07a4fd9b0c4e09f3e57e4f97bdad6a40fa&url=https%3A%2F%2Fwww.ebay.com%2Fsch%2Fi.html%3F_from%3DR40%26_nkw%3DXDP-100R%26_sacat%3D0%26LH_TitleDesc%3D0%26_udlo%3D100%26_sop%3D15%26LH_BIN%3D1%26rt%3Dnc%26LH_ItemCondition%3D4&geoCode=us
+2024-10-03T03:44:33.710Z error: Error scraping URL https://www.ebay.com/sch/i.html?_from=R40&_nkw=GV-D200&_sacat=0&_sop=15&_udlo=300&rt=nc: net::ERR_CONNECTION_TIMED_OUT at https://api.scrape.do?token=e89d16bcd07a4fd9b0c4e09f3e57e4f97bdad6a40fa&url=https%3A%2F%2Fwww.ebay.com%2Fsch%2Fi.html%3F_from%3DR40%26_nkw%3DGV-D200%26_sacat%3D0%26_sop%3D15%26_udlo%3D300%26rt%3Dnc&geoCode=us
+2024-10-03T03:44:40.175Z error: Error scraping URL https://www.ebay.com/sch/i.html?_from=R40&_nkw=GV-D200&_sacat=0&_sop=15&_udlo=300&rt=nc: net::ERR_CONNECTION_RESET at https://api.scrape.do?token=e89d16bcd07a4fd9b0c4e09f3e57e4f97bdad6a40fa&url=https%3A%2F%2Fwww.ebay.com%2Fsch%2Fi.html%3F_from%3DR40%26_nkw%3DGV-D200%26_sacat%3D0%26_sop%3D15%26_udlo%3D300%26rt%3Dnc&geoCode=us
+2024-10-03T03:45:01.317Z error: Error scraping URL https://www.ebay.com/sch/i.html?_from=R40&_nkw=GV-D200&_sacat=0&_sop=15&_udlo=300&rt=nc: net::ERR_CONNECTION_TIMED_OUT at https://api.scrape.do?token=e89d16bcd07a4fd9b0c4e09f3e57e4f97bdad6a40fa&url=https%3A%2F%2Fwww.ebay.com%2Fsch%2Fi.html%3F_from%3DR40%26_nkw%3DGV-D200%26_sacat%3D0%26_sop%3D15%26_udlo%3D300%26rt%3Dnc&geoCode=us
+2024-10-03T03:45:22.455Z error: Error scraping URL https://www.ebay.com/sch/i.html?_from=R40&_nkw=GV-D200&_sacat=0&_sop=15&_udlo=300&rt=nc: net::ERR_CONNECTION_TIMED_OUT at https://api.scrape.do?token=e89d16bcd07a4fd9b0c4e09f3e57e4f97bdad6a40fa&url=https%3A%2F%2Fwww.ebay.com%2Fsch%2Fi.html%3F_from%3DR40%26_nkw%3DGV-D200%26_sacat%3D0%26_sop%3D15%26_udlo%3D300%26rt%3Dnc&geoCode=us
+2024-10-03T03:45:43.595Z error: Error scraping URL https://www.ebay.com/sch/i.html?_from=R40&_nkw=GV-D200&_sacat=0&_sop=15&_udlo=300&rt=nc: net::ERR_CONNECTION_TIMED_OUT at https://api.scrape.do?token=e89d16bcd07a4fd9b0c4e09f3e57e4f97bdad6a40fa&url=https%3A%2F%2Fwww.ebay.com%2Fsch%2Fi.html%3F_from%3DR40%26_nkw%3DGV-D200%26_sacat%3D0%26_sop%3D15%26_udlo%3D300%26rt%3Dnc&geoCode=us
+2024-10-03T03:46:23.177Z error: Error scraping URL https://www.ebay.com/sch/i.html?_nkw=Yamaha+QY700&_udlo=200&_saact=1&LH_AvailTo=1&_sop=15&_oac=1: net::ERR_CONNECTION_TIMED_OUT at https://api.scrape.do?token=e89d16bcd07a4fd9b0c4e09f3e57e4f97bdad6a40fa&url=https%3A%2F%2Fwww.ebay.com%2Fsch%2Fi.html%3F_nkw%3DYamaha%2BQY700%26_udlo%3D200%26_saact%3D1%26LH_AvailTo%3D1%26_sop%3D15%26_oac%3D1&geoCode=us
+2024-10-03T03:46:44.293Z error: Error scraping URL https://www.ebay.com/sch/i.html?_nkw=Yamaha+QY700&_udlo=200&_saact=1&LH_AvailTo=1&_sop=15&_oac=1: net::ERR_CONNECTION_TIMED_OUT at https://api.scrape.do?token=e89d16bcd07a4fd9b0c4e09f3e57e4f97bdad6a40fa&url=https%3A%2F%2Fwww.ebay.com%2Fsch%2Fi.html%3F_nkw%3DYamaha%2BQY700%26_udlo%3D200%26_saact%3D1%26LH_AvailTo%3D1%26_sop%3D15%26_oac%3D1&geoCode=us
+2024-10-03T03:46:59.191Z error: Error scraping URL https://www.ebay.com/sch/i.html?_nkw=Yamaha+QY700&_udlo=200&_saact=1&LH_AvailTo=1&_sop=15&_oac=1: net::ERR_CONNECTION_RESET at https://api.scrape.do?token=e89d16bcd07a4fd9b0c4e09f3e57e4f97bdad6a40fa&url=https%3A%2F%2Fwww.ebay.com%2Fsch%2Fi.html%3F_nkw%3DYamaha%2BQY700%26_udlo%3D200%26_saact%3D1%26LH_AvailTo%3D1%26_sop%3D15%26_oac%3D1&geoCode=us
+2024-10-03T03:47:20.323Z error: Error scraping URL https://www.ebay.com/sch/i.html?_nkw=Yamaha+QY700&_udlo=200&_saact=1&LH_AvailTo=1&_sop=15&_oac=1: net::ERR_CONNECTION_TIMED_OUT at https://api.scrape.do?token=e89d16bcd07a4fd9b0c4e09f3e57e4f97bdad6a40fa&url=https%3A%2F%2Fwww.ebay.com%2Fsch%2Fi.html%3F_nkw%3DYamaha%2BQY700%26_udlo%3D200%26_saact%3D1%26LH_AvailTo%3D1%26_sop%3D15%26_oac%3D1&geoCode=us
+2024-10-03T03:47:37.688Z error: Error scraping URL https://www.ebay.com/sch/i.html?_nkw=Yamaha+QY700&_udlo=200&_saact=1&LH_AvailTo=1&_sop=15&_oac=1: net::ERR_CONNECTION_RESET at https://api.scrape.do?token=e89d16bcd07a4fd9b0c4e09f3e57e4f97bdad6a40fa&url=https%3A%2F%2Fwww.ebay.com%2Fsch%2Fi.html%3F_nkw%3DYamaha%2BQY700%26_udlo%3D200%26_saact%3D1%26LH_AvailTo%3D1%26_sop%3D15%26_oac%3D1&geoCode=us
+2024-10-03T03:48:18.137Z error: Error occurred while sending the email connect ETIMEDOUT 44.212.106.134:587
+2024-10-03T03:48:18.163Z error: Error occurred while sending the scraped data: Request failed with status code 500
+2024-10-03T03:48:18.166Z error: Error sending data to scrape API: AxiosError: Request failed with status code 500
+2024-10-03T04:08:19.772Z error: Error occurred while sending the email connect ETIMEDOUT 54.158.149.228:587
+2024-10-03T04:08:19.782Z error: Error occurred while sending the scraped data: Request failed with status code 500
+2024-10-03T04:08:19.786Z error: Error sending data to scrape API: AxiosError: Request failed with status code 500
+2024-10-03T04:11:41.875Z error: Error occurred while sending the email connect ETIMEDOUT 54.158.149.228:587
+2024-10-03T04:11:41.886Z error: Error occurred while sending the scraped data: Request failed with status code 500
+2024-10-03T04:11:41.890Z error: Error sending data to scrape API: AxiosError: Request failed with status code 500
+2024-10-03T04:33:37.886Z error: Error occurred while sending the email connect ETIMEDOUT 44.212.106.134:587
+2024-10-03T04:33:37.895Z error: Error occurred while sending the scraped data: Request failed with status code 500
+2024-10-03T04:33:37.900Z error: Error sending data to scrape API: AxiosError: Request failed with status code 500
+2024-10-04T13:42:23.949Z error: Error sending data to scrape API: AxiosError: Request failed with status code 500
+2024-10-04T13:42:23.908Z error: Error occurred during the scraping process: Cannot convert undefined or null to object
+2024-10-04T13:42:26.233Z error: Error occurred while sending the email No recipients defined
+2024-10-04T14:01:07.740Z error: Error sending data to scrape API: AxiosError: Request failed with status code 500
+2024-10-04T14:01:07.662Z error: Missing ebayUrl or Identity for item:
+2024-10-04T14:01:07.663Z error: Missing ebayUrl or Identity for item:
+2024-10-04T14:01:07.663Z error: Missing ebayUrl or Identity for item:
+2024-10-04T14:01:07.664Z error: Missing ebayUrl or Identity for item:
+2024-10-04T14:01:07.728Z error: Missing ebayUrl or Identity for item:
+2024-10-04T14:01:07.729Z error: Missing ebayUrl or Identity for item:
+2024-10-04T14:01:07.730Z error: Error occurred during the scraping process: Cannot convert undefined or null to object
+2024-10-04T14:01:09.261Z error: Error occurred while sending the email No recipients defined
+2024-10-04T14:01:59.483Z error: Missing ebayUrl or Identity for item:
+2024-10-04T14:01:59.484Z error: Missing ebayUrl or Identity for item:
+2024-10-04T14:01:59.518Z error: Missing ebayUrl or Identity for item:
+2024-10-04T14:01:59.518Z error: Missing ebayUrl or Identity for item:
+2024-10-04T14:01:59.519Z error: Missing ebayUrl or Identity for item:
+2024-10-04T14:01:59.519Z error: Missing ebayUrl or Identity for item:
+2024-10-04T14:01:59.520Z error: Error occurred during the scraping process: Cannot convert undefined or null to object
+2024-10-04T14:01:59.525Z error: Error sending data to scrape API: AxiosError: Request failed with status code 500
+2024-10-04T14:02:01.045Z error: Error occurred while sending the email No recipients defined
+2024-10-04T14:02:50.961Z error: Missing ebayUrl or Identity for item:
+2024-10-04T14:02:50.962Z error: Missing ebayUrl or Identity for item:
+2024-10-04T14:02:50.962Z error: Missing ebayUrl or Identity for item:
+2024-10-04T14:02:51.044Z error: Missing ebayUrl or Identity for item:
+2024-10-04T14:02:51.073Z error: Missing ebayUrl or Identity for item:
+2024-10-04T14:02:51.073Z error: Missing ebayUrl or Identity for item:
+2024-10-04T14:02:51.074Z error: Error occurred during the scraping process: Cannot convert undefined or null to object
+2024-10-04T14:02:51.081Z error: Error sending data to scrape API: AxiosError: Request failed with status code 500
+2024-10-04T14:02:52.548Z error: Error occurred while sending the email No recipients defined
+2024-10-05T10:12:25.565Z error: Error sending data to scrape API: AxiosError: Request failed with status code 500
+2024-10-05T10:12:25.552Z error: Missing ebayUrl or Identity for item:
+2024-10-05T10:12:25.553Z error: Missing ebayUrl or Identity for item:
+2024-10-05T10:12:25.554Z error: Missing ebayUrl or Identity for item:
+2024-10-05T10:12:25.554Z error: Missing ebayUrl or Identity for item:
+2024-10-05T10:12:25.555Z error: Missing ebayUrl or Identity for item:
+2024-10-05T10:12:25.555Z error: Missing ebayUrl or Identity for item:
+2024-10-05T10:12:25.556Z error: Error occurred during the scraping process: Cannot convert undefined or null to object
+2024-10-05T10:12:27.739Z error: Error occurred while sending the email No recipients defined
+2024-10-05T10:12:45.394Z error: Missing ebayUrl or Identity for item:
+2024-10-05T10:12:45.394Z error: Missing ebayUrl or Identity for item:
+2024-10-05T10:12:45.395Z error: Missing ebayUrl or Identity for item:
+2024-10-05T10:12:45.395Z error: Missing ebayUrl or Identity for item:
+2024-10-05T10:12:45.396Z error: Missing ebayUrl or Identity for item:
+2024-10-05T10:12:45.397Z error: Missing ebayUrl or Identity for item:
+2024-10-05T10:12:45.398Z error: Error occurred during the scraping process: Cannot convert undefined or null to object
+2024-10-05T10:12:45.404Z error: Error sending data to scrape API: AxiosError: Request failed with status code 500
+2024-10-05T10:12:47.290Z error: Error occurred while sending the email No recipients defined
+2024-10-05T10:14:02.829Z error: Error sending data to scrape API: AxiosError: Request failed with status code 500
+2024-10-05T10:14:02.817Z error: Missing ebayUrl or Identity for item:
+2024-10-05T10:14:02.817Z error: Missing ebayUrl or Identity for item:
+2024-10-05T10:14:02.818Z error: Missing ebayUrl or Identity for item:
+2024-10-05T10:14:02.818Z error: Missing ebayUrl or Identity for item:
+2024-10-05T10:14:02.818Z error: Missing ebayUrl or Identity for item:
+2024-10-05T10:14:02.819Z error: Missing ebayUrl or Identity for item:
+2024-10-05T10:14:02.820Z error: Error occurred during the scraping process: Cannot convert undefined or null to object
+2024-10-05T10:14:04.720Z error: Error occurred while sending the email No recipients defined
+2024-10-05T10:14:24.298Z error: Missing ebayUrl or Identity for item:
+2024-10-05T10:14:24.299Z error: Missing ebayUrl or Identity for item:
+2024-10-05T10:14:24.299Z error: Missing ebayUrl or Identity for item:
+2024-10-05T10:14:24.300Z error: Missing ebayUrl or Identity for item:
+2024-10-05T10:14:24.300Z error: Missing ebayUrl or Identity for item:
+2024-10-05T10:14:24.301Z error: Missing ebayUrl or Identity for item:
+2024-10-05T10:14:24.302Z error: Error occurred during the scraping process: Cannot convert undefined or null to object
+2024-10-05T10:14:24.306Z error: Error sending data to scrape API: AxiosError: Request failed with status code 500
+2024-10-05T10:14:26.144Z error: Error occurred while sending the email No recipients defined
+2024-10-05T10:15:14.895Z error: Missing ebayUrl or Identity for item:
+2024-10-05T10:15:14.895Z error: Missing ebayUrl or Identity for item:
+2024-10-05T10:15:14.896Z error: Missing ebayUrl or Identity for item:
+2024-10-05T10:15:14.897Z error: Missing ebayUrl or Identity for item:
+2024-10-05T10:15:14.897Z error: Missing ebayUrl or Identity for item:
+2024-10-05T10:15:14.898Z error: Missing ebayUrl or Identity for item:
+2024-10-05T10:15:14.899Z error: Error occurred during the scraping process: Cannot convert undefined or null to object
+2024-10-05T10:15:14.903Z error: Error sending data to scrape API: AxiosError: Request failed with status code 500
+2024-10-05T10:15:16.747Z error: Error occurred while sending the email No recipients defined
+2024-10-05T10:15:49.612Z error: Missing ebayUrl or Identity for item:
+2024-10-05T10:15:49.613Z error: Missing ebayUrl or Identity for item:
+2024-10-05T10:15:49.614Z error: Missing ebayUrl or Identity for item:
+2024-10-05T10:15:49.614Z error: Missing ebayUrl or Identity for item:
+2024-10-05T10:15:49.615Z error: Missing ebayUrl or Identity for item:
+2024-10-05T10:15:49.615Z error: Missing ebayUrl or Identity for item:
+2024-10-05T10:15:49.616Z error: Error occurred during the scraping process: Cannot convert undefined or null to object
+2024-10-05T10:15:49.623Z error: Error sending data to scrape API: AxiosError: Request failed with status code 500
+2024-10-05T10:15:51.466Z error: Error occurred while sending the email No recipients defined
+2024-10-05T10:16:19.920Z error: Missing ebayUrl or Identity for item:
+2024-10-05T10:16:19.921Z error: Missing ebayUrl or Identity for item:
+2024-10-05T10:16:19.921Z error: Missing ebayUrl or Identity for item:
+2024-10-05T10:16:19.922Z error: Missing ebayUrl or Identity for item:
+2024-10-05T10:16:19.922Z error: Missing ebayUrl or Identity for item:
+2024-10-05T10:16:19.923Z error: Missing ebayUrl or Identity for item:
+2024-10-05T10:16:19.924Z error: Error occurred during the scraping process: Cannot convert undefined or null to object
+2024-10-05T10:16:19.929Z error: Error sending data to scrape API: AxiosError: Request failed with status code 500
+2024-10-05T10:16:21.772Z error: Error occurred while sending the email No recipients defined
+2024-10-05T10:16:36.530Z error: Missing ebayUrl or Identity for item:
+2024-10-05T10:16:36.530Z error: Missing ebayUrl or Identity for item:
+2024-10-05T10:16:36.531Z error: Missing ebayUrl or Identity for item:
+2024-10-05T10:16:36.531Z error: Missing ebayUrl or Identity for item:
+2024-10-05T10:16:36.531Z error: Missing ebayUrl or Identity for item:
+2024-10-05T10:16:36.532Z error: Missing ebayUrl or Identity for item:
+2024-10-05T10:16:36.532Z error: Error occurred during the scraping process: Cannot convert undefined or null to object
+2024-10-05T10:16:36.536Z error: Error sending data to scrape API: AxiosError: Request failed with status code 500
+2024-10-05T10:16:38.353Z error: Error occurred while sending the email No recipients defined
+2024-10-05T10:16:42.582Z error: Missing ebayUrl or Identity for item:
+2024-10-05T10:16:42.583Z error: Missing ebayUrl or Identity for item:
+2024-10-05T10:16:42.583Z error: Missing ebayUrl or Identity for item:
+2024-10-05T10:16:42.584Z error: Missing ebayUrl or Identity for item:
+2024-10-05T10:16:42.584Z error: Missing ebayUrl or Identity for item:
+2024-10-05T10:16:42.584Z error: Missing ebayUrl or Identity for item:
+2024-10-05T10:16:42.585Z error: Error occurred during the scraping process: Cannot convert undefined or null to object
+2024-10-05T10:16:42.588Z error: Error sending data to scrape API: AxiosError: Request failed with status code 500
+2024-10-05T10:16:44.314Z error: Error occurred while sending the email No recipients defined
+2024-10-05T22:43:41.693Z error: Error scraping eBayURL: undefined Cannot find module 'C:\Users\conta\Desktop\upwork\yoshi\.next\server\app\api\v1\scrape\scraper-worker.js'
+2024-10-05T22:43:41.695Z error: Error scraping eBayURL: undefined Cannot find module 'C:\Users\conta\Desktop\upwork\yoshi\.next\server\app\api\v1\scrape\scraper-worker.js'
+2024-10-05T22:43:41.696Z error: Error scraping eBayURL: undefined Cannot find module 'C:\Users\conta\Desktop\upwork\yoshi\.next\server\app\api\v1\scrape\scraper-worker.js'
+2024-10-05T22:43:41.698Z error: Error scraping eBayURL: undefined Cannot find module 'C:\Users\conta\Desktop\upwork\yoshi\.next\server\app\api\v1\scrape\scraper-worker.js'
+2024-10-05T22:43:41.699Z error: Error scraping eBayURL: undefined Cannot find module 'C:\Users\conta\Desktop\upwork\yoshi\.next\server\app\api\v1\scrape\scraper-worker.js'
+2024-10-05T22:43:41.730Z error: Error scraping eBayURL: undefined Cannot find module 'C:\Users\conta\Desktop\upwork\yoshi\.next\server\app\api\v1\scrape\scraper-worker.js'
+2024-10-05T22:43:44.142Z error: Error during the scraping process: Failed to send scraped data via email to dawiteliaskassaye@gmail.com with error: null
+2024-10-05T22:43:44.143Z error: Error occurred while sending the email No data or error recipient provided
+2024-10-05T22:43:44.147Z error: Error sending data to scrape API: AxiosError: Request failed with status code 500
+2024-10-05T22:44:20.278Z error: Error scraping eBayURL: undefined Cannot find module 'C:\Users\conta\Desktop\upwork\yoshi\.next\server\app\api\v1\scrape\scraper-worker.js'
+2024-10-05T22:44:20.281Z error: Error scraping eBayURL: undefined Cannot find module 'C:\Users\conta\Desktop\upwork\yoshi\.next\server\app\api\v1\scrape\scraper-worker.js'
+2024-10-05T22:44:20.282Z error: Error scraping eBayURL: undefined Cannot find module 'C:\Users\conta\Desktop\upwork\yoshi\.next\server\app\api\v1\scrape\scraper-worker.js'
+2024-10-05T22:44:20.284Z error: Error scraping eBayURL: undefined Cannot find module 'C:\Users\conta\Desktop\upwork\yoshi\.next\server\app\api\v1\scrape\scraper-worker.js'
+2024-10-05T22:44:20.289Z error: Error scraping eBayURL: undefined Cannot find module 'C:\Users\conta\Desktop\upwork\yoshi\.next\server\app\api\v1\scrape\scraper-worker.js'
+2024-10-05T22:44:20.315Z error: Error scraping eBayURL: undefined Cannot find module 'C:\Users\conta\Desktop\upwork\yoshi\.next\server\app\api\v1\scrape\scraper-worker.js'
+2024-10-05T22:44:22.615Z error: Error during the scraping process: Failed to send scraped data via email to dawiteliaskassaye@gmail.com with error: null
+2024-10-05T22:44:22.616Z error: Error occurred while sending the email No data or error recipient provided
+2024-10-05T22:44:22.620Z error: Error sending data to scrape API: AxiosError: Request failed with status code 500
+2024-10-05T22:45:00.021Z error: Error scraping eBayURL: undefined Cannot find module 'C:\Users\conta\Desktop\upwork\yoshi\.next\server\app\api\v1\scrape\scraper-worker.js'
+2024-10-05T22:45:00.024Z error: Error scraping eBayURL: undefined Cannot find module 'C:\Users\conta\Desktop\upwork\yoshi\.next\server\app\api\v1\scrape\scraper-worker.js'
+2024-10-05T22:45:00.024Z error: Error scraping eBayURL: undefined Cannot find module 'C:\Users\conta\Desktop\upwork\yoshi\.next\server\app\api\v1\scrape\scraper-worker.js'
+2024-10-05T22:45:00.026Z error: Error scraping eBayURL: undefined Cannot find module 'C:\Users\conta\Desktop\upwork\yoshi\.next\server\app\api\v1\scrape\scraper-worker.js'
+2024-10-05T22:45:00.027Z error: Error scraping eBayURL: undefined Cannot find module 'C:\Users\conta\Desktop\upwork\yoshi\.next\server\app\api\v1\scrape\scraper-worker.js'
+2024-10-05T22:45:00.064Z error: Error scraping eBayURL: undefined Cannot find module 'C:\Users\conta\Desktop\upwork\yoshi\.next\server\app\api\v1\scrape\scraper-worker.js'
+2024-10-05T22:45:02.302Z error: Error during the scraping process: Failed to send scraped data via email to dawiteliaskassaye@gmail.com with error: null
+2024-10-05T22:45:02.303Z error: Error occurred while sending the email No data or error recipient provided
+2024-10-05T22:45:02.305Z error: Error sending data to scrape API: AxiosError: Request failed with status code 500
+2024-10-05T22:46:53.075Z error: Error scraping eBayURL: undefined Cannot find module 'C:\Users\conta\Desktop\upwork\yoshi\scraper-worker.ts'
+2024-10-05T22:46:53.077Z error: Error scraping eBayURL: undefined Cannot find module 'C:\Users\conta\Desktop\upwork\yoshi\scraper-worker.ts'
+2024-10-05T22:46:53.080Z error: Error scraping eBayURL: undefined Cannot find module 'C:\Users\conta\Desktop\upwork\yoshi\scraper-worker.ts'
+2024-10-05T22:46:53.081Z error: Error scraping eBayURL: undefined Cannot find module 'C:\Users\conta\Desktop\upwork\yoshi\scraper-worker.ts'
+2024-10-05T22:46:53.083Z error: Error scraping eBayURL: undefined Cannot find module 'C:\Users\conta\Desktop\upwork\yoshi\scraper-worker.ts'
+2024-10-05T22:46:53.109Z error: Error scraping eBayURL: undefined Cannot find module 'C:\Users\conta\Desktop\upwork\yoshi\scraper-worker.ts'
+2024-10-05T22:46:55.492Z error: Error during the scraping process: Failed to send scraped data via email to dawiteliaskassaye@gmail.com with error: null
+2024-10-05T22:46:55.493Z error: Error occurred while sending the email No data or error recipient provided
+2024-10-05T22:46:55.496Z error: Error sending data to scrape API: AxiosError: Request failed with status code 500
+2024-10-05T22:48:05.027Z error: Error scraping eBayURL: undefined Cannot find module 'C:\Users\conta\Desktop\upwork\yoshi\.next\server\app\api\v1\scrape\src\lib\scraper\scraper-worker.ts'
+2024-10-05T22:48:05.029Z error: Error scraping eBayURL: undefined Cannot find module 'C:\Users\conta\Desktop\upwork\yoshi\.next\server\app\api\v1\scrape\src\lib\scraper\scraper-worker.ts'
+2024-10-05T22:48:05.031Z error: Error scraping eBayURL: undefined Cannot find module 'C:\Users\conta\Desktop\upwork\yoshi\.next\server\app\api\v1\scrape\src\lib\scraper\scraper-worker.ts'
+2024-10-05T22:48:05.032Z error: Error scraping eBayURL: undefined Cannot find module 'C:\Users\conta\Desktop\upwork\yoshi\.next\server\app\api\v1\scrape\src\lib\scraper\scraper-worker.ts'
+2024-10-05T22:48:05.033Z error: Error scraping eBayURL: undefined Cannot find module 'C:\Users\conta\Desktop\upwork\yoshi\.next\server\app\api\v1\scrape\src\lib\scraper\scraper-worker.ts'
+2024-10-05T22:48:05.063Z error: Error scraping eBayURL: undefined Cannot find module 'C:\Users\conta\Desktop\upwork\yoshi\.next\server\app\api\v1\scrape\src\lib\scraper\scraper-worker.ts'
+2024-10-05T22:48:07.434Z error: Error during the scraping process: Failed to send scraped data via email to dawiteliaskassaye@gmail.com with error: null
+2024-10-05T22:48:07.434Z error: Error occurred while sending the email No data or error recipient provided
+2024-10-05T22:48:07.438Z error: Error sending data to scrape API: AxiosError: Request failed with status code 500
+2024-10-05T22:52:28.872Z error: Error scraping eBayURL: undefined Cannot find module 'C:\Users\conta\Desktop\upwork\yoshi\.next\server\app\scraper\scraper-worker.ts'
+2024-10-05T22:52:28.873Z error: Error scraping eBayURL: undefined Cannot find module 'C:\Users\conta\Desktop\upwork\yoshi\.next\server\app\scraper\scraper-worker.ts'
+2024-10-05T22:52:28.875Z error: Error scraping eBayURL: undefined Cannot find module 'C:\Users\conta\Desktop\upwork\yoshi\.next\server\app\scraper\scraper-worker.ts'
+2024-10-05T22:52:28.876Z error: Error scraping eBayURL: undefined Cannot find module 'C:\Users\conta\Desktop\upwork\yoshi\.next\server\app\scraper\scraper-worker.ts'
+2024-10-05T22:52:28.876Z error: Error scraping eBayURL: undefined Cannot find module 'C:\Users\conta\Desktop\upwork\yoshi\.next\server\app\scraper\scraper-worker.ts'
+2024-10-05T22:52:28.914Z error: Error scraping eBayURL: undefined Cannot find module 'C:\Users\conta\Desktop\upwork\yoshi\.next\server\app\scraper\scraper-worker.ts'
+2024-10-05T22:52:31.276Z error: Error during the scraping process: Failed to send scraped data via email to dawiteliaskassaye@gmail.com with error: null
+2024-10-05T22:52:31.276Z error: Error occurred while sending the email No data or error recipient provided
+2024-10-05T22:52:31.281Z error: Error sending data to scrape API: AxiosError: Request failed with status code 500
+2024-10-08T18:32:23.913Z error: Error occurred during the scraping process:  Timed out after 30000 ms while waiting for the WS endpoint URL to appear in stdout!
+2024-10-08T18:32:23.914Z error: Sending an error email to the user
+2024-10-08T18:32:28.545Z error: Sent an error email to the user
+2024-10-08T18:32:28.570Z error: Error sending data to scrape API: AxiosError: Request failed with status code 500
+2024-10-08T18:43:23.597Z error: Error occurred during the scraping process:  Timed out after 30000 ms while waiting for the WS endpoint URL to appear in stdout!
+2024-10-08T18:43:23.597Z error: Sending an error email to the user
+2024-10-08T18:43:26.763Z error: Sent an error email to the user
+2024-10-08T18:43:26.767Z error: Error sending data to scrape API: AxiosError: Request failed with status code 500
