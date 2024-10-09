@@ -87,3 +87,95 @@ npm run tsx [filename]
 ### VPS-US in USD
 
 ![VPS-US in USD](https://github.com/user-attachments/assets/54dad4b3-1416-497f-851f-7c5eca3ddc97)
+
+# Directory Structure
+
+├── public
+│   ├── next.svg
+│   ├── vercel.svg
+└── src
+    ├── app
+    │   ├── api
+    │   │   └── v1
+    │   │       ├── auth
+    │   │       │   ├── check
+    │   │       │   │   ├── route.ts
+    │   │       │   ├── login
+    │   │       │   │   ├── route.ts
+    │   │       │   └── logout
+    │   │       │       ├── route.ts
+    │   │       ├── scrape
+    │   │       │   ├── route.ts
+    │   │       ├── send-email
+    │   │       │   ├── route.ts
+    │   │       └── upload
+    │   │           └── __tests__
+    │   │               └── __mocks__
+    │   │                   ├── test-file.csv
+    │   │               ├── upload.test.ts
+    │   │           ├── route.ts
+    │   └── dashboard
+    │       ├── page.tsx
+    │   ├── favicon.ico
+    │   ├── globals.css
+    │   ├── layout.tsx
+    │   ├── page.tsx
+    ├── components
+    │   └── ui
+    │       ├── alert-dialog.tsx
+    │       ├── alert.tsx
+    │       ├── avatar.tsx
+    │       ├── button.tsx
+    │       ├── card.tsx
+    │       ├── carousel.tsx
+    │       ├── dropdown-menu.tsx
+    │       ├── form.tsx
+    │       ├── input.tsx
+    │       ├── label.tsx
+    │       ├── separator.tsx
+    │       ├── toast.tsx
+    │       ├── toaster.tsx
+    │       ├── toggle-group.tsx
+    │       ├── toggle.tsx
+    │       ├── tooltip.tsx
+    │   ├── email-templates.ts
+    │   ├── fileupload.tsx
+    │   ├── login.tsx
+    │   ├── theme-toggle.tsx
+    │   ├── user-button.tsx
+    ├── hooks
+    │   ├── theme-provider.tsx
+    │   ├── use-toast.ts
+    ├── lib
+    │   └── scraper
+    │       ├── scraper-manager.ts
+    │       ├── scraper-worker.ts
+    │       ├── scraper.ts
+    │   ├── emailer-v2.ts
+    │   ├── helpers.ts
+    │   ├── logger.ts
+    │   ├── parser.ts
+    │   ├── utils.ts
+    └── types
+        ├── currency.ts
+        ├── interface.ts
+        ├── response.ts
+├── .dockerignore
+├── .env
+├── .env.example
+├── .eslintrc.json
+├── .gitignore
+├── components.json
+├── Dockerfile
+├── middleware.ts
+├── next-env.d.ts
+├── next.config.mjs
+├── Note.md
+├── package.json
+├── pnpm-lock.yaml
+├── postcss.config.mjs
+├── README.md
+├── tailwind.config.ts
+├── tsconfig.json
+
+# End Directory Structure

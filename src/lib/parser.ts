@@ -1,6 +1,7 @@
 import Papa from "papaparse";
 import fs from "fs";
 import path from "path";
+import { CSVData } from "@/types/interface";
 
 export const Parser = (filePath: string): any => {
   // Read and parse the CSV file
