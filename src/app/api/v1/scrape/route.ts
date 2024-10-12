@@ -3,7 +3,7 @@ import StealthPlugin from "puppeteer-extra-plugin-stealth";
 import { executablePath } from "puppeteer";
 import { NextResponse } from "next/server";
 import axios from "axios";
-import { scraper } from "@/lib/scraper/scraper";
+import { scraper } from "@/lib/scraper";
 import logger from "@/lib/logger";
 import { Parser, saveData } from "@/lib/parser";
 import { EmailerV2 } from "@/lib/emailer-v2";
@@ -38,8 +38,8 @@ export async function POST(req: Request) {
         "--disable-setuid-sandbox",
         `--proxy-server=${smartProxyEndpoint}`,
       ],
-    });
-
+    }); 
+    const retry = 3
     const scrapedData: CSVData[] = [];
     for (const item of parsedData) {
       const ebayUrl = item["eBay URL"];
@@ -50,7 +50,7 @@ export async function POST(req: Request) {
         continue;
       }
 
-      const data = await scraper(ebayUrl, storeName, identity, browser);
+      const data = await scraper(ebayUrl, storeName, retry,  identity, browser);
       scrapedData.push(data);
 
       const randomDelay = Math.floor(Math.random() * (15000 - 5000) + 5000);
