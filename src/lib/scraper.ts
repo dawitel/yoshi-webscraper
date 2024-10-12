@@ -50,9 +50,8 @@ const geoCode = "us";
         const hasRelevantClass =
           classList.contains("s-item__before-answer") ||
           classList.contains("s-item__pl-on-bottom");
-        const hasItemId = listing.id.startsWith("item");
 
-        return hasRelevantClass && hasItemId;
+        return hasRelevantClass ;
       });
 
       let rank = 0;
