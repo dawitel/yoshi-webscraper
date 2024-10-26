@@ -13,3 +13,8 @@ export interface EmailerProps {
   Data?: any,
   ErrorTo?: string
 }
+
+export interface FileData {
+  fileName: string;
+  downloadUrl: string;
+}

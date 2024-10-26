@@ -28,36 +28,33 @@ export async function POST(req: Request) {
     };
 
     const parsedData = Parser(filePath);
-    console.log(`Parsed data: ${parsedData}`);
-    
+    console.log(`Parsed data: `, parsedData);
+
     const browser = await puppeteer.launch({
       executablePath: executablePath(),
       headless: true,
-      args: [
-        "--no-sandbox",
-        "--disable-setuid-sandbox",
-      ],
-    }); 
-    const retry = 3
+      args: ["--no-sandbox", "--disable-setuid-sandbox"],
+    });
+    const retry = 3;
     const scrapedData: CSVData[] = [];
     for (const item of parsedData) {
       const ebayUrl = item["eBay URL"];
       const identity = item["Identity"];
-      
+
       if (!ebayUrl) {
         logger.warn(`Skipping item with no eBay URL: ${JSON.stringify(item)}`);
         continue;
       }
-      
-      const data = await scraper(ebayUrl, storeName, retry,  identity, browser);
+
+      const data = await scraper(ebayUrl, storeName, retry, identity, browser);
       scrapedData.push(data);
-      
+
       const randomDelay = Math.floor(Math.random() * (15000 - 5000) + 5000);
       await new Promise((resolve) => setTimeout(resolve, randomDelay));
     }
-    
+
     await browser.close();
-    console.log(`Scraped data: ${scrapedData}`);
+    console.log(`Scraped data: `, scrapedData);
 
     saveData(scrapedData);
     logger.info("Scraped data has been persisted locally");

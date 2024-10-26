@@ -10,7 +10,6 @@ const uploadDir = path.join(process.cwd(), "uploads");
 
 export async function POST(req: Request): Promise<NextResponse> {
   try {
-    // Parse form data
     const formData = await req.formData();
     const file = formData.get("file") as File;
     const email = formData.get("email") as string;
@@ -49,13 +48,10 @@ export async function POST(req: Request): Promise<NextResponse> {
     }
 
     const filePath = path.join(uploadDir, file.name);
-
-    // Save the file locally
     await saveFileLocally(file, filePath);
 
     logger.info(`Saved CSV file to ${filePath}`);
 
-    // Respond to client
     const uploadResponse = NextResponse.json({
       message: "File uploaded successfully",
     });

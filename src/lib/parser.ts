@@ -13,21 +13,42 @@ export const Parser = (filePath: string): any => {
   return parsedData;
 };
 
+// Function to format the current date and time in Japanese time zone
+const formatCurrentDate = (): string => {
+  const date = new Date();
+
+  // Set options for Japanese timezone (JST) with full weekday name
+  const options: Intl.DateTimeFormatOptions = {
+    weekday: 'long', // Full weekday name
+    hour: 'numeric',   // '9'
+    minute: 'numeric', // '00'
+    hour12: true,      // 12-hour format
+    timeZone: 'Asia/Tokyo' // Set timezone to Asia/Tokyo (JST)
+  };
+
+  // Format the date string
+  const formattedDate = date.toLocaleString('en-US', options).toUpperCase() + " JST"; // Append 'JST'
+  
+  // Replace spaces and colons for a valid filename
+  return formattedDate.replace(/[: ]/g, "-");
+};
+
 export const saveData = (data: CSVData[]) => {
   const folderPath = path.join(process.cwd(), "final_data");
-  const prefix = "final_data";
+  
   // Create the folder if it doesn't exist
   if (!fs.existsSync(folderPath)) {
     fs.mkdirSync(folderPath);
   }
+
   const finalData = Papa.unparse(data);
 
-  // Generate a dynamic file name using a timestamp and prefix
-  const timestamp = new Date().toISOString().replace(/:/g, "-");
-  const fileName = `${prefix}_${timestamp}.csv`;
+  // Generate a dynamic file name using the current formatted date
+  const formattedDate = formatCurrentDate(); // Get formatted date
+  const fileName = `${formattedDate}.csv`; // No prefix, just the formatted date
   const filePath = path.join(folderPath, fileName);
 
-  // Write the data to the file (JSON string format)
+  // Write the data to the file
   fs.writeFileSync(filePath, finalData);
 
   // Keep only the most recent 10 datasets
