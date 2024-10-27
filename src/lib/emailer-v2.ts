@@ -12,7 +12,7 @@ import {
 
 // Nodemailer transporter configuration
 const transporter = nodemailer.createTransport({
-  host: process.env.SMTP_HOST || "live.smtp.mailtrap.io",
+  host: process.env.SMTP_HOST,
   port: parseInt(process.env.SMTP_PORT || "587", 10),
   auth: {
     user: process.env.MAILTRAP_USER,
@@ -45,7 +45,7 @@ export const EmailerV2 = async <T>({
   Data,
   ErrorTo,
   Subject = "Here is your requested data", // Default subject
-  From = process.env.SENDER_EMAIL , // Default sender
+  From = process.env.SENDER_EMAIL, // Default sender
   To, // Default recipient
   FirstName = "Yoshi", // Default first name for email template
   AttachmentsName = "final-data.csv", // Default name for attachments
@@ -66,14 +66,14 @@ export const EmailerV2 = async <T>({
 
       const csv = Papa.unparse(Data);
 
-      const stream = new Readable();
-      stream.push(csv);
-      stream.push(null);
+      const stream = new Readable(); // establishing a connection to the memory
+      stream.push(csv); // reading the csv data
+      stream.push(null); // signaling that we have no more data to send the specific memory location
 
       const filePath = path.join(tmpdir(), `data-${Date.now()}.csv`);
-      const fileStream = createWriteStream(filePath);
+      const fileStream = createWriteStream(filePath); // temporarlly writing the data
 
-      stream.pipe(fileStream);
+      stream.pipe(fileStream); //disconnecting the stream
 
       // Await the stream's completion before proceeding
       await new Promise<void>((resolve, reject) => {
@@ -106,7 +106,7 @@ export const EmailerV2 = async <T>({
       Logger.info("Email with CSV sent successfully");
 
       // Delete the temporary file after sending the email
-      await fsPromises.unlink(filePath);
+      await fsPromises.unlink(filePath); // deleting the csv file that we temporary stored in the memory by stream
       Logger.info(`Temporary CSV file ${filePath} deleted`);
 
       response = {
