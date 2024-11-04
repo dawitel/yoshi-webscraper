@@ -7,6 +7,9 @@ import { CSVData } from "@/types/interface";
 const token = process.env.SCRAPE_DOT_DO_API_TOKEN;
 const geoCode = "us";
 
+const brightDataUserName = process.env.BRIGHT_DATA_USER_NAME || "";
+const brightDataUserPassword = process.env.BRIGHT_DATA_USER_PASSWORD || "";
+
 const getStoreRank = async (page: Page, storeName: string): Promise<number> => {
   const allListings = await page.$$("ul.srp-results.srp-list.clearfix > li");
 
@@ -77,10 +80,16 @@ export const scraper = async (
     await page.setUserAgent(agent.toString());
 
     logger.info(`Scraping eBay URL: ${ebayUrl}`);
-    const encodedUrl = encodeURIComponent(ebayUrl);
-    const url = `https://api.scrape.do?token=${token}&url=${encodedUrl}&geoCode=${geoCode}`;
 
-    await page.goto(url, { waitUntil: "networkidle0", timeout: 100000 });
+    await page.authenticate({
+      username: brightDataUserName,
+      password: brightDataUserPassword,
+    });
+    
+    // const encodedUrl = encodeURIComponent(ebayUrl);
+    // const url = `https://api.scrape.do?token=${token}&url=${encodedUrl}&geoCode=${geoCode}`;
+
+    await page.goto(ebayUrl, { waitUntil: "networkidle0", timeout: 100000 });
 
     const rank = await getStoreRank(page, storeName);
     const currency = await getCurrency(page);

@@ -13,7 +13,7 @@ export const Parser = (filePath: string): any => {
   return parsedData;
 };
 
-// Function to format the current date and time in Japanese time zone
+// Function to format the currmakeent date and time in Japanese time zone
 const formatCurrentDate = (): string => {
   const date = new Date();
 

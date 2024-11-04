@@ -12,6 +12,7 @@ import { CSVData, EmailerProps } from "@/types/interface";
 puppeteer.use(StealthPlugin());
 
 const smartProxyEndpoint = process.env.SMART_PROXY_ENDPOINT;
+
 let errArgs: EmailerProps = {};
 
 export async function POST(req: Request) {
@@ -29,11 +30,23 @@ export async function POST(req: Request) {
 
     const parsedData = Parser(filePath);
     console.log(`Parsed data: `, parsedData);
+    const args = [
+      "--disable-blink-features=AutomationControlled",
+      "--disable-webgl",
+      "--disable-webrtc",
+      "--disable-dev-shm-usage",
+      "--disable-accelerated-2d-canvas",
+      "--disable-dev-shm-usage",
+      "--no-sandbox",
+      "--disable-setuid-sandbox",
+      "--window-size=375,667",
+      "--proxy-server=http://brd.superproxy.io:22225",
+    ];
 
     const browser = await puppeteer.launch({
       executablePath: executablePath(),
       headless: true,
-      args: ["--no-sandbox", "--disable-setuid-sandbox"],
+      args,
     });
     const retry = 3;
     const scrapedData: CSVData[] = [];
