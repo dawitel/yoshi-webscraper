@@ -28,14 +28,14 @@ const formatCurrentDate = (): string => {
 
   // Format the date string
   const formattedDate = date.toLocaleString('en-US', options).toUpperCase() + " JST"; // Append 'JST'
-  
+
   // Replace spaces and colons for a valid filename
   return formattedDate.replace(/[: ]/g, "-");
 };
 
 export const saveData = (data: CSVData[]) => {
   const folderPath = path.join(process.cwd(), "final_data");
-  
+
   // Create the folder if it doesn't exist
   if (!fs.existsSync(folderPath)) {
     fs.mkdirSync(folderPath);
@@ -55,21 +55,50 @@ export const saveData = (data: CSVData[]) => {
   cleanOldData(folderPath, 10);
 };
 
+// Helper function to save file locally
+export async function saveFileLocally(file: File, folderPath: string, filePath: string): Promise<void> {
+  return new Promise<void>((resolve, reject) => {
+    const fileStream = fs.createWriteStream(filePath);
+    const reader = file.stream().getReader();
+    const writer = fileStream;
+
+    (async function pipeStream() {
+      try {
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) {
+            writer.end();
+            resolve();
+            break;
+          }
+          writer.write(value);
+          // Keep only the most recent 10 datasets
+          cleanOldData(folderPath, 10);
+        }
+      } catch (error) {
+        writer.end();
+        reject(error);
+      }
+    })();
+  });
+
+}
+
+
 // Function to clean old data, keeping only the most recent `keepLimit` files
 const cleanOldData = (folderPath: string, keepLimit: number) => {
   // Read all the files in the folder
+  const limit = keepLimit - 1;
   const files = fs
     .readdirSync(folderPath)
-    .filter((file) => file.startsWith("final_data") && file.endsWith(".csv")) // Only target csv files
     .map((file) => ({
       name: file,
       time: fs.statSync(path.join(folderPath, file)).mtime.getTime(), // Get the modification time
     }))
     .sort((a, b) => b.time - a.time); // Sort by time in descending order (most recent first)
-
   // If there are more than `keepLimit` files, delete the oldest ones
-  if (files.length > keepLimit) {
-    const filesToDelete = files.slice(keepLimit); // Get the files to delete
+  if (files.length > limit) {
+    const filesToDelete = files.slice(limit); // Get the files to delete
     filesToDelete.forEach((file) => {
       const filePath = path.join(folderPath, file.name);
       fs.unlinkSync(filePath); // Delete the file

@@ -5,6 +5,7 @@ import axios from "axios";
 import { validateData } from "@/lib/helpers";
 import Papa from "papaparse";
 import logger from "@/lib/logger";
+import { saveFileLocally } from "@/lib/parser";
 
 const uploadDir = path.join(process.cwd(), "uploads");
 
@@ -48,7 +49,7 @@ export async function POST(req: Request): Promise<NextResponse> {
     }
 
     const filePath = path.join(uploadDir, file.name);
-    await saveFileLocally(file, filePath);
+    await saveFileLocally(file, uploadDir, filePath);
 
     logger.info(`Saved CSV file to ${filePath}`);
 
@@ -85,30 +86,4 @@ export async function POST(req: Request): Promise<NextResponse> {
       { status: 500 }
     );
   }
-}
-
-// Helper function to save file locally
-async function saveFileLocally(file: File, filePath: string): Promise<void> {
-  return new Promise<void>((resolve, reject) => {
-    const fileStream = fs.createWriteStream(filePath);
-    const reader = file.stream().getReader();
-    const writer = fileStream;
-
-    (async function pipeStream() {
-      try {
-        while (true) {
-          const { done, value } = await reader.read();
-          if (done) {
-            writer.end();
-            resolve();
-            break;
-          }
-          writer.write(value);
-        }
-      } catch (error) {
-        writer.end();
-        reject(error);
-      }
-    })();
-  });
 }
