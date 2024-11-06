@@ -5,12 +5,17 @@ Scrapping the rank of each item of a specific store
 
 # Contents
 
+- [Diagram](#Diagram)
 - [Specification](#Specification)
 - [Branch](#branch)
 - [Installation](#installation)
 - [Development setup](#development-setup)
 - [External Tools](#external-tools)
 - [Reference](#reference)
+
+# Diagram
+
+![Diagram eBay Rank Checker](https://github.com/user-attachments/assets/6e2a244a-797c-4f04-9215-fa84d55d2eff)
 
 # Specification
 
@@ -91,75 +96,75 @@ npm run tsx [filename]
 # Directory Structure
 
 ├── public
-│   ├── next.svg
-│   ├── vercel.svg
+│ ├── next.svg
+│ ├── vercel.svg
 └── src
-    ├── app
-    │   ├── api
-    │   │   └── v1
-    │   │       ├── auth
-    │   │       │   ├── check
-    │   │       │   │   ├── route.ts
-    │   │       │   ├── login
-    │   │       │   │   ├── route.ts
-    │   │       │   └── logout
-    │   │       │       ├── route.ts
-    │   │       ├── scrape
-    │   │       │   ├── route.ts
-    │   │       ├── send-email
-    │   │       │   ├── route.ts
-    │   │       └── upload
-    │   │           └── __tests__
-    │   │               └── __mocks__
-    │   │                   ├── test-file.csv
-    │   │               ├── upload.test.ts
-    │   │           ├── route.ts
-    │   └── dashboard
-    │       ├── page.tsx
-    │   ├── favicon.ico
-    │   ├── globals.css
-    │   ├── layout.tsx
-    │   ├── page.tsx
-    ├── components
-    │   └── ui
-    │       ├── alert-dialog.tsx
-    │       ├── alert.tsx
-    │       ├── avatar.tsx
-    │       ├── button.tsx
-    │       ├── card.tsx
-    │       ├── carousel.tsx
-    │       ├── dropdown-menu.tsx
-    │       ├── form.tsx
-    │       ├── input.tsx
-    │       ├── label.tsx
-    │       ├── separator.tsx
-    │       ├── toast.tsx
-    │       ├── toaster.tsx
-    │       ├── toggle-group.tsx
-    │       ├── toggle.tsx
-    │       ├── tooltip.tsx
-    │   ├── email-templates.ts
-    │   ├── fileupload.tsx
-    │   ├── login.tsx
-    │   ├── theme-toggle.tsx
-    │   ├── user-button.tsx
-    ├── hooks
-    │   ├── theme-provider.tsx
-    │   ├── use-toast.ts
-    ├── lib
-    │   └── scraper
-    │       ├── scraper-manager.ts
-    │       ├── scraper-worker.ts
-    │       ├── scraper.ts
-    │   ├── emailer-v2.ts
-    │   ├── helpers.ts
-    │   ├── logger.ts
-    │   ├── parser.ts
-    │   ├── utils.ts
-    └── types
-        ├── currency.ts
-        ├── interface.ts
-        ├── response.ts
+├── app
+│ ├── api
+│ │ └── v1
+│ │ ├── auth
+│ │ │ ├── check
+│ │ │ │ ├── route.ts
+│ │ │ ├── login
+│ │ │ │ ├── route.ts
+│ │ │ └── logout
+│ │ │ ├── route.ts
+│ │ ├── scrape
+│ │ │ ├── route.ts
+│ │ ├── send-email
+│ │ │ ├── route.ts
+│ │ └── upload
+│ │ └── **tests**
+│ │ └── **mocks**
+│ │ ├── test-file.csv
+│ │ ├── upload.test.ts
+│ │ ├── route.ts
+│ └── dashboard
+│ ├── page.tsx
+│ ├── favicon.ico
+│ ├── globals.css
+│ ├── layout.tsx
+│ ├── page.tsx
+├── components
+│ └── ui
+│ ├── alert-dialog.tsx
+│ ├── alert.tsx
+│ ├── avatar.tsx
+│ ├── button.tsx
+│ ├── card.tsx
+│ ├── carousel.tsx
+│ ├── dropdown-menu.tsx
+│ ├── form.tsx
+│ ├── input.tsx
+│ ├── label.tsx
+│ ├── separator.tsx
+│ ├── toast.tsx
+│ ├── toaster.tsx
+│ ├── toggle-group.tsx
+│ ├── toggle.tsx
+│ ├── tooltip.tsx
+│ ├── email-templates.ts
+│ ├── fileupload.tsx
+│ ├── login.tsx
+│ ├── theme-toggle.tsx
+│ ├── user-button.tsx
+├── hooks
+│ ├── theme-provider.tsx
+│ ├── use-toast.ts
+├── lib
+│ └── scraper
+│ ├── scraper-manager.ts
+│ ├── scraper-worker.ts
+│ ├── scraper.ts
+│ ├── emailer-v2.ts
+│ ├── helpers.ts
+│ ├── logger.ts
+│ ├── parser.ts
+│ ├── utils.ts
+└── types
+├── currency.ts
+├── interface.ts
+├── response.ts
 ├── .dockerignore
 ├── .env
 ├── .env.example

@@ -4,27 +4,28 @@
 
 ## Modification
 
+Me: Add Uploaded timestamp to uploaded files
+-> const filePath = path.join(uploadDir, file.name);
+
+Me: Update the file name to save
+-> export const saveData = (data: CSVData[]) => {
+
+Me: Send a file with the file name which is saved locally
+
+Me: change attachment name to the outputname in emailer-v2.ts
+
+Dawit: Clean up to 10 input data
+
+Dawit: Is it better to use a Global State manager to manage the state of user input?
+
+Dawit: Define Types for const emailResponse = await EmailerV2({
+
+Dawit: removing unnecessary code (code isn't used)
+
 ## Questions
 
-- What's this?
-  /\*\*
+What is this doing?
+-> const recentFiles = files.slice(-10).map((file) => ({
 
-*
-* @param ebayUrl string
-* @param storeName string
-* @param retries int
-* @param Identity string
-* @param browser Browser => a pupetteer browser instance
-* @returns data
-
-\*/
-
-- What's relevantListings doing and why do we need this?
-
-- Is await page.mouse.move(200, 200); random?
-
-- What is stream?
-
-- Why do we need to make a temporary csv file to send an email?
-
-- How can I remove logs from git tracking
+What's this doing?
+-> const { done, value } = await reader.read();

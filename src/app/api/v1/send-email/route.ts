@@ -4,7 +4,7 @@ import { EmailerV2 } from "@/lib/emailer-v2"; // Adjust this path to where your 
 // Utility function for validating input
 const validateRequestBody = (body: any) => {
   const { data, to } = body;
-  if (!data ) {
+  if (!data) {
     return { error: "Missing required fields: 'data'" };
   }
 

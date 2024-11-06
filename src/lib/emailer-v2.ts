@@ -46,7 +46,7 @@ export const EmailerV2 = async <T>({
   ErrorTo,
   Subject = "Here is your requested data", // Default subject
   From = process.env.SENDER_EMAIL, // Default sender
-  To, // Default recipient
+  To, // Input email address
   FirstName = "Yoshi", // Default first name for email template
   AttachmentsName = "final-data.csv", // Default name for attachments
   ErrorSubject = "🔴 Your last scraping request has failed", // Default error subject

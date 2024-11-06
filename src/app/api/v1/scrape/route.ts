@@ -35,8 +35,10 @@ export async function POST(req: Request) {
       headless: true,
       args: ["--no-sandbox", "--disable-setuid-sandbox"],
     });
+
     const retry = 3;
     const scrapedData: CSVData[] = [];
+
     for (const item of parsedData) {
       const ebayUrl = item["eBay URL"];
       const identity = item["Identity"];
