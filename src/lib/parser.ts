@@ -14,14 +14,17 @@ export const Parser = (filePath: string): any => {
 };
 
 // Function to format the current date and time in Japanese time zone
-const formatCurrentDate = (): string => {
+export const formatCurrentDate = (): string => {
   const date = new Date();
 
   // Set options for Japanese timezone (JST) with full weekday name
   const options: Intl.DateTimeFormatOptions = {
-    weekday: 'long', // Full weekday name
+    year: "numeric",   // 2024
+    month: "numeric",  // 11
+    day: "numeric",    // 7
     hour: 'numeric',   // '9'
     minute: 'numeric', // '00'
+    second: 'numeric',
     hour12: true,      // 12-hour format
     timeZone: 'Asia/Tokyo' // Set timezone to Asia/Tokyo (JST)
   };
@@ -30,23 +33,11 @@ const formatCurrentDate = (): string => {
   const formattedDate = date.toLocaleString('en-US', options).toUpperCase() + " JST"; // Append 'JST'
 
   // Replace spaces and colons for a valid filename
-  return formattedDate.replace(/[: ]/g, "-");
+  return formattedDate.replace(/[: ]/g, "-").replace(/[/]/g, "-").replace(/[,]/g, "");
 };
 
-export const saveData = (data: CSVData[]) => {
-  const folderPath = path.join(process.cwd(), "final_data");
-
-  // Create the folder if it doesn't exist
-  if (!fs.existsSync(folderPath)) {
-    fs.mkdirSync(folderPath);
-  }
-
+export const saveOutputFileLocally = (data: CSVData[], folderPath: string, filePath: string) => {
   const finalData = Papa.unparse(data);
-
-  // Generate a dynamic file name using the current formatted date
-  const formattedDate = formatCurrentDate(); // Get formatted date
-  const fileName = `${formattedDate}.csv`; // No prefix, just the formatted date
-  const filePath = path.join(folderPath, fileName);
 
   // Write the data to the file
   fs.writeFileSync(filePath, finalData);
@@ -56,7 +47,7 @@ export const saveData = (data: CSVData[]) => {
 };
 
 // Helper function to save file locally
-export async function saveFileLocally(file: File, folderPath: string, filePath: string): Promise<void> {
+export async function saveInputFileLocally(file: File, folderPath: string, filePath: string): Promise<void> {
   return new Promise<void>((resolve, reject) => {
     const fileStream = fs.createWriteStream(filePath);
     const reader = file.stream().getReader();

@@ -5,9 +5,11 @@ import { NextResponse } from "next/server";
 import axios from "axios";
 import { scraper } from "@/lib/scraper";
 import logger from "@/lib/logger";
-import { Parser, saveData } from "@/lib/parser";
+import { formatCurrentDate, Parser, saveOutputFileLocally } from "@/lib/parser";
 import { EmailerV2 } from "@/lib/emailer-v2";
 import { CSVData, EmailerProps } from "@/types/interface";
+import path from "path";
+import fs from "fs";
 
 puppeteer.use(StealthPlugin());
 
@@ -17,9 +19,9 @@ let errArgs: EmailerProps = {};
 export async function POST(req: Request) {
   logger.info("Received a scraping request...");
   try {
-    const { filePath, email, storeName } = await req.json();
+    const { filePath: inputFilePath, email, storeName } = await req.json();
     logger.info(
-      `Email: ${email}, Store Name: ${storeName}, File Path: ${filePath}`
+      `Email: ${email}, Store Name: ${storeName}, File Path: ${inputFilePath}`
     );
 
     errArgs = {
@@ -27,7 +29,7 @@ export async function POST(req: Request) {
       ErrorTo: email,
     };
 
-    const parsedData = Parser(filePath);
+    const parsedData = Parser(inputFilePath);
     console.log(`Parsed data: `, parsedData);
 
     const browser = await puppeteer.launch({
@@ -58,15 +60,29 @@ export async function POST(req: Request) {
     await browser.close();
     console.log(`Scraped data: `, scrapedData);
 
-    saveData(scrapedData);
+    //$ Saving an output file locally - start
+    const folderPath = path.join(process.cwd(), "final_data");
+
+    // Create the folder if it doesn't exist
+    if (!fs.existsSync(folderPath)) {
+      fs.mkdirSync(folderPath);
+    }
+
+    // Generate a dynamic file name using the current formatted date
+    const formattedDate = formatCurrentDate(); // Get formatted date
+    const fileName = `output_${formattedDate}.csv`; // No prefix, just the formatted date
+    const outputFilePath = path.join(folderPath, fileName);
+
+    saveOutputFileLocally(scrapedData, folderPath, outputFilePath);
     logger.info("Scraped data has been persisted locally");
+    //$ Saving an output file locally - end
 
     try {
       logger.info("Sending the scraped data to the api/v1/send endpoint...");
       const url = "http://localhost:3000/api/v1/send-email";
       const response = await axios.post(
         url,
-        { data: scrapedData, to: email },
+        { data: scrapedData, to: email, fileName },
         {
           headers: {
             "Content-Type": "application/json",

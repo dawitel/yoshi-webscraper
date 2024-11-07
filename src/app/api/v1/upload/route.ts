@@ -5,7 +5,8 @@ import axios from "axios";
 import { validateData } from "@/lib/helpers";
 import Papa from "papaparse";
 import logger from "@/lib/logger";
-import { saveFileLocally } from "@/lib/parser";
+import { formatCurrentDate, saveInputFileLocally } from "@/lib/parser";
+import { init } from "next/dist/compiled/webpack/webpack";
 
 const uploadDir = path.join(process.cwd(), "uploads");
 
@@ -48,8 +49,9 @@ export async function POST(req: Request): Promise<NextResponse> {
       fs.mkdirSync(uploadDir);
     }
 
-    const filePath = path.join(uploadDir, file.name);
-    await saveFileLocally(file, uploadDir, filePath);
+    const fileName = `input_${formatCurrentDate()}.csv`
+    const filePath = path.join(uploadDir, fileName);
+    await saveInputFileLocally(file, uploadDir, filePath);
 
     logger.info(`Saved CSV file to ${filePath}`);
 
