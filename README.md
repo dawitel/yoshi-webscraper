@@ -11,7 +11,9 @@ Scrapping the rank of each item of a specific store
 - [Installation](#installation)
 - [Development setup](#development-setup)
 - [External Tools](#external-tools)
+- [Future Work](#future-work)
 - [Reference](#reference)
+- [Directory Structure](#directory-structure)
 
 # Diagram
 
@@ -57,7 +59,7 @@ Run typescript compiler from npm script
 npm run tsx [filename]
 ```
 
-# External tools
+# External Tools
 
 ### Proxy
 
@@ -74,6 +76,10 @@ npm run tsx [filename]
 ### Hosting
 
 - [Render](https://render.com/)
+
+# Future Work
+
+- Using the same time for input.csv and output.csv
 
 # Reference
 
@@ -95,6 +101,7 @@ npm run tsx [filename]
 
 # Directory Structure
 
+```
 ├── public
 │ ├── next.svg
 │ ├── vercel.svg
@@ -183,4 +190,4 @@ npm run tsx [filename]
 ├── tailwind.config.ts
 ├── tsconfig.json
 
-# End Directory Structure
+```
