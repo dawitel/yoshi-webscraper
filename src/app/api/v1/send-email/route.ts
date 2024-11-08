@@ -3,13 +3,16 @@ import { EmailerV2 } from "@/lib/emailer-v2"; // Adjust this path to where your 
 
 // Utility function for validating input
 const validateRequestBody = (body: any) => {
-  const { data, to } = body;
-  if (!data ) {
+  const { data, to, fileName } = body;
+  if (!data) {
     return { error: "Missing required fields: 'data'" };
   }
 
   if (!to) {
     return { error: "Missing required fields: 'to'" };
+  }
+  if (!fileName) {
+    return { error: "Missing required fields: 'fileName'" };
   }
   return null;
 };
@@ -34,14 +37,15 @@ export async function POST(req: Request) {
       return NextResponse.json(validationError, { status: 400 });
     }
 
-    const { data, to } = body;
+    const { data, to, fileName } = body;
 
     // Call the Emailer function
     const emailResponse = await EmailerV2({
       Data: data,
       To: to,
       Subject: "Here's your requested data",
-      FirstName: "", // Optional, can be personalized later
+      FirstName: "Yoshi", // Optional, can be personalized later
+      AttachmentsName: fileName
     });
 
     // Handle any error from the Emailer function

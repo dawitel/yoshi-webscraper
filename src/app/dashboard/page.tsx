@@ -8,11 +8,7 @@ import { ToastAction } from "@/components/ui/toast";
 import { ModeToggle } from "@/components/theme-toggle";
 import { UserButton } from "@/components/user-button";
 import ScrapingHistoryViewer from "@/components/history";
-
-interface FileData {
-  fileName: string;
-  downloadUrl: string;
-}
+import { FileData } from "@/types/interface";
 
 export default function Dashboard() {
   const { toast } = useToast();
