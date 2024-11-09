@@ -81,15 +81,15 @@ export const scraper = async (
 
     logger.info(`Scraping eBay URL: ${ebayUrl}`);
 
-    await page.authenticate({
-      username: brightDataUserName,
-      password: brightDataUserPassword,
-    });
+    // await page.authenticate({
+    //   username: brightDataUserName,
+    //   password: brightDataUserPassword,
+    // });
     
-    // const encodedUrl = encodeURIComponent(ebayUrl);
-    // const url = `https://api.scrape.do?token=${token}&url=${encodedUrl}&geoCode=${geoCode}`;
+    const encodedUrl = encodeURIComponent(ebayUrl);
+    const url = `https://api.scrape.do?token=${token}&url=${encodedUrl}&geoCode=${geoCode}`;
 
-    await page.goto(ebayUrl, { waitUntil: "networkidle0", timeout: 100000 });
+    await page.goto(url, { waitUntil: "networkidle0", timeout: 100000 });
 
     const rank = await getStoreRank(page, storeName);
     const currency = await getCurrency(page);

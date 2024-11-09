@@ -19,24 +19,32 @@ export const formatCurrentDate = (): string => {
 
   // Set options for Japanese timezone (JST) with full weekday name
   const options: Intl.DateTimeFormatOptions = {
-    year: "numeric",   // 2024
-    month: "numeric",  // 11
-    day: "numeric",    // 7
-    hour: 'numeric',   // '9'
-    minute: 'numeric', // '00'
-    second: 'numeric',
-    hour12: true,      // 12-hour format
-    timeZone: 'Asia/Tokyo' // Set timezone to Asia/Tokyo (JST)
+    year: "numeric", // 2024
+    month: "numeric", // 11
+    day: "numeric", // 7
+    hour: "numeric", // '9'
+    minute: "numeric", // '00'
+    second: "numeric",
+    hour12: true, // 12-hour format
+    timeZone: "Asia/Tokyo", // Set timezone to Asia/Tokyo (JST)
   };
 
   // Format the date string
-  const formattedDate = date.toLocaleString('en-US', options).toUpperCase() + " JST"; // Append 'JST'
+  const formattedDate =
+    date.toLocaleString("en-US", options).toUpperCase() + " JST"; // Append 'JST'
 
   // Replace spaces and colons for a valid filename
-  return formattedDate.replace(/[: ]/g, "-").replace(/[/]/g, "-").replace(/[,]/g, "");
+  return formattedDate
+    .replace(/[: ]/g, "-")
+    .replace(/[/]/g, "-")
+    .replace(/[,]/g, "");
 };
 
-export const saveOutputFileLocally = (data: CSVData[], folderPath: string, filePath: string) => {
+export const saveOutputFileLocally = (
+  data: CSVData[],
+  folderPath: string,
+  filePath: string
+) => {
   const finalData = Papa.unparse(data);
 
   // Write the data to the file
@@ -47,7 +55,11 @@ export const saveOutputFileLocally = (data: CSVData[], folderPath: string, fileP
 };
 
 // Helper function to save file locally
-export async function saveInputFileLocally(file: File, folderPath: string, filePath: string): Promise<void> {
+export async function saveInputFileLocally(
+  file: File,
+  folderPath: string,
+  filePath: string
+): Promise<void> {
   return new Promise<void>((resolve, reject) => {
     const fileStream = fs.createWriteStream(filePath);
     const reader = file.stream().getReader();
@@ -72,9 +84,7 @@ export async function saveInputFileLocally(file: File, folderPath: string, fileP
       }
     })();
   });
-
 }
-
 
 // Function to clean old data, keeping only the most recent `keepLimit` files
 const cleanOldData = (folderPath: string, keepLimit: number) => {

@@ -1,23 +1,7 @@
 import { NextResponse } from "next/server";
 import { EmailerV2 } from "@/lib/emailer-v2"; // Adjust this path to where your Emailer function is located
+import { validateRequestBody } from "@/lib/helpers";
 
-// Utility function for validating input
-const validateRequestBody = (body: any) => {
-  const { data, to, fileName } = body;
-  if (!data) {
-    return { error: "Missing required fields: 'data'" };
-  }
-
-  if (!to) {
-    return { error: "Missing required fields: 'to'" };
-  }
-  if (!fileName) {
-    return { error: "Missing required fields: 'fileName'" };
-  }
-  return null;
-};
-
-// Define the POST request handler for the /api/send-email route
 export async function POST(req: Request) {
   try {
     // Ensure request has a body before parsing
@@ -45,7 +29,7 @@ export async function POST(req: Request) {
       To: to,
       Subject: "Here's your requested data",
       FirstName: "Yoshi", // Optional, can be personalized later
-      AttachmentsName: fileName
+      AttachmentsName: fileName,
     });
 
     // Handle any error from the Emailer function
