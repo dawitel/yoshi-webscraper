@@ -45,3 +45,5 @@ final_data
 
 logs
 *.log
+logs/info.log
+logs/error.log
