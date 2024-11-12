@@ -9,7 +9,7 @@ import { CSVData, EmailerProps } from "@/types/interface";
 import { saveDataToCSV, sendErrorEmail, sendScrapedDataByEmail } from "@/lib/helpers";
 
 puppeteer.use(StealthPlugin());
-const brightDataProxyServer = process.env.BRIGHT_DATA_PROXY_SERVER;
+// const brightDataProxyServer = process.env.BRIGHT_DATA_PROXY_SERVER;
 
 export async function POST(req: Request) {
   logger.info("Received a scraping request...");
@@ -22,6 +22,7 @@ export async function POST(req: Request) {
       storeName,
     } = await req.json();
     email = userEmail;
+
     logger.info(
       `Email: ${email}, Store Name: ${storeName}, File Path: ${inputFilePath}`
     );
@@ -63,11 +64,12 @@ export async function POST(req: Request) {
           browser
         );
         scrapedData.push(data);
-        logger.info(`Scraped data for identity ${identity}`);
+        // logger.info(`Scraped data for identity : ${identity}`);
 
         // Introduce a random delay between requests
-        const delay = Math.floor(Math.random() * (15000 - 5000) + 5000);
+        const delay = Math.floor(Math.random() * 3000 + 2000); // 2 to 5 seconds
         await new Promise((resolve) => setTimeout(resolve, delay));
+
       } catch (scrapingError) {
         logger.error(`Failed to scrape ${ebayUrl}:`, scrapingError);
       }
@@ -104,4 +106,3 @@ export async function POST(req: Request) {
     );
   }
 }
-

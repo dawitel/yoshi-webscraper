@@ -12,7 +12,6 @@ if (!fs.existsSync(uploadDir)) {
   fs.mkdirSync(uploadDir);
 }
 
-
 /**
  * POST Request Handler for File Upload
  */
@@ -47,7 +46,7 @@ export async function POST(req: Request): Promise<NextResponse> {
     const uploadResponse = NextResponse.json({
       message: "File uploaded successfully",
     });
-    TriggerScraping(filePath, email, storeName);
+    await TriggerScraping(filePath, email, storeName);
 
     return uploadResponse;
   } catch (error) {

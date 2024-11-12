@@ -6,41 +6,33 @@ import axios from "axios";
 import logger from "./logger";
 import { EmailerV2 } from "./emailer-v2";
 
+
+//$ Scrapping - start
 /**
- * @description validateData takes in an array of a CSVData object and validates it againist the requirements
- * @param data CSVData
- * @returns
+ * Handle asynchronous scraping request
  */
-export const validateData = (data: CSVData[]) => {
-  const eBayUrlRegex = /^https:\/\/www\.ebay\.com\/sch\/i\.html/;
+export const TriggerScraping = async (
+  filePath: string,
+  email: string,
+  storeName: string
+) => {
+  try {
+    logger.info("Triggering scraping API...");
+    const url = "http://localhost:3000/api/v1/scrape";
+    const response = await axios.post(url, { filePath, email, storeName });
 
-  let invalidUrlCount = 0;
-  let incompleteDataCount = 0;
-  const invalidDataPositions: number[] = [];
-
-  data.forEach((item, index) => {
-    if (index === 0) return;
-
-    const { Identity, eBayURL, Currency, Rank } = item;
-
-    // Check if any of the fields are missing
-    if (!Identity || !eBayURL || !Currency || !Rank) {
-      incompleteDataCount++;
-      invalidDataPositions.push(index);
+    if (response.status !== 200) {
+      logger.error(
+        `Failed to trigger scraping API, status: ${response.status}`
+      );
+    } else {
+      logger.info("Scraping API triggered successfully");
     }
-
-    // Check if the eBay URL does not match the regex
-    if (!eBayUrlRegex.test(eBayURL)) {
-      invalidUrlCount++;
-    }
-  });
-
-  return {
-    invalidUrlCount,
-    incompleteDataCount,
-    invalidDataPositions,
-  };
+  } catch (error) {
+    logger.error("Error triggering scraping API:", error);
+  }
 };
+
 
 /**
  * @description this function takes in the symbol of a currency and maps it to the currncy code of the currnecy it represents
@@ -105,24 +97,10 @@ export const getCurrencyCode = (symbol: string): string => {
   // Check if the symbol exists in the map, otherwise return USD
   return currencyMap[symbol] || "USD";
 };
+//$ Scrapping - end
 
-/**
- * @description getRandomProxy takes an array of proxy URLs and returns a random proxy url fro ip rotation
- * @param proxyURLs array of proxy urls as array
- * @returns proxyURL string
- */
-export const getRandomProxy = (proxyURLs: string[]): string => {
-  if (proxyURLs.length === 0) {
-    return ""; // Handle case where the array is empty
-  }
 
-  const randomArray = new Uint32Array(1);
-  crypto.getRandomValues(randomArray);
-
-  const randomIndex = randomArray[0] % proxyURLs.length;
-  return proxyURLs[randomIndex];
-};
-
+//$ Emailing - start
 // Utility function for validating input
 export const validateRequestBody = (body: any) => {
   const { data, to, fileName } = body;
@@ -139,17 +117,6 @@ export const validateRequestBody = (body: any) => {
   return null;
 };
 
-// Helper function to save data to a CSV file
-export function saveDataToCSV(data: CSVData[]): string {
-  const folderPath = path.join(process.cwd(), "final_data");
-  if (!fs.existsSync(folderPath)) fs.mkdirSync(folderPath);
-
-  const fileName = `output_${formatCurrentDate()}.csv`;
-  const outputFilePath = path.join(folderPath, fileName);
-  saveOutputFileLocally(data, folderPath, outputFilePath);
-
-  return outputFilePath;
-}
 
 // Helper function to send email with the scraped data file
 export async function sendScrapedDataByEmail(
@@ -186,7 +153,21 @@ export async function sendErrorEmail(email: string) {
     logger.error("Failed to send error notification email:", emailError);
   }
 }
+//$ Emailing - end
 
+
+//$ I/O - start
+// Helper function to save data to a CSV file
+export function saveDataToCSV(data: CSVData[]): string {
+  const folderPath = path.join(process.cwd(), "final_data");
+  if (!fs.existsSync(folderPath)) fs.mkdirSync(folderPath);
+
+  const fileName = `output_${formatCurrentDate()}.csv`;
+  const outputFilePath = path.join(folderPath, fileName);
+  saveOutputFileLocally(data, folderPath, outputFilePath);
+
+  return outputFilePath;
+}
 
 /**
  * Validate the input fields and return error response if invalid
@@ -201,28 +182,4 @@ export const validateUploadInput = (
   if (!storeName) return { error: true, message: "No store name submitted" };
   return { error: false, message: "Validated" };
 };
-
-/**
- * Handle asynchronous scraping request
- */
-export const TriggerScraping = async (
-  filePath: string,
-  email: string,
-  storeName: string
-) => {
-  try {
-    logger.info("Triggering scraping API...");
-    const url = "http://localhost:3000/api/v1/scrape";
-    const response = await axios.post(url, { filePath, email, storeName });
-
-    if (response.status !== 200) {
-      logger.error(
-        `Failed to trigger scraping API, status: ${response.status}`
-      );
-    } else {
-      logger.info("Scraping API triggered successfully");
-    }
-  } catch (error) {
-    logger.error("Error triggering scraping API:", error);
-  }
-};
+//$ I/O - end

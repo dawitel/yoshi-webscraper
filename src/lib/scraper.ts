@@ -7,8 +7,8 @@ import { CSVData } from "@/types/interface";
 const token = process.env.SCRAPE_DOT_DO_API_TOKEN;
 const geoCode = "us";
 
-const brightDataUserName = process.env.BRIGHT_DATA_USER_NAME || "";
-const brightDataUserPassword = process.env.BRIGHT_DATA_USER_PASSWORD || "";
+// const brightDataUserName = process.env.BRIGHT_DATA_USER_NAME || "";
+// const brightDataUserPassword = process.env.BRIGHT_DATA_USER_PASSWORD || "";
 
 const getStoreRank = async (page: Page, storeName: string): Promise<number> => {
   const allListings = await page.$$("ul.srp-results.srp-list.clearfix > li");
@@ -59,9 +59,9 @@ const getCurrency = async (page: Page): Promise<string> => {
     "span.x-textrange__label.width-1.currency-label span",
     (el) => el?.textContent?.trim().charAt(0) || "$"
   );
-  logger.info(
-    "actual Currency symbol found for this page is: " + currencySymbol
-  );
+  // logger.info(
+  //   "actual Currency symbol found for this page is: " + currencySymbol
+  // );
   return getCurrencyCode(currencySymbol);
 };
 
@@ -72,20 +72,20 @@ export const scraper = async (
   Identity: string,
   browser: Browser
 ): Promise<CSVData> => {
-  logger.info("Received a scraping request, proceeding...");
+  // logger.info("Received a scraping request, proceeding...");
   const page = await browser.newPage();
   const agent = new UserAgent();
 
   try {
     await page.setUserAgent(agent.toString());
 
-    logger.info(`Scraping eBay URL: ${ebayUrl}`);
+    // logger.info(`Scraping eBay URL: ${ebayUrl}`);
 
     // await page.authenticate({
     //   username: brightDataUserName,
     //   password: brightDataUserPassword,
     // });
-    
+
     const encodedUrl = encodeURIComponent(ebayUrl);
     const url = `https://api.scrape.do?token=${token}&url=${encodedUrl}&geoCode=${geoCode}`;
 
@@ -104,11 +104,11 @@ export const scraper = async (
     await page.close();
 
     logger.info(
-      `✅ Finished scraping eBay URL: "${ebayUrl}" - Rank: ${rank}, Currency: "${currency}"`
+      `[✅ Finished scraping] Identity: ${Identity} | Rank: ${rank} | Currency: ${currency} | URL: ${ebayUrl}`
     );
     return csvData;
   } catch (error) {
-    logger.error(`Error scraping URL ${ebayUrl}: ${error}`);
+    logger.error(`[🚫 Error] Identity: ${Identity} | Error: ${error}`);
     await page.close();
 
     if (retries > 0) {
