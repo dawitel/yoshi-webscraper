@@ -97,6 +97,25 @@ export const getCurrencyCode = (symbol: string): string => {
   // Check if the symbol exists in the map, otherwise return USD
   return currencyMap[symbol] || "USD";
 };
+
+// Function to calculate the median of a list of numbers
+export const calculateMedian = (numericValues: number[]): number => {
+
+  // Sort the numbers in ascending order
+  const sortedNumbers = numericValues.sort((a, b) => a - b);
+  const middle = Math.floor(sortedNumbers.length / 2);
+
+  if (sortedNumbers.length === 0) {
+    // Return NaN if no valid numbers are provided
+    return NaN;
+  } else if (sortedNumbers.length % 2 === 0) {
+    // Even length: return the average of the two middle values
+    return (sortedNumbers[middle - 1] + sortedNumbers[middle]) / 2;
+  } else {
+    // Odd length: return the middle value
+    return sortedNumbers[middle];
+  }
+};
 //$ Scrapping - end
 
 

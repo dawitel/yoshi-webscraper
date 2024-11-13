@@ -1,5 +1,5 @@
 import { Browser, Page } from "puppeteer";
-import { getCurrencyCode } from "@/lib/helpers";
+import { calculateMedian, getCurrencyCode } from "@/lib/helpers";
 import UserAgent from "user-agents";
 import logger from "./logger";
 import { CSVData } from "@/types/interface";
@@ -13,7 +13,8 @@ const geoCode = "us";
 interface ScrapedData {
   count: number
   rank: number,
-  prices: string
+  prices: string,
+  median: number
 }
 
 const getRank = async (page: Page, listings: any[], storeName: string): Promise<number> => {
@@ -60,6 +61,7 @@ const getScrapedGlobalData = async (page: Page, storeName: string): Promise<Scra
   let globalRank = 0;
   let listings = [];
   let globalPrices: number[] = [];
+  let globalMedian = 0;
 
   // Get all the elements
   const allListings = await page.$$("ul.srp-results.srp-list.clearfix > li");
@@ -84,16 +86,18 @@ const getScrapedGlobalData = async (page: Page, storeName: string): Promise<Scra
 
   globalRank = await getRank(page, listings, storeName);
   globalPrices = await getPrices(page, listings)
+  const truncatedGlobalPrices = globalPrices.slice(0, 3)
+  globalMedian = calculateMedian(truncatedGlobalPrices);
 
-  return { count: listings.length, rank: globalRank, prices: globalPrices.join() }
+  return { count: listings.length, rank: globalRank, prices: globalPrices.join(), median: globalMedian }
 };
-
 
 // Get JP data
 const getScrapedJPData = async (page: Page, storeName: string): Promise<ScrapedData> => {
   let JPRank = 0;
   let JPListings = [];
   let JPPrices: number[] = [];
+  let JPMedian = 0;
   const location = "from Japan"
 
   // Get all the elements
@@ -128,8 +132,10 @@ const getScrapedJPData = async (page: Page, storeName: string): Promise<ScrapedD
 
   JPRank = await getRank(page, JPListings, storeName);
   JPPrices = await getPrices(page, JPListings)
+  const truncatedJPPrices = JPPrices.slice(0, 3)
+  JPMedian = calculateMedian(truncatedJPPrices);
 
-  return { count: JPListings.length, rank: JPRank, prices: JPPrices.join() }
+  return { count: JPListings.length, rank: JPRank, prices: JPPrices.join(), median: JPMedian }
 };
 
 const getCurrency = async (page: Page): Promise<string> => {
@@ -163,8 +169,8 @@ export const scraper = async (
 
     await page.goto(url, { waitUntil: "networkidle0", timeout: 100000 });
 
-    const { count: globalCount, rank: globalRank, prices: globalPrices } = await getScrapedGlobalData(page, storeName);
-    const { count: JPCount, rank: JPRank, prices: JPPrices } = await getScrapedJPData(page, storeName);
+    const { count: globalCount, rank: globalRank, prices: globalPrices, median: globalMedian } = await getScrapedGlobalData(page, storeName);
+    const { count: JPCount, rank: JPRank, prices: JPPrices, median: JPMedian } = await getScrapedJPData(page, storeName);
     const currency = await getCurrency(page);
 
     const csvData: CSVData = {
@@ -176,6 +182,8 @@ export const scraper = async (
       JPRank: JPRank || 0,
       GlobalPrices: globalPrices || '0',
       JPPrices: JPPrices || '0',
+      GCMP: globalMedian || 0,
+      JCMP: JPMedian || 0,
       Currency: currency,
     };
 
@@ -201,6 +209,8 @@ export const scraper = async (
       JPRank: 0,
       GlobalPrices: '0',
       JPPrices: '0',
+      GCMP: 0,
+      JCMP: 0,
       Currency: "USD",
     };
 

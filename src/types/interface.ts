@@ -7,6 +7,8 @@ export interface CSVData {
   JPRank: number;
   GlobalPrices: string;
   JPPrices: string
+  GCMP: number;
+  JCMP: number;
   Currency: string | undefined;
 }
 
