@@ -14,6 +14,7 @@ interface Info {
   rank: number,
   prices: string
 }
+
 const getRank = async (page: Page, listings: any[], storeName: string): Promise<number> => {
   let rank = 0;
   for (let index = 0; index < listings.length; index++) {
@@ -34,6 +35,23 @@ const getRank = async (page: Page, listings: any[], storeName: string): Promise<
     }
   }
   return rank;
+}
+
+const getPrices = async (page: Page, listings: any[]): Promise<number[]> => {
+  let prices: number[] = [];
+  for (let index = 0; index < listings.length; index++) {
+    const listing = listings[index];
+    const sellerPriceElement = await listing.$("span.s-item__price");
+    if (sellerPriceElement) {
+      const priceText = await page.evaluate(
+        (el) => el.textContent?.trim() || "",
+        sellerPriceElement
+      );
+      const price = Number(priceText.replace("$", ""))
+      prices.push(price)
+    }
+  }
+  return prices;
 }
 
 const getStoreRank = async (page: Page, storeName: string): Promise<number> => {
@@ -62,39 +80,8 @@ const getStoreRank = async (page: Page, storeName: string): Promise<number> => {
     }
   }
 
-  // Get Rank
-  for (let index = 0; index < listings.length; index++) {
-    const listing = listings[index];
-    const sellerNameElement = await listing.$("span.s-item__seller-info-text");
-
-    if (sellerNameElement) {
-      const sellerText = await page.evaluate(
-        (el) => el.textContent?.trim() || "",
-        sellerNameElement
-      );
-      const [matchedStoreName] = sellerText.split(" (");
-
-      if (matchedStoreName === storeName) {
-        rank = index + 1;
-        break;
-      }
-    }
-  }
-
-  // Get Prices
-  for (let index = 0; index < listings.length; index++) {
-    const listing = listings[index];
-    const sellerPriceElement = await listing.$("span.s-item__price");
-    if (sellerPriceElement) {
-      const priceText = await page.evaluate(
-        (el) => el.textContent?.trim() || "",
-        sellerPriceElement
-      );
-      const price = Number(priceText.replace("$", ""))
-      prices.push(price)
-    }
-  }
-
+  rank = await getRank(page, listings, storeName);
+  prices = await getPrices(page, listings)
 
   logger.info(`prices: ${prices.join()}`)
   return rank;
@@ -136,38 +123,8 @@ const getStoreJPRank = async (page: Page, storeName: string): Promise<number> =>
     }
   }
 
-  // Get JP Rank
-  for (let index = 0; index < JPListings.length; index++) {
-    const listing = JPListings[index];
-    const sellerNameElement = await listing.$("span.s-item__seller-info-text");
-
-    if (sellerNameElement) {
-      const sellerText = await page.evaluate(
-        (el) => el.textContent?.trim() || "",
-        sellerNameElement
-      );
-      const [matchedStoreName] = sellerText.split(" (");
-
-      if (matchedStoreName === storeName) {
-        JPRank = index + 1;
-        break;
-      }
-    }
-  }
-
-  // Get JP Prices
-  for (let index = 0; index < JPListings.length; index++) {
-    const listing = JPListings[index];
-    const sellerPriceElement = await listing.$("span.s-item__price");
-    if (sellerPriceElement) {
-      const priceText = await page.evaluate(
-        (el) => el.textContent?.trim() || "",
-        sellerPriceElement
-      );
-      const price = Number(priceText.replace("$", ""))
-      JPPrices.push(price)
-    }
-  }
+  JPRank = await getRank(page, JPListings, storeName);
+  JPPrices = await getPrices(page, JPListings)
 
   logger.info(`JPPrices: ${JPPrices.join()}`)
   return JPRank;
