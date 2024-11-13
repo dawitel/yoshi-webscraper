@@ -169,9 +169,9 @@ export const scraper = async (
     const csvData: CSVData = {
       Identity,
       eBayURL: ebayUrl,
-      Rank: globalRank || 0,
+      GlobalRank: globalRank || 0,
       JPRank: JPRank || 0,
-      Prices: globalPrices || '0',
+      GlobalPrices: globalPrices || '0',
       JPPrices: JPPrices || '0',
       Currency: currency,
     };
@@ -192,9 +192,9 @@ export const scraper = async (
     const fallbackData: CSVData = {
       Identity,
       eBayURL: ebayUrl,
-      Rank: 0,
+      GlobalRank: 0,
       JPRank: 0,
-      Prices: '0',
+      GlobalPrices: '0',
       JPPrices: '0',
       Currency: "USD",
     };

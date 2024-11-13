@@ -1,12 +1,10 @@
 export interface CSVData {
   Identity: string;
   eBayURL: string;
-  Rank: number;
+  GlobalRank: number;
   JPRank: number;
-  Prices: string;
+  GlobalPrices: string;
   JPPrices: string
-  // Prices: string;
-
   Currency: string | undefined;
 }
 
