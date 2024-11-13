@@ -28,7 +28,6 @@ const getStoreRank = async (page: Page, storeName: string): Promise<number> => {
       (className.includes("s-item__before-answer") ||
         className.includes("s-item__pl-on-bottom") ||
         className.includes("s-item s-item__before-answer s-item__pl-on-bottom"))
-      // && className.includes("s-item__location s-item__itemLocation")
     ) {
       listings.push(listing);
     }
@@ -54,11 +53,12 @@ const getStoreRank = async (page: Page, storeName: string): Promise<number> => {
 
   return rank;
 };
+
 const getStoreJPRank = async (page: Page, storeName: string): Promise<number> => {
   const allListings = await page.$$("ul.srp-results.srp-list.clearfix > li");
 
   let JPRank = 0;
-  let listings = [];
+  let JPlistings = [];
   const location = "from Japan"
 
   for (const listing of allListings) {
@@ -81,14 +81,14 @@ const getStoreJPRank = async (page: Page, storeName: string): Promise<number> =>
           sellerLocationElement
         );
         if (location === sellerLocationText) {
-          listings.push(listing);
+          JPlistings.push(listing);
         }
       }
     }
   }
 
-  for (let index = 0; index < listings.length; index++) {
-    const listing = listings[index];
+  for (let index = 0; index < JPlistings.length; index++) {
+    const listing = JPlistings[index];
     const sellerInfoElement = await listing.$("span.s-item__seller-info-text");
 
     if (sellerInfoElement) {
@@ -113,9 +113,6 @@ const getCurrency = async (page: Page): Promise<string> => {
     "span.x-textrange__label.width-1.currency-label span",
     (el) => el?.textContent?.trim().charAt(0) || "$"
   );
-  // logger.info(
-  //   "actual Currency symbol found for this page is: " + currencySymbol
-  // );
   return getCurrencyCode(currencySymbol);
 };
 
