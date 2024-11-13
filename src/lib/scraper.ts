@@ -10,7 +10,7 @@ const geoCode = "us";
 // const brightDataUserName = process.env.BRIGHT_DATA_USER_NAME || "";
 // const brightDataUserPassword = process.env.BRIGHT_DATA_USER_PASSWORD || "";
 
-interface Info {
+interface ScrapedData {
   rank: number,
   prices: string
 }
@@ -54,10 +54,11 @@ const getPrices = async (page: Page, listings: any[]): Promise<number[]> => {
   return prices;
 }
 
-const getStoreRank = async (page: Page, storeName: string): Promise<number> => {
-  let rank = 0;
+// Get global data
+const getScrapedGlobalData = async (page: Page, storeName: string): Promise<ScrapedData> => {
+  let globalRank = 0;
   let listings = [];
-  let prices: number[] = [];
+  let globalPrices: number[] = [];
 
   // Get all the elements
   const allListings = await page.$$("ul.srp-results.srp-list.clearfix > li");
@@ -80,14 +81,15 @@ const getStoreRank = async (page: Page, storeName: string): Promise<number> => {
     }
   }
 
-  rank = await getRank(page, listings, storeName);
-  prices = await getPrices(page, listings)
+  globalRank = await getRank(page, listings, storeName);
+  globalPrices = await getPrices(page, listings)
 
-  logger.info(`prices: ${prices.join()}`)
-  return rank;
+  return { rank: globalRank, prices: globalPrices.join() }
 };
 
-const getStoreJPRank = async (page: Page, storeName: string): Promise<number> => {
+
+// Get JP data
+const getScrapedJPData = async (page: Page, storeName: string): Promise<ScrapedData> => {
   let JPRank = 0;
   let JPListings = [];
   let JPPrices: number[] = [];
@@ -126,8 +128,7 @@ const getStoreJPRank = async (page: Page, storeName: string): Promise<number> =>
   JPRank = await getRank(page, JPListings, storeName);
   JPPrices = await getPrices(page, JPListings)
 
-  logger.info(`JPPrices: ${JPPrices.join()}`)
-  return JPRank;
+  return { rank: JPRank, prices: JPPrices.join() }
 };
 
 const getCurrency = async (page: Page): Promise<string> => {
@@ -145,14 +146,11 @@ export const scraper = async (
   Identity: string,
   browser: Browser
 ): Promise<CSVData> => {
-  // logger.info("Received a scraping request, proceeding...");
   const page = await browser.newPage();
   const agent = new UserAgent();
 
   try {
     await page.setUserAgent(agent.toString());
-
-    // logger.info(`Scraping eBay URL: ${ebayUrl}`);
 
     // await page.authenticate({
     //   username: brightDataUserName,
@@ -164,23 +162,23 @@ export const scraper = async (
 
     await page.goto(url, { waitUntil: "networkidle0", timeout: 100000 });
 
-    const rank = await getStoreRank(page, storeName);
-    const JPRank = await getStoreJPRank(page, storeName);
+    const { rank: globalRank, prices: globalPrices } = await getScrapedGlobalData(page, storeName);
+    const { rank: JPRank, prices: JPPrices } = await getScrapedJPData(page, storeName);
     const currency = await getCurrency(page);
 
     const csvData: CSVData = {
       Identity,
       eBayURL: ebayUrl,
-      Rank: rank || 0,
+      Rank: globalRank || 0,
       JPRank: JPRank || 0,
+      Prices: globalPrices || '0',
+      JPPrices: JPPrices || '0',
       Currency: currency,
     };
 
     await page.close();
 
-    logger.info(
-      `[✅ Finished scraping] Identity: ${Identity} | Rank: ${rank} | JPRank: ${JPRank} | Currency: ${currency} | URL: ${ebayUrl}`
-    );
+    logger.info(`[✅ Finished scraping] Identity: ${Identity} | Rank: ${globalRank} | JPRank: ${JPRank} | Currency: ${currency} | URL: ${ebayUrl}`);
     return csvData;
   } catch (error) {
     logger.error(`[🚫 Error] Identity: ${Identity} | Error: ${error}`);
@@ -196,8 +194,11 @@ export const scraper = async (
       eBayURL: ebayUrl,
       Rank: 0,
       JPRank: 0,
+      Prices: '0',
+      JPPrices: '0',
       Currency: "USD",
     };
+
     return fallbackData;
   }
 };
