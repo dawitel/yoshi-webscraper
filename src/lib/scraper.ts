@@ -10,12 +10,41 @@ const geoCode = "us";
 // const brightDataUserName = process.env.BRIGHT_DATA_USER_NAME || "";
 // const brightDataUserPassword = process.env.BRIGHT_DATA_USER_PASSWORD || "";
 
-const getStoreRank = async (page: Page, storeName: string): Promise<number> => {
-  const allListings = await page.$$("ul.srp-results.srp-list.clearfix > li");
+interface Info {
+  rank: number,
+  prices: string
+}
+const getRank = async (page: Page, listings: any[], storeName: string): Promise<number> => {
+  let rank = 0;
+  for (let index = 0; index < listings.length; index++) {
+    const listing = listings[index];
+    const sellerNameElement = await listing.$("span.s-item__seller-info-text");
 
+    if (sellerNameElement) {
+      const sellerText = await page.evaluate(
+        (el) => el.textContent?.trim() || "",
+        sellerNameElement
+      );
+      const [matchedStoreName] = sellerText.split(" (");
+
+      if (matchedStoreName === storeName) {
+        rank = index + 1;
+        break;
+      }
+    }
+  }
+  return rank;
+}
+
+const getStoreRank = async (page: Page, storeName: string): Promise<number> => {
   let rank = 0;
   let listings = [];
+  let prices: number[] = [];
 
+  // Get all the elements
+  const allListings = await page.$$("ul.srp-results.srp-list.clearfix > li");
+
+  // Extract necessary elements
   for (const listing of allListings) {
     const className = await listing.evaluate((el) => el.className);
 
@@ -33,14 +62,15 @@ const getStoreRank = async (page: Page, storeName: string): Promise<number> => {
     }
   }
 
+  // Get Rank
   for (let index = 0; index < listings.length; index++) {
     const listing = listings[index];
-    const sellerInfoElement = await listing.$("span.s-item__seller-info-text");
+    const sellerNameElement = await listing.$("span.s-item__seller-info-text");
 
-    if (sellerInfoElement) {
+    if (sellerNameElement) {
       const sellerText = await page.evaluate(
         (el) => el.textContent?.trim() || "",
-        sellerInfoElement
+        sellerNameElement
       );
       const [matchedStoreName] = sellerText.split(" (");
 
@@ -51,16 +81,35 @@ const getStoreRank = async (page: Page, storeName: string): Promise<number> => {
     }
   }
 
+  // Get Prices
+  for (let index = 0; index < listings.length; index++) {
+    const listing = listings[index];
+    const sellerPriceElement = await listing.$("span.s-item__price");
+    if (sellerPriceElement) {
+      const priceText = await page.evaluate(
+        (el) => el.textContent?.trim() || "",
+        sellerPriceElement
+      );
+      const price = Number(priceText.replace("$", ""))
+      prices.push(price)
+    }
+  }
+
+
+  logger.info(`prices: ${prices.join()}`)
   return rank;
 };
 
 const getStoreJPRank = async (page: Page, storeName: string): Promise<number> => {
-  const allListings = await page.$$("ul.srp-results.srp-list.clearfix > li");
-
   let JPRank = 0;
-  let JPlistings = [];
+  let JPListings = [];
+  let JPPrices: number[] = [];
   const location = "from Japan"
 
+  // Get all the elements
+  const allListings = await page.$$("ul.srp-results.srp-list.clearfix > li");
+
+  // Extract necessary elements
   for (const listing of allListings) {
     const className = await listing.evaluate((el) => el.className);
 
@@ -81,20 +130,21 @@ const getStoreJPRank = async (page: Page, storeName: string): Promise<number> =>
           sellerLocationElement
         );
         if (location === sellerLocationText) {
-          JPlistings.push(listing);
+          JPListings.push(listing);
         }
       }
     }
   }
 
-  for (let index = 0; index < JPlistings.length; index++) {
-    const listing = JPlistings[index];
-    const sellerInfoElement = await listing.$("span.s-item__seller-info-text");
+  // Get JP Rank
+  for (let index = 0; index < JPListings.length; index++) {
+    const listing = JPListings[index];
+    const sellerNameElement = await listing.$("span.s-item__seller-info-text");
 
-    if (sellerInfoElement) {
+    if (sellerNameElement) {
       const sellerText = await page.evaluate(
         (el) => el.textContent?.trim() || "",
-        sellerInfoElement
+        sellerNameElement
       );
       const [matchedStoreName] = sellerText.split(" (");
 
@@ -105,6 +155,21 @@ const getStoreJPRank = async (page: Page, storeName: string): Promise<number> =>
     }
   }
 
+  // Get JP Prices
+  for (let index = 0; index < JPListings.length; index++) {
+    const listing = JPListings[index];
+    const sellerPriceElement = await listing.$("span.s-item__price");
+    if (sellerPriceElement) {
+      const priceText = await page.evaluate(
+        (el) => el.textContent?.trim() || "",
+        sellerPriceElement
+      );
+      const price = Number(priceText.replace("$", ""))
+      JPPrices.push(price)
+    }
+  }
+
+  logger.info(`JPPrices: ${JPPrices.join()}`)
   return JPRank;
 };
 
