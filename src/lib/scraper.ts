@@ -28,6 +28,7 @@ const getStoreRank = async (page: Page, storeName: string): Promise<number> => {
       (className.includes("s-item__before-answer") ||
         className.includes("s-item__pl-on-bottom") ||
         className.includes("s-item s-item__before-answer s-item__pl-on-bottom"))
+      // && className.includes("s-item__location s-item__itemLocation")
     ) {
       listings.push(listing);
     }
@@ -52,6 +53,59 @@ const getStoreRank = async (page: Page, storeName: string): Promise<number> => {
   }
 
   return rank;
+};
+const getStoreJPRank = async (page: Page, storeName: string): Promise<number> => {
+  const allListings = await page.$$("ul.srp-results.srp-list.clearfix > li");
+
+  let JPRank = 0;
+  let listings = [];
+  const location = "from Japan"
+
+  for (const listing of allListings) {
+    const className = await listing.evaluate((el) => el.className);
+
+    if (
+      !className.includes(
+        "srp-river-answer--NAVIGATION_ANSWER_COLLAPSIBLE_CAROUSEL"
+      ) &&
+      !className.includes("srp-river-answer--BASIC_PAGINATION_V2") &&
+      !className.includes("srp-river-answer--REWRITE_START") &&
+      (className.includes("s-item__before-answer") ||
+        className.includes("s-item__pl-on-bottom") ||
+        className.includes("s-item s-item__before-answer s-item__pl-on-bottom"))
+    ) {
+      const sellerLocationElement = await listing.$("span.s-item__location");
+      if (sellerLocationElement) {
+        const sellerLocationText = await page.evaluate(
+          (el) => el.textContent?.trim() || "",
+          sellerLocationElement
+        );
+        if (location === sellerLocationText) {
+          listings.push(listing);
+        }
+      }
+    }
+  }
+
+  for (let index = 0; index < listings.length; index++) {
+    const listing = listings[index];
+    const sellerInfoElement = await listing.$("span.s-item__seller-info-text");
+
+    if (sellerInfoElement) {
+      const sellerText = await page.evaluate(
+        (el) => el.textContent?.trim() || "",
+        sellerInfoElement
+      );
+      const [matchedStoreName] = sellerText.split(" (");
+
+      if (matchedStoreName === storeName) {
+        JPRank = index + 1;
+        break;
+      }
+    }
+  }
+
+  return JPRank;
 };
 
 const getCurrency = async (page: Page): Promise<string> => {
@@ -92,19 +146,21 @@ export const scraper = async (
     await page.goto(url, { waitUntil: "networkidle0", timeout: 100000 });
 
     const rank = await getStoreRank(page, storeName);
+    const JPRank = await getStoreJPRank(page, storeName);
     const currency = await getCurrency(page);
 
     const csvData: CSVData = {
       Identity,
       eBayURL: ebayUrl,
       Rank: rank || 0,
+      JPRank: JPRank || 0,
       Currency: currency,
     };
 
     await page.close();
 
     logger.info(
-      `[✅ Finished scraping] Identity: ${Identity} | Rank: ${rank} | Currency: ${currency} | URL: ${ebayUrl}`
+      `[✅ Finished scraping] Identity: ${Identity} | Rank: ${rank} | JPRank: ${JPRank} | Currency: ${currency} | URL: ${ebayUrl}`
     );
     return csvData;
   } catch (error) {
@@ -120,6 +176,7 @@ export const scraper = async (
       Identity,
       eBayURL: ebayUrl,
       Rank: 0,
+      JPRank: 0,
       Currency: "USD",
     };
     return fallbackData;

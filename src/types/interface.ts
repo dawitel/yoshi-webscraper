@@ -1,8 +1,10 @@
 export interface CSVData {
   Identity: string;
   eBayURL: string;
-  Currency: string | undefined;
   Rank: number;
+  JPRank: number;
+
+  Currency: string | undefined;
 }
 
 export interface getcurrencyCodeParams {
