@@ -11,6 +11,7 @@ const geoCode = "us";
 // const brightDataUserPassword = process.env.BRIGHT_DATA_USER_PASSWORD || "";
 
 interface ScrapedData {
+  count: number
   rank: number,
   prices: string
 }
@@ -84,7 +85,7 @@ const getScrapedGlobalData = async (page: Page, storeName: string): Promise<Scra
   globalRank = await getRank(page, listings, storeName);
   globalPrices = await getPrices(page, listings)
 
-  return { rank: globalRank, prices: globalPrices.join() }
+  return { count: listings.length, rank: globalRank, prices: globalPrices.join() }
 };
 
 
@@ -128,7 +129,7 @@ const getScrapedJPData = async (page: Page, storeName: string): Promise<ScrapedD
   JPRank = await getRank(page, JPListings, storeName);
   JPPrices = await getPrices(page, JPListings)
 
-  return { rank: JPRank, prices: JPPrices.join() }
+  return { count: JPListings.length, rank: JPRank, prices: JPPrices.join() }
 };
 
 const getCurrency = async (page: Page): Promise<string> => {
@@ -162,13 +163,15 @@ export const scraper = async (
 
     await page.goto(url, { waitUntil: "networkidle0", timeout: 100000 });
 
-    const { rank: globalRank, prices: globalPrices } = await getScrapedGlobalData(page, storeName);
-    const { rank: JPRank, prices: JPPrices } = await getScrapedJPData(page, storeName);
+    const { count: globalCount, rank: globalRank, prices: globalPrices } = await getScrapedGlobalData(page, storeName);
+    const { count: JPCount, rank: JPRank, prices: JPPrices } = await getScrapedJPData(page, storeName);
     const currency = await getCurrency(page);
 
     const csvData: CSVData = {
       Identity,
       eBayURL: ebayUrl,
+      GlobalCount: globalCount,
+      JPCount: JPCount,
       GlobalRank: globalRank || 0,
       JPRank: JPRank || 0,
       GlobalPrices: globalPrices || '0',
@@ -192,6 +195,8 @@ export const scraper = async (
     const fallbackData: CSVData = {
       Identity,
       eBayURL: ebayUrl,
+      GlobalCount: 0,
+      JPCount: 0,
       GlobalRank: 0,
       JPRank: 0,
       GlobalPrices: '0',

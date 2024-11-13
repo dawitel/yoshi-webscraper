@@ -1,6 +1,8 @@
 export interface CSVData {
   Identity: string;
   eBayURL: string;
+  GlobalCount: number;
+  JPCount: number;
   GlobalRank: number;
   JPRank: number;
   GlobalPrices: string;
