@@ -18,7 +18,7 @@ RUN apk add --no-cache \
 COPY package.json pnpm-lock.yaml ./
 
 # Install dependencies using npm
-RUN npm ci
+RUN npm i
 
 # Install Puppeteer browser binaries
 RUN npx puppeteer browsers install chrome
