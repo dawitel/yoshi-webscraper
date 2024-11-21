@@ -32,7 +32,7 @@ export async function POST(req: Request) {
 
     // Launch Puppeteer with necessary options
     const browser = await puppeteer.launch({
-      executablePath: executablePath(),
+      executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || executablePath(),
       headless: true,
       args: [
         "--disable-blink-features=AutomationControlled",
