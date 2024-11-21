@@ -41,8 +41,6 @@ next-env.d.ts
 final-data
 uploads
 
-final_data
-
 logs
 *.log
 logs/info.log
