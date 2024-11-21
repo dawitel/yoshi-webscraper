@@ -122,7 +122,7 @@ export default function Dashboard() {
           </span>
         </h1>
         <p className="max-w-[42rem] mt-5 leading-normal text-muted-foreground sm:text-xl sm:leading-8">
-          Drop your CSV file, name of the store you're looking for, and email
+          Drop your CSV file, name of the store you are looking for, and email
           here and wait for the result to be dropped in your inbox.
         </p>
         <p className="rounded-2xl dark:bg-gray-800 bg-gray-100 font-light transition px-4 py-1.5 text-sm mb-3">
