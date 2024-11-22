@@ -1,23 +1,4 @@
 
-
-### Email
-
-- [Mailtrap.io](https://mailtrap.io/)
-
-### Domain
-
-- [Namecheap](https://www.namecheap.com/)
-
-### Hosting
-
-- [Render](https://render.com/)
-
-# Future Work
-
-- Using the same time for input.csv and output.csv
-
-# Reference
-
 ### Currency in JPY
 
 ![Currency in JPY](https://github.com/user-attachments/assets/7b2c8a7d-808a-4de6-b77d-80d6ec6ad6f4) <br>
