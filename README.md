@@ -99,29 +99,6 @@ npm run tsx [filename]
 
 ![VPS-US in USD](https://github.com/user-attachments/assets/54dad4b3-1416-497f-851f-7c5eca3ddc97)
 
-# Directory Structure
-
-```
-├── public
-│ ├── next.svg
-│ ├── vercel.svg
-└── src
-├── app
-│ ├── api
-│ │ └── v1
-│ │ ├── auth
-│ │ │ ├── check
-│ │ │ │ ├── route.ts
-│ │ │ ├── login
-│ │ │ │ ├── route.ts
-│ │ │ └── logout
-│ │ │ ├── route.ts
-│ │ ├── scrape
-│ │ │ ├── route.ts
-│ │ ├── send-email
-│ │ │ ├── route.ts
-│ │ └── upload
-│ │ └── **tests**
 │ │ └── **mocks**
 │ │ ├── test-file.csv
 │ │ ├── upload.test.ts
