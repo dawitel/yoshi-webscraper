@@ -3,17 +3,7 @@
 [demo documentation](./docs//v1/steps.md)
 Scrapping the rank of each item of a specific store
 
-# Contents
-
-- [Diagram](#Diagram)
-- [Specification](#Specification)
-- [Branch](#branch)
-- [Installation](#installation)
-- [Development setup](#development-setup)
-- [External Tools](#external-tools)
-- [Future Work](#future-work)
-- [Reference](#reference)
-- [Directory Structure](#directory-structure)
+ectory-structure)
 
 # Diagram
 
