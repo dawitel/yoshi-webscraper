@@ -1,15 +1,4 @@
-# eBay Rank Checker
-> > doc : for editing README.md <br>
-> > dev : for developing the app <br>
-> >
-> > > feature/[name] : for developing individual features <br>
-> > > bugfix/[name] : for fixing bugs
 
-# External Tools
-
-### Proxy
-
-- [Scrape.do](https://scrape.do/)
 
 ### Email
 
