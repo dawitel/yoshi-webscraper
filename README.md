@@ -1,20 +1,4 @@
 # eBay Rank Checker
-
-[demo documentation](./docs//v1/steps.md)
-Scrapping the rank of each item of a specific store
-
-ectory-structure)
-## [Explanation video](https://youtu.be/OFYwmoIBdzA) <br>
-
-## [Example I/O file](https://docs.google.com/spreadsheets/d/1FgUaxnBNnuh9378PJOipahjW4SIHXTQ0TSbH97q6YHU/edit?usp=sharing) <br>
-
-# Branch
-
-Please develop features on feature/[name] branches and merge them into the dev branch. <br>
-Please leave a comment to describe what you did to each commit
-
-> master : for the production
->
 > > doc : for editing README.md <br>
 > > dev : for developing the app <br>
 > >
