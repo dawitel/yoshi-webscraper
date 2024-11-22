@@ -4,16 +4,6 @@
 Scrapping the rank of each item of a specific store
 
 ectory-structure)
-
-# Diagram
-
-![Diagram eBay Rank Checker](https://github.com/user-attachments/assets/6e2a244a-797c-4f04-9215-fa84d55d2eff)
-
-# Specification
-
-![Flowchart eBay Rank Checker](https://github.com/user-attachments/assets/764eb698-94b1-4726-9915-136da38d7803)
-<br>
-
 ## [Explanation video](https://youtu.be/OFYwmoIBdzA) <br>
 
 ## [Example I/O file](https://docs.google.com/spreadsheets/d/1FgUaxnBNnuh9378PJOipahjW4SIHXTQ0TSbH97q6YHU/edit?usp=sharing) <br>
