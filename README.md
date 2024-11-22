@@ -41,24 +41,6 @@ Please leave a comment to describe what you did to each commit
 > > > feature/[name] : for developing individual features <br>
 > > > bugfix/[name] : for fixing bugs
 
-# Installation
-
-Make sure you have node.js installed locally, and type the bash script in the project folder to install dependencies
-
-```bash
-npm i
-```
-
-# Development Setup
-
-###### Make sure you have done installation and configuration
-
-Run typescript compiler from npm script
-
-```bash
-npm run tsx [filename]
-```
-
 # External Tools
 
 ### Proxy
